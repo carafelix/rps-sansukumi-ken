@@ -32,21 +32,49 @@
 
 // *0
 
-const rock = "Rock"
-const paper = "Paper"
-const scissors = "Scissors"
+const rock = "Rock";
+const paper = "Paper";
+const scissors = "Scissors";
+let usrChoice;
+let cpuChoice;
 
 // normalize function 
 
-function normalize(string) {
+function uniformInput(string) {
     let uniform = string.toLowerCase();
     let excludeFirstLetter = uniform.slice(1);
     let getFirstLetter = uniform.slice(0,1);
     let firstCap = getFirstLetter.toUpperCase();
-    let sumStr = firstCap + excludeFirstLetter;            
-    return sumStr;
+    return firstCap + excludeFirstLetter;
+};
 
-let 
+
+
+// *1
+
+function getUserChoice () {
+    usrChoice = prompt("Chose your weapon", "Rock, Paper, Scissors");   
+    usrChoice = uniformInput(usrChoice);
+    if (usrChoice == "Rock") {
+        return usrChoice = rock
+    } else if (usrChoice == "Paper") {
+        return usrChoice = paper
+    } else if (usrChoice == "Scissors") {
+        return usrChoice = scissors
+    } else {
+        alert("Wrong Answer, you must input a valid weapon")
+    }
+}
+
+
+
+
+
+
+
+    
+
+
 
 
 
