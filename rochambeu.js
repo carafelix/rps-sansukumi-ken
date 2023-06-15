@@ -19,8 +19,8 @@
 
 // Ask the user if he wants to play a game of Rochambeu, and to wich score  |   *5
 // Give the user and the machine a counter for score (or lifes)             |   *6
-// Define the rules/inputs regarding the game                               |   *0
-// Ask the user to input his choice                                         |   *1
+// Define the elementary inputs regarding the game                          |   *0
+// Ask the user to input his choice via prompt and normalize the string     |   *1
 // Computer selects a random choice                                         |   *2
 // Determine if it is a Tie or any of the parties won                       |   *3
 // If someome won, score them a point                                       |   *4
@@ -30,57 +30,53 @@
 // ask the user if he want to play another set and loop                     |   *10
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// *0
 
 const rock = "Rock"
 const paper = "Paper"
 const scissors = "Scissors"
+
+// normalize function 
+
+function normalize(string) {
+    let uniform = string.toLowerCase();
+    let excludeFirstLetter = uniform.slice(1);
+    let getFirstLetter = uniform.slice(0,1);
+    let firstCap = getFirstLetter.toUpperCase();
+    let sumStr = firstCap + excludeFirstLetter;            
+    return sumStr;
+
+let 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // Cpu Array random
 
