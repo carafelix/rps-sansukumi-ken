@@ -19,7 +19,8 @@
 
 // Ask the user if he wants to play a game of Rochambeu, and to wich score  |   *5
 // Give the user and the machine a counter for score (or lifes)             |   *6
-// User inputs his choice                                                   |   *1
+// Define the rules/inputs regarding the game                               |   *0
+// Ask the user to input his choice                                         |   *1
 // Computer selects a random choice                                         |   *2
 // Determine if it is a Tie or any of the parties won                       |   *3
 // If someome won, score them a point                                       |   *4
