@@ -41,12 +41,17 @@ let cpuChoice;
 // normalize function 
 
 function uniformInput(string) {
+    if (string == null) {
+        alert("Please enter a valid answer")
+    } else {
     let uniform = string.toLowerCase();
     let excludeFirstLetter = uniform.slice(1);
     let getFirstLetter = uniform.slice(0,1);
     let firstCap = getFirstLetter.toUpperCase();
     return firstCap + excludeFirstLetter;
-};
+    }
+}
+
 
 
 
@@ -61,12 +66,19 @@ function getUserChoice () {
         return usrChoice = paper
     } else if (usrChoice == "Scissors") {
         return usrChoice = scissors
+    } else if (usrChoice == "") {
+        alert("You going empty handed!")
+    } else if (usrChoice == null) {
+        return
     } else {
-        alert("Wrong Answer, you must input a valid weapon")
+        alert("What are you doing??? Going to battle with words?")
     }
 }
 
 
+if (getUserChoice()) {
+    
+}
 
 
 
@@ -116,6 +128,6 @@ const cpuChoice = arr[randomIndex];
 return cpuChoice;
 }
 
-let cpuWep = getCpuChoice(cpuWepArray)
+cpuChoice = getCpuChoice(cpuWepArray)
 
 
