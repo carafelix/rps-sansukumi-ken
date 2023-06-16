@@ -48,19 +48,13 @@ const rock = "Rock"
 const paper = "Paper"
 const scissors = "Scissors"
 
-// *1 verb for asking the user for a choice
+// *1 Asking the user for a choice and normalize it
 
 function getUserChoice() {
-    return prompt("Chose your weapon", "Rock, Paper, Scissors")     
+    let chose = prompt("Chose your weapon", "Rock, Paper, Scissors")
+    chose = uniformInput(chose)
+    return chose 
 }
-
-// *1.1 normalize User Choice
-
-function cleanUserChoice() {
-    return uniformInput(getUserChoice());
-}
-
-let usrChoice = cleanUserChoice();
 
 // *2 Cpu choice
 
@@ -79,14 +73,17 @@ let cpuChoice = getCpuChoice(cpuChoiceArray)
 let playAgame = function (usr, cpu) {
     if (usr == cpu) {
         return("It's a tie baby!")
+
     } else if ((usr == paper && cpu == rock) 
-    || (usr == rock && cpu == scissors)
-    || (usr == scissors && cpu == paper)) {
-        return(`You Win! strike with ${usr} and Cpu got hit hard with his ${cpu}, poor machine`)
+            || (usr == rock && cpu == scissors)
+            || (usr == scissors && cpu == paper)) {
+                return(`You Win! strike with ${usr} and Cpu got hit hard with his ${cpu}, poor machine`)
+
     } else if ((cpu == paper && usr == rock) 
-    || (cpu == rock && usr == scissors)
-    || (cpu == scissors && usr == paper)) {
-        return(`Cpu wins again baby! Your ${usr} is nothing compared to the Cpu ${cpu}`)
+            || (cpu == rock && usr == scissors)
+            || (cpu == scissors && usr == paper)) {
+                return(`Cpu wins again baby! Your ${usr} is nothing compared to the Cpu ${cpu}`)
+
     } else {
         return(`WHAT ARE YOU DOING?? what does your ${usr} is gonna help you in combat!?!?! Make sure you pick the right weapon next time`)
     }
@@ -97,7 +94,7 @@ let playAgame = function (usr, cpu) {
 let usrScore = 0;   
 let cpuScore = 0;
 
-alert(playAgame(usrChoice, cpuChoice));
+alert(playAgame(getUserChoice(), cpuChoice));
 
 
 
