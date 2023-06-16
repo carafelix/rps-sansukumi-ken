@@ -71,7 +71,7 @@ const cpuChoiceArray = [rock, paper, scissors]
 
 cpuChoice = getCpuChoice(cpuChoiceArray)
 
-// Play a game *3
+// 3* Play a game // console.log(typeof(usrChoice)) | console.log(typeof(cpuChoice)). Compared at a string level
 
 let playAgame = function (usr, cpu) {
     if (usr == cpu) {
@@ -80,12 +80,18 @@ let playAgame = function (usr, cpu) {
     || (usr == rock && cpu == scissors)
     || (usr == scissors && cpu == paper)) {
         return(`You Win! strike with ${usr} and Cpu got hit hard with his ${cpu}, poor machine`)
-    } else {
+    } else if ((cpu == paper && usr == rock) 
+    || (cpu == rock && usr == scissors)
+    || (cpu == scissors && usr == paper)) {
         return(`Cpu wins again baby! Your ${usr} is nothing compared to the Cpu ${cpu}`)
+    } else {
+        return(`WHAT ARE YOU DOING?? what does your ${usr} is gonna help you in combat!?!?! Make sure you pick the right weapon next time`)
     }
 }
 
 console.log(playAgame(usrChoice, cpuChoice));
+
+
 
 
 
