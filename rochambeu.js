@@ -78,14 +78,12 @@ let playRound = function (usr, cpu) {
             || (usr == scissors && cpu == paper)) {
                 ++usrScore;                                   //add score to usr
                 return (`Humanity ${usr} strike again! CPU ${cpu} is usless against it!!!!!!!! Human ${usrScore} ---- CPU ${cpuScore} -------- Round #${roundCount+1} `);
-                // return (`You Win! that strike with ${usr} superb, CPU ${cpu} serves for nothing, poor machine`);
 
     } else if ((cpu == paper && usr == rock) 
             || (cpu == rock && usr == scissors)
             || (cpu == scissors && usr == paper)) {
                 ++cpuScore;                                   //add score to cpu
                 return (`CPU is taking over with ${cpu} against Humanity ${usr}! Be careful! Human ${usrScore} ---- CPU ${cpuScore} -------- Round #${roundCount+1}`);
-                // return (`CPU wins again baby! Your ${usr} is nothing compared to the CPU's ${cpu}`);
 
     } else {
         ++cpuScore
@@ -133,89 +131,6 @@ function playAgame (rounds) {
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for
 // If I had revisited https://developer.mozilla.org/en-US/docs/Glossary/Callback_function before it would have saved me like 3 hours time lol
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// trash can: 
-
-// code was inside functions that got deleted, it was okay for avoiding getting wrong inputs
-// and letting the user know but was getting pretty messy
-
-
-// if (string == null || string == undefined) {
-//     alert("Please enter a valid answer")
-// } else {
-
-
-// if (usrChoice == "Rock") {
-//     return usrChoice = rock
-// } else if (usrChoice == "Paper") {
-//     return usrChoice = paper
-// } else if (usrChoice == "Scissors") {
-//     return usrChoice = scissors
-// } else if (usrChoice == "") {
-//     alert("You going empty handed!")
-// } else if (usrChoice == null) {
-// } else {
-//     usrChoice = undefined
-//     alert("What are you doing??? Going to battle with words?")
-// }
 
 // Writing this code after implementing *2 since I also haved another way to solve it
 
