@@ -10,8 +10,8 @@
 
 // Ideas: 
 // Make the user able to select if he wants to play a golden goal round, a best of 3 , a Fto5 or a Fto10.
-// Implement random.org API for cpuChoice, so it is trully random.
-// Hestiation is defeat, maybe with a counter like when kids slap their fist into the other hand for count. 
+// Implement random.org API using fetch() on cpuChoice, so it is truly random.
+// Hestiation is defeat, maybe with a counter like when kids slap their fist into the other hand for count. setTimeout Function. 
 // Maybe implement a Voice-Recognition Library to allow the user to shout like a kid to the computer hahaha.
 // GUI visualitation of rounds/score record.
 
@@ -34,7 +34,7 @@
 // In this first iteration I would not implement the conditional for cpu choice to await for human choice
 // Since I think im missing the point on it and getting a bit stuck, and want to continue. I would revisit.
 
-// normalize function 
+// *0 normalize text input function 
 
 function uniformInput(string) {   
     const uniform = string.toLowerCase();
@@ -70,48 +70,55 @@ const cpuChoiceArray = [rock, paper, scissors]
 
 let playRound = function (usr, cpu) {
     if (usr == cpu) {
-                ++bestOfX                                //extend round limit on ties
-                return "It's a tie baby!"
+                ++bestOfX;                                //extend round limit on ties
+                return (`It's a tie baby! -------- Round #${roundCount+1}`);
 
     } else if ((usr == paper && cpu == rock) 
             || (usr == rock && cpu == scissors)
             || (usr == scissors && cpu == paper)) {
                 ++usrScore;                                   //add score to usr
-                return (`Humanity ${usr} strike again! CPU ${cpu} is usless against it!!!!!!!! Human ${usrScore} ---- CPU ${cpuScore} `)
+                return (`Humanity ${usr} strike again! CPU ${cpu} is usless against it!!!!!!!! Human ${usrScore} ---- CPU ${cpuScore} -------- Round #${roundCount+1} `);
                 // return (`You Win! that strike with ${usr} superb, CPU ${cpu} serves for nothing, poor machine`);
 
     } else if ((cpu == paper && usr == rock) 
             || (cpu == rock && usr == scissors)
             || (cpu == scissors && usr == paper)) {
                 ++cpuScore;                                   //add score to cpu
-                return (`CPU is taking over with ${cpu} against Humanity ${usr}! Be careful! Human ${usrScore} ---- CPU ${cpuScore} `)
+                return (`CPU is taking over with ${cpu} against Humanity ${usr}! Be careful! Human ${usrScore} ---- CPU ${cpuScore} -------- Round #${roundCount+1}`);
                 // return (`CPU wins again baby! Your ${usr} is nothing compared to the CPU's ${cpu}`);
 
     } else {
         ++cpuScore
-        return (`WHAT ARE YOU DOING?? what does your ${usr} is gonna help you in combat!?!?! Make sure you pick the right weapon next time. CPU scores the point.Human ${usrScore} ---- CPU ${cpuScore}`);
+        return (`WHAT ARE YOU DOING?? what does your ${usr} is gonna help you in combat!?!?! Make sure you pick the right weapon next time. CPU scores the point.Human ${usrScore} ---- CPU ${cpuScore} -------- Round #${roundCount+1}`);
     }
 }
 
-// 5* first implementation is Best of 'x' rounds || Second implementation should be first to 'x'
+// *6 first implementation is Best of 'x' rounds || Second implementation should be first to 'x'
     
-let bestOfX = 0;  // Best of 'x' rounds || BEST OF WHAT??? 
+let bestOfX = 0; 
 let usrScore = 0;
 let cpuScore = 0;
+let roundCount = 0;
 
-function playAgame (rounds) {
+// *5 before I used let bestofX = +prompt("rounds?", 5); etc. but found it annoying. Prefer to initialize on console and its more horizontal.// *5 before I used let bestofX = +prompt("rounds?", 5); etc. but found it annoying. Prefer to initialize on console and its more horizontal.
+
+function playAgame (rounds) {  
 
         bestOfX = rounds;
     
-    for (let roundCount = 0; roundCount < bestOfX; roundCount++) {
+    for (roundCount = 0; roundCount < bestOfX; roundCount++) {
             console.log(playRound(getUserChoice(), getCpuChoice(cpuChoiceArray)));
             if (usrScore == 3 || cpuScore == 3) {
-                break;                               // If any reach score == 3, game ends. No need to play all rounds.
+                break;                              // If any reach score == 3, game ends. No need to play all rounds.
             }
-    } if ((usrScore - cpuScore) >= 1) {
-        console.log(`Humankind Strikes Again! ${usrScore} is more than ${cpuScore}. Aprende algo DINERO`)
+    } if ((usrScore - cpuScore) >= 1) {     // Final win/loss determination
+        console.log(`Humankind Strikes Again! ${usrScore} is more than ${cpuScore}. Aprende algo DINERO.`);
+        cpuScore = 0;
+        usrScore = 0;
     } else {
-        console.log(`CPU has coup the world! Clearly ${cpuScore} is more than ${usrScore}. Bip Bop Soy un robot, gane. `)
+        console.log(`CPU has coup the world! Clearly ${cpuScore} is more than ${usrScore}. Bip Bop Soy un robot, gane. `);
+        usrScore = 0;
+        cpuScore = 0;
     }
 }  
 
@@ -119,9 +126,14 @@ function playAgame (rounds) {
 
 
 // for (let usrScore = 0, usrCpu = 0; usrScore < firstToWhat, usrCpu < firstToWhat; ???? )
-// how should I implement a multi variable counter. 
 
-// alert(playRound(getUserChoice(), cpuChoice));
+// how should I implement a multi variable counter???
+// I think its possible to omit some parameters from the 'for loop' and do all operations in the body
+// using ++ -- break and return
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for
+// If I had revisited https://developer.mozilla.org/en-US/docs/Glossary/Callback_function before it would have saved me like 3 hours time lol
+
+
 
 
 
