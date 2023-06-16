@@ -70,7 +70,7 @@ const cpuChoiceArray = [rock, paper, scissors]
 
 let playRound = function (usr, cpu) {
     if (usr == cpu) {
-                ++bestOfWhat                                //extend round limit on ties
+                ++bestOfX                                //extend round limit on ties
                 return "It's a tie baby!"
 
     } else if ((usr == paper && cpu == rock) 
@@ -95,21 +95,25 @@ let playRound = function (usr, cpu) {
 
 // 5* first implementation is Best of 'x' rounds || Second implementation should be first to 'x'
     
-let bestOfWhat = +prompt("Sup kid? Wanna RPS for that gamecube port? best of what?", 5);
+let bestOfX = 0;  // Best of 'x' rounds || BEST OF WHAT??? 
 let usrScore = 0;
 let cpuScore = 0;
 
-for (let roundCount = 0; roundCount < bestOfWhat; roundCount++) {
-        console.log(playRound(getUserChoice(), getCpuChoice(cpuChoiceArray)));
-        if (usrScore == 3 || cpuScore == 3) {
-            break;                               // If any reach score == 3, game ends. No need to play all rounds.
-        }
-} if ((usrScore - cpuScore) >= 1) {
-    console.log(`Humankind Strikes Again! ${usrScore} is more than ${cpuScore}. Aprende algo DINERO`)
-} else {
-    console.log(`CPU has coup the world! Clearly ${cpuScore} is more than ${usrScore}. Bip Bop Soy un robot, gane. `)
-}
+function playAgame (rounds) {
+
+        bestOfX = rounds;
     
+    for (let roundCount = 0; roundCount < bestOfX; roundCount++) {
+            console.log(playRound(getUserChoice(), getCpuChoice(cpuChoiceArray)));
+            if (usrScore == 3 || cpuScore == 3) {
+                break;                               // If any reach score == 3, game ends. No need to play all rounds.
+            }
+    } if ((usrScore - cpuScore) >= 1) {
+        console.log(`Humankind Strikes Again! ${usrScore} is more than ${cpuScore}. Aprende algo DINERO`)
+    } else {
+        console.log(`CPU has coup the world! Clearly ${cpuScore} is more than ${usrScore}. Bip Bop Soy un robot, gane. `)
+    }
+}  
 
 
 
