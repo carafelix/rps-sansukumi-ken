@@ -70,19 +70,19 @@ const cpuChoiceArray = [rock, paper, scissors]
 
 let playRound = function (usr, cpu) {
     if (usr == cpu) {
-                ++bestOfWhat    //extend round limit on ties
+                ++bestOfWhat                                //extend round limit on ties
                 return "It's a tie baby!"
 
     } else if ((usr == paper && cpu == rock) 
             || (usr == rock && cpu == scissors)
             || (usr == scissors && cpu == paper)) {
-                ++usrScore;     //add score to usr
+                ++usrScore;                                   //add score to usr
                 return (`You Win! that strike with ${usr} superb, CPU ${cpu} serves for nothing, poor machine`);
 
     } else if ((cpu == paper && usr == rock) 
             || (cpu == rock && usr == scissors)
             || (cpu == scissors && usr == paper)) {
-                ++cpuScore;     //add score to cpu
+                ++cpuScore;                                   //add score to cpu
                 return (`CPU wins again baby! Your ${usr} is nothing compared to the CPU's ${cpu}`);
 
     } else {
@@ -100,7 +100,7 @@ let cpuScore = 0;
 for (let roundCount = 0; roundCount < bestOfWhat; roundCount++) {
         console.log(playRound(getUserChoice(), getCpuChoice(cpuChoiceArray)));
         if (usrScore == 3 || cpuScore == 3) {
-            break;      // If any reach score == 3, game ends. No need to play all rounds.
+            break;                               // If any reach score == 3, game ends. No need to play all rounds.
         }
 } if ((usrScore - cpuScore) >= 1) {
     console.log("TRIUNFO EL BIEN c:")
