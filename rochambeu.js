@@ -51,13 +51,16 @@ const scissors = "Scissors"
 // *1 verb for asking the user for a choice
 
 function getUserChoice() {
-    return prompt("Chose your weapon", "Rock, Paper, Scissors")    
+    return prompt("Chose your weapon", "Rock, Paper, Scissors")     
 }
 
 // *1.1 normalize User Choice
 
-let usrChoiceStep = getUserChoice();
-let usrChoice = uniformInput(usrChoiceStep);
+function cleanUserChoice() {
+    return uniformInput(getUserChoice());
+}
+
+let usrChoice = cleanUserChoice();
 
 // *2 Cpu choice
 
@@ -69,7 +72,7 @@ function getCpuChoice(array) {
 
 const cpuChoiceArray = [rock, paper, scissors]
 
-cpuChoice = getCpuChoice(cpuChoiceArray)
+let cpuChoice = getCpuChoice(cpuChoiceArray)
 
 // 3* Play a game // console.log(typeof(usrChoice)) | console.log(typeof(cpuChoice)). Compared at a string level
 
@@ -89,7 +92,12 @@ let playAgame = function (usr, cpu) {
     }
 }
 
-console.log(playAgame(usrChoice, cpuChoice));
+// 5*
+
+let usrScore = 0;   
+let cpuScore = 0;
+
+alert(playAgame(usrChoice, cpuChoice));
 
 
 
