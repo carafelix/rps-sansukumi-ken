@@ -105,15 +105,20 @@ function playAgame (rounds) {
         bestOfX = rounds;
     
     for (roundCount = 0; roundCount < bestOfX; roundCount++) {
+
             console.log(playRound(getUserChoice(), getCpuChoice(cpuChoiceArray)));
+            
             if (usrScore == 3 || cpuScore == 3) {
                 break;                              // If any reach score == 3, game ends. No need to play all rounds.
             }
     } if ((usrScore - cpuScore) >= 1) {     // Final win/loss determination
+
         console.log(`Humankind Strikes Again! ${usrScore} is more than ${cpuScore}. Aprende algo DINERO.`);
         cpuScore = 0;
         usrScore = 0;
+
     } else {
+        
         console.log(`CPU has coup the world! Clearly ${cpuScore} is more than ${usrScore}. Bip Bop Soy un robot, gane. `);
         usrScore = 0;
         cpuScore = 0;
