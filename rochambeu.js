@@ -70,29 +70,34 @@ const cpuChoiceArray = [rock, paper, scissors]
 
 let playRound = function (usr, cpu) {
     if (usr == cpu) {
-        return("It's a tie baby!")
+                ++bestOfWhat
+                return "It's a tie baby!"
 
     } else if ((usr == paper && cpu == rock) 
             || (usr == rock && cpu == scissors)
             || (usr == scissors && cpu == paper)) {
-                return(`You Win! that strike with ${usr} superb, CPU ${cpu} serves for nothing, poor machine`)
+                ++usrScore;
+                return (`You Win! that strike with ${usr} superb, CPU ${cpu} serves for nothing, poor machine`);
 
     } else if ((cpu == paper && usr == rock) 
             || (cpu == rock && usr == scissors)
             || (cpu == scissors && usr == paper)) {
-                return(`CPU wins again baby! Your ${usr} is nothing compared to the CPU's ${cpu}`)
+                ++cpuScore;
+                return (`CPU wins again baby! Your ${usr} is nothing compared to the CPU's ${cpu}`);
 
     } else {
-        return(`WHAT ARE YOU DOING?? what does your ${usr} is gonna help you in combat!?!?! Make sure you pick the right weapon next time`)
+        return (`WHAT ARE YOU DOING?? what does your ${usr} is gonna help you in combat!?!?! Make sure you pick the right weapon next time`);
     }
 }
 
-// 5* first implementation is Best of 'x' || Second implementation should be first to 'x'
+// 5* first implementation is Best of 'x' rounds || Second implementation should be first to 'x'
     
-let bestOfWhat = +prompt("Sup kid? Wanna RPS for that gamecube port? First to what?", 5)
+let bestOfWhat = +prompt("Sup kid? Wanna RPS for that gamecube port? best of what?", 5);
+let usrScore = 0;
+let cpuScore = 0;
 
-for (let roundCount = 0; roundCount < 5; roundCount++) {
-        alert(playRound(getUserChoice(), getCpuChoice(cpuChoiceArray)));
+for (let roundCount = 0; roundCount < bestOfWhat; roundCount++) {
+        console.log(playRound(getUserChoice(), getCpuChoice(cpuChoiceArray)));
 }
     
 
