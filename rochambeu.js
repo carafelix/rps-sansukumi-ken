@@ -35,50 +35,37 @@
 const rock = "Rock";
 const paper = "Paper";
 const scissors = "Scissors";
-let usrChoice;
 let cpuChoice;
 
 // normalize function 
 
-function uniformInput(string) {
-    if (string == null) {
-        alert("Please enter a valid answer")
-    } else {
-    let uniform = string.toLowerCase();
-    let excludeFirstLetter = uniform.slice(1);
-    let getFirstLetter = uniform.slice(0,1);
-    let firstCap = getFirstLetter.toUpperCase();
-    return firstCap + excludeFirstLetter;
-    }
+function uniformInput(string) {   
+    const uniform = string.toLowerCase();
+    const excludeFirstLetter = uniform.slice(1);
+    const getFirstLetter = uniform.slice(0,1);
+    const firstCap = getFirstLetter.toUpperCase();
+    return firstCap + excludeFirstLetter;    
 }
 
+// *1 verb for asking the user for a choice
 
-
-
-// *1
-
-function getUserChoice () {
-    usrChoice = prompt("Chose your weapon", "Rock, Paper, Scissors");   
-    usrChoice = uniformInput(usrChoice);
-    if (usrChoice == "Rock") {
-        return usrChoice = rock
-    } else if (usrChoice == "Paper") {
-        return usrChoice = paper
-    } else if (usrChoice == "Scissors") {
-        return usrChoice = scissors
-    } else if (usrChoice == "") {
-        alert("You going empty handed!")
-    } else if (usrChoice == null) {
-        return
-    } else {
-        alert("What are you doing??? Going to battle with words?")
-    }
+function getUserChoice() {
+    return prompt("Chose your weapon", "Rock, Paper, Scissors")    
 }
 
+// *1.1 normalize User Choice
 
-if (getUserChoice()) {
-    
-}
+let usrChoice = getUserChoice();
+let usrChoiceClean = uniformInput(usrChoice);
+
+
+
+
+
+
+
+
+
 
 
 
@@ -131,3 +118,26 @@ return cpuChoice;
 cpuChoice = getCpuChoice(cpuWepArray)
 
 
+
+
+// trash can: 
+
+
+// if (string == null || string == undefined) {
+//     alert("Please enter a valid answer")
+// } else {
+
+
+// if (usrChoice == "Rock") {
+//     return usrChoice = rock
+// } else if (usrChoice == "Paper") {
+//     return usrChoice = paper
+// } else if (usrChoice == "Scissors") {
+//     return usrChoice = scissors
+// } else if (usrChoice == "") {
+//     alert("You going empty handed!")
+// } else if (usrChoice == null) {
+// } else {
+//     usrChoice = undefined
+//     alert("What are you doing??? Going to battle with words?")
+// }
