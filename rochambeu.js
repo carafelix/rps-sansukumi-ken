@@ -66,35 +66,43 @@ function getCpuChoice(array) {
 
 const cpuChoiceArray = [rock, paper, scissors]
 
-let cpuChoice = getCpuChoice(cpuChoiceArray)
-
 // 3* Play a game // console.log(typeof(usrChoice)) | console.log(typeof(cpuChoice)). Compared at a string level
 
-let playAgame = function (usr, cpu) {
+let playRound = function (usr, cpu) {
     if (usr == cpu) {
         return("It's a tie baby!")
 
     } else if ((usr == paper && cpu == rock) 
             || (usr == rock && cpu == scissors)
             || (usr == scissors && cpu == paper)) {
-                return(`You Win! strike with ${usr} and Cpu got hit hard with his ${cpu}, poor machine`)
+                return(`You Win! that strike with ${usr} superb, CPU ${cpu} serves for nothing, poor machine`)
 
     } else if ((cpu == paper && usr == rock) 
             || (cpu == rock && usr == scissors)
             || (cpu == scissors && usr == paper)) {
-                return(`Cpu wins again baby! Your ${usr} is nothing compared to the Cpu ${cpu}`)
+                return(`CPU wins again baby! Your ${usr} is nothing compared to the CPU's ${cpu}`)
 
     } else {
         return(`WHAT ARE YOU DOING?? what does your ${usr} is gonna help you in combat!?!?! Make sure you pick the right weapon next time`)
     }
 }
 
-// 5*
+// 5* first implementation is Best of 'x' || Second implementation should be first to 'x'
+    
+let bestOfWhat = +prompt("Sup kid? Wanna RPS for that gamecube port? First to what?", 5)
 
-let usrScore = 0;   
-let cpuScore = 0;
+for (let roundCount = 0; roundCount < 5; roundCount++) {
+        alert(playRound(getUserChoice(), getCpuChoice(cpuChoiceArray)));
+}
+    
 
-alert(playAgame(getUserChoice(), cpuChoice));
+
+
+
+// for (let usrScore = 0, usrCpu = 0; usrScore < firstToWhat, usrCpu < firstToWhat; ???? )
+// how should I implement a multi variable counter. 
+
+// alert(playRound(getUserChoice(), cpuChoice));
 
 
 
