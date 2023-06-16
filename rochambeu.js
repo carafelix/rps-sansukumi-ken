@@ -77,17 +77,19 @@ let playRound = function (usr, cpu) {
             || (usr == rock && cpu == scissors)
             || (usr == scissors && cpu == paper)) {
                 ++usrScore;                                   //add score to usr
-                return (`You Win! that strike with ${usr} superb, CPU ${cpu} serves for nothing, poor machine`);
+                return (`Humanity ${usr} strike again! CPU ${cpu} is usless against it!!!!!!!! Human ${usrScore} ---- CPU ${cpuScore} `)
+                // return (`You Win! that strike with ${usr} superb, CPU ${cpu} serves for nothing, poor machine`);
 
     } else if ((cpu == paper && usr == rock) 
             || (cpu == rock && usr == scissors)
             || (cpu == scissors && usr == paper)) {
                 ++cpuScore;                                   //add score to cpu
-                return (`CPU wins again baby! Your ${usr} is nothing compared to the CPU's ${cpu}`);
+                return (`CPU is taking over with ${cpu} against Humanity ${usr}! Be careful! Human ${usrScore} ---- CPU ${cpuScore} `)
+                // return (`CPU wins again baby! Your ${usr} is nothing compared to the CPU's ${cpu}`);
 
     } else {
         ++cpuScore
-        return (`WHAT ARE YOU DOING?? what does your ${usr} is gonna help you in combat!?!?! Make sure you pick the right weapon next time. CPU wins by K.O!`);
+        return (`WHAT ARE YOU DOING?? what does your ${usr} is gonna help you in combat!?!?! Make sure you pick the right weapon next time. CPU scores the point.Human ${usrScore} ---- CPU ${cpuScore}`);
     }
 }
 
@@ -103,9 +105,9 @@ for (let roundCount = 0; roundCount < bestOfWhat; roundCount++) {
             break;                               // If any reach score == 3, game ends. No need to play all rounds.
         }
 } if ((usrScore - cpuScore) >= 1) {
-    console.log("TRIUNFO EL BIEN c:")
+    console.log(`Humankind Strikes Again! ${usrScore} is more than ${cpuScore}. Aprende algo DINERO`)
 } else {
-    console.log("Triunfo el mal :c")
+    console.log(`CPU has coup the world! Clearly ${cpuScore} is more than ${usrScore}. Bip Bop Soy un robot, gane. `)
 }
     
 
