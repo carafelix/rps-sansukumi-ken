@@ -34,14 +34,11 @@
 // In this first iteration I would not implement the conditional for cpu choice to await for human choice
 // Since I think im missing the point on it and getting a bit stuck, and want to continue. I would revisit.
 
-// *0 normalize text input function 
+// *0 normalize text input function
 
 function uniformInput(string) {   
-    const uniform = string.toLowerCase();
-    const excludeFirstLetter = uniform.slice(1);
-    const getFirstLetter = uniform.slice(0,1);
-    const firstCap = getFirstLetter.toUpperCase();
-    return firstCap + excludeFirstLetter;    
+    const excludeFirstLetter = string.toLowerCase().slice(1);
+    return string[0].toUpperCase() + excludeFirstLetter;    
 }
 
 const rock = "Rock"
@@ -155,4 +152,24 @@ function playAgame (rounds) {
 //         cpuGuess = scissors
 //     }
 
+// code down below was extracted from a codewar kata. Much better than mine but at the moment of writing this code
+// I didn't knew about objects. Nice
 
+// const rps = (p1, p2) => {
+//     if (p1 === p2) return "Draw!";
+//     var rules = {rock: "scissors", paper: "rock", scissors: "paper"};
+//     if (p2 === rules[p1]) {
+//       return "Player 1 won!";
+//     }
+//     else {
+//       return "Player 2 won!";
+//     }
+//   };
+
+// stepper normalize function (idk wich one is easier to read)
+
+// function uniformInput(string) {   
+//     const uniform = string.toLowerCase();
+//     const excludeFirstLetter = uniform.slice(1);
+//     return uniform[0].toUpperCase() + excludeFirstLetter;    
+// }
