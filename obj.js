@@ -23,7 +23,7 @@ let randomApi = async function (){
     })
         .then(res => res.json())
         .then((data) =>{
-             getRandom.push(data)
+             getRandom.unshift(data)
         });
 }
 
