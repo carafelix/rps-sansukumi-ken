@@ -80,9 +80,9 @@ const apiFetchObj = {
     "id": 27714
 }
 
-let getRandomOrgCpu = [];
+const randomOrgCpu = []; // to clear it randomOrgCpu.length = 0 || while(A.length > 0) {A.pop();}
 
-async function randomApi() {
+async function getRandomApiCall() {
    await fetch("https://api.random.org/json-rpc/4/invoke", {
         method: "POST",
         body: JSON.stringify(apiFetchObj),
@@ -90,11 +90,11 @@ async function randomApi() {
     })
         .then(res => res.json())
         .then((data) =>{
-            getRandomOrgCpu.unshift(data)
+            randomOrgCpu.unshift(data)
         });
 }
 
-// getRandomOrgCpu[0]["result"]["random"]["data"][0]
+// RandomOrgCpu[0]["result"]["random"]["data"][0]
 
 
 // 3* Play a game // console.log(typeof(usrChoice)) | console.log(typeof(cpuChoice)). Compared at a string level
