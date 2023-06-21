@@ -13,17 +13,20 @@ const obj = {
     "id": 27714
 }
 
-async function fetchRandom(){
+let getRandom = [];
 
-fetch("https://api.random.org/json-rpc/4/invoke", {
-    method: "POST",
-    body: JSON.stringify(obj),
-    headers: {"Content-type": "application/json; charset=UTF-8"}   
-})
-    .then(res => res.json())
-    .then(data => console.log(data)) 
-
+let randomApi = async function (){
+   await fetch("https://api.random.org/json-rpc/4/invoke", {
+        method: "POST",
+        body: JSON.stringify(obj),
+        headers: {"Content-type": "application/json; charset=UTF-8"}   
+    })
+        .then(res => res.json())
+        .then((data) =>{
+             getRandom.push(data)
+        });
 }
 
+// getRandom[0]["result"]["random"]["data"][0]
 
 
