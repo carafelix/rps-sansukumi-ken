@@ -69,7 +69,7 @@ const apiFetchObj = {
     "jsonrpc": "2.0",
     "method": "generateIntegers",
     "params": {
-        "apiKey": "aa28fec6-cdad-47f8-b471-cc8ee106298f",
+        "apiKey": "aa28fec6-cdad-47f8-b471-cc8ee106298f", // I know this shouldn't be public but idk how to keep it secret in a front-end enviroment
         "n": 1,
         "min": 1,
         "max": 3,
@@ -80,7 +80,7 @@ const apiFetchObj = {
     "id": 27714
 }
 
-const randomOrgCpu = []; // to clear it randomOrgCpu.length = 0 || while(A.length > 0) {A.pop();}
+const randomOrgCpu = []; // 'let' should be easier to clear it; const with: randomOrgCpu.length = 0 || while(A.length > 0) {A.pop();}
 
 async function getRandomApiCall() {
    await fetch("https://api.random.org/json-rpc/4/invoke", {
@@ -101,7 +101,7 @@ async function getRandomApiCall() {
 
 let playRound = function (usr, cpu) {
     if (usr == cpu) {
-                ++bestOfX;                                //extend round limit on ties
+               ++bestOfX;                                //extend round limit on ties
                 return (`It's a tie baby! -------- Round #${roundCount+1}`);
 
     } else if ((usr == paper && cpu == rock) 
@@ -139,8 +139,8 @@ function playAgame (rounds) {
 
             console.log(playRound(getUserChoice(), getCpuChoice(cpuChoiceArray)));
             
-            if (usrScore == 3 || cpuScore == 3) {
-                break;                              // If any reach score == 3, game ends. No need to play all rounds.
+            if (usrScore > (Math.floor(rounds/2)) || cpuScore > (Math.floor(rounds/2))) {
+                break;                              // game ends if any gets more than half the points.
             }
     } if ((usrScore - cpuScore) >= 1) {     // Final win/loss determination
 
