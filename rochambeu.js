@@ -63,9 +63,9 @@ function getCpuChoice(array) {
 
 const cpuChoiceArray = [rock, paper, scissors]
 
-// *2 Cpu choice fetched from Random.org api
+// *2.1 Cpu choice fetched from Random.org api
 
-const apiObj = {
+const apiFetchObj = {
     "jsonrpc": "2.0",
     "method": "generateIntegers",
     "params": {
@@ -82,10 +82,10 @@ const apiObj = {
 
 let getRandomOrgCpu = [];
 
-let randomApi = async function (){
+async function randomApi() {
    await fetch("https://api.random.org/json-rpc/4/invoke", {
         method: "POST",
-        body: JSON.stringify(apiObj),
+        body: JSON.stringify(apiFetchObj),
         headers: {"Content-type": "application/json; charset=UTF-8"}   
     })
         .then(res => res.json())
@@ -94,7 +94,7 @@ let randomApi = async function (){
         });
 }
 
-// getRandom[0]["result"]["random"]["data"][0]
+// getRandomOrgCpu[0]["result"]["random"]["data"][0]
 
 
 // 3* Play a game // console.log(typeof(usrChoice)) | console.log(typeof(cpuChoice)). Compared at a string level
