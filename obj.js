@@ -15,7 +15,7 @@ const obj = {
 
 let getRandom = [];
 
-let randomApi = async function (){
+const randomApi = async function (){
    await fetch("https://api.random.org/json-rpc/4/invoke", {
         method: "POST",
         body: JSON.stringify(obj),
@@ -28,5 +28,3 @@ let randomApi = async function (){
 }
 
 // getRandom[0]["result"]["random"]["data"][0]
-
-
