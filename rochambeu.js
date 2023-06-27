@@ -66,6 +66,7 @@ const cpuChoiceArray = [rock, paper, scissors]
 // *2.1 Cpu choice fetched from Random.org api
 
 
+
 // RandomOrgCpu[0]["result"]["random"]["data"][0]
 
 
