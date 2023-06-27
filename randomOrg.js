@@ -27,9 +27,10 @@ async function getRandomApiCall() {
         });
 };
 
-const setChoice = function(){
-    getRandomApiCall();
-    console.log(randomOrgCpu)
+export {
+    apiFetchObj,
+    randomOrgCpu,
+    getRandomApiCall
 }
 
 // randomOrgCpu[0]["result"]["random"]["data"][0]
