@@ -26,11 +26,10 @@ async function getRandomApiCall() {
             randomOrgCpu.unshift(data)
         });
 }
-
 export {
     getRandomApiCall,
     randomOrgCpu,
-    apiFetchObj,
+    apiFetchObj
 }
 
 // randomOrgCpu[0]["result"]["random"]["data"][0]
