@@ -149,8 +149,6 @@ let roundCount = 0;
 function playAgame (rounds) {  
 
         bestOfX = rounds;
-
-    // total game code:
     
     for (roundCount = 0; roundCount < bestOfX; roundCount++) {
 
