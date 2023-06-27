@@ -34,6 +34,7 @@
 // In this first iteration I would not implement the conditional for cpu choice to await for human choice
 // Since I think im missing the point on it and getting a bit stuck, and want to continue. I would revisit.
 
+
 // *0 normalize text input function
 
 function uniformInput(string) {   
@@ -65,12 +66,27 @@ const cpuChoiceArray = [rock, paper, scissors]
 
 // *2.1 Cpu choice fetched from Random.org api
 
-
+// how to include the obj.js in here???
 
 // RandomOrgCpu[0]["result"]["random"]["data"][0]
 
 
-// 3* Play a game // console.log(typeof(usrChoice)) | console.log(typeof(cpuChoice)). Compared at a string level
+
+
+// *6 first implementation is Best of 'x' rounds || Second implementation should be first to 'x'
+    
+let bestOfX = 0; 
+let usrScore = 0;
+let cpuScore = 0;
+let roundCount = 0;
+
+// *5 before I used let bestofX = +prompt("rounds?", 5); etc. but found it annoying. Prefer to initialize on console and its more horizontal.// *5 before I used let bestofX = +prompt("rounds?", 5); etc. but found it annoying. Prefer to initialize on console and its more horizontal.
+
+function playAgame (rounds) {  
+
+        bestOfX = rounds;
+
+        // 3* Play a game // console.log(typeof(usrChoice)) | console.log(typeof(cpuChoice)). Compared at a string level
 
 let playRound = function (usr, cpu) {
     if (usr == cpu) {
@@ -94,19 +110,6 @@ let playRound = function (usr, cpu) {
         return (`WHAT ARE YOU DOING?? what does your ${usr} is gonna help you in combat!?!?! Make sure you pick the right weapon next time. CPU scores the point.Human ${usrScore} ---- CPU ${cpuScore} -------- Round #${roundCount+1}`);
     }
 }
-
-// *6 first implementation is Best of 'x' rounds || Second implementation should be first to 'x'
-    
-let bestOfX = 0; 
-let usrScore = 0;
-let cpuScore = 0;
-let roundCount = 0;
-
-// *5 before I used let bestofX = +prompt("rounds?", 5); etc. but found it annoying. Prefer to initialize on console and its more horizontal.// *5 before I used let bestofX = +prompt("rounds?", 5); etc. but found it annoying. Prefer to initialize on console and its more horizontal.
-
-function playAgame (rounds) {  
-
-        bestOfX = rounds;
     
     for (roundCount = 0; roundCount < bestOfX; roundCount++) {
 
