@@ -53,23 +53,21 @@ function getUserChoice() {
     return chose 
 }
 
-// *2 Cpu choice
-
-function getCpuChoice(array) {
-    const randomIndex = Math.floor(Math.random() * array.length);
-    const cpuChoice = array[randomIndex];
-    return cpuChoice;
-}
+// *2 Cpu choice pseudo random, only used in playAgame
 
 const cpuChoiceArray = [rock, paper, scissors]
 
-// *2.1 Cpu choice fetched from Random.org api
+function getCpuChoice(array) {
+    const randomIndex = Math.floor(Math.random() * array.length);
+   return array[randomIndex];
+}
+
+// *2.1 Cpu choice fetched from Random.org api, true random. only used in playAtrueGame
 
 import { getRandomApiCall, randomOrgCpu, setCpuChoice} from "./randomOrg.js";
 
-// randomOrgCpu[0]["result"]["random"]["data"][0]
 
-// 3* Play a game // console.log(typeof(usrChoice)) | console.log(typeof(cpuChoice)). Compared at a string level
+// 3* Play a round // console.log(typeof(usrChoice)) | console.log(typeof(cpuChoice)). Compared at a string level
 
 let playRound = function (usr, cpu) {
     if (usr == cpu) {
@@ -128,6 +126,9 @@ function playAgame (rounds) {
     }
 }
 
+
+// play a true game
+
 async function playAtrueGame (rounds){
 
     bestOfX = rounds;
@@ -153,7 +154,7 @@ async function playAtrueGame (rounds){
     }
 }
 
-playAtrueGame(10);
+playAgame(10);
 
 
 // for (let usrScore = 0, usrCpu = 0; usrScore < firstToWhat, usrCpu < firstToWhat; ???? )

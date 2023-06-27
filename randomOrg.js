@@ -38,11 +38,37 @@ async function setCpuChoice() {
     }
 }
 
+async function playAtrueGame (rounds){
+
+    bestOfX = rounds;
+    
+    for (roundCount = 0; roundCount < bestOfX; roundCount++) {
+
+            console.log(playRound(getUserChoice(), await setCpuChoice()));
+            
+            if (usrScore > (Math.floor(rounds/2)) || cpuScore > (Math.floor(rounds/2))) {
+                break;                              // game ends if any gets more than half the points.
+            }
+    } if ((usrScore - cpuScore) >= 1) {     // Final win/loss determination
+
+        console.log(`Humankind Strikes Again! ${usrScore} is more than ${cpuScore}. Aprende algo DINERO.`);
+        cpuScore = 0;
+        usrScore = 0;
+
+    } else {
+        
+        console.log(`CPU has coup the world! Clearly ${cpuScore} is more than ${usrScore}. Bip Bop Soy un robot, gane. `);
+        usrScore = 0;
+        cpuScore = 0;
+    }
+}
+
 export {
     apiFetchObj,
     randomOrgCpu,
     getRandomApiCall,
-    setCpuChoice
+    setCpuChoice,
+    playAtrueGame
 }
 
 const rock = "Rock"
