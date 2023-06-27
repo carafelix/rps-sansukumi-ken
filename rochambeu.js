@@ -64,7 +64,10 @@ function getCpuChoice(array) {
 
 // *2.1 Cpu choice fetched from Random.org api, true random. only used in playAtrueGame
 
-// import { getRandomApiCall, randomOrgCpu, setCpuChoice, playAtrueGame} from "./randomOrg.js";
+// import { getRandomApiCall, randomOrgCpu, setCpuChoice, playAtrueGame} from "./randomOrg.js";  <<---- that didn't work
+// randomOrg.js as module just work ???
+
+
 
 
 // 3* Play a round // console.log(typeof(usrChoice)) | console.log(typeof(cpuChoice)). Compared at a string level
