@@ -1,4 +1,4 @@
-export const apiFetchObj = {
+const apiFetchObj = {
     "jsonrpc": "2.0",
     "method": "generateIntegers",
     "params": {
@@ -13,9 +13,9 @@ export const apiFetchObj = {
     "id": 27714
 }
 
-export const randomOrgCpu = []; // 'let' should be easier to clear it; const with: randomOrgCpu.length = 0 || while(A.length > 0) {A.pop();}
+const randomOrgCpu = []; // 'let' should be easier to clear it; const with: randomOrgCpu.length = 0 || while(A.length > 0) {A.pop();}
 
-export async function getRandomApiCall() {
+async function getRandomApiCall() {
    await fetch("https://api.random.org/json-rpc/4/invoke", {
         method: "POST",
         body: JSON.stringify(apiFetchObj),
@@ -25,6 +25,12 @@ export async function getRandomApiCall() {
         .then((data) =>{
             randomOrgCpu.unshift(data)
         });
+}
+
+export {
+    getRandomApiCall,
+    randomOrgCpu,
+    apiFetchObj,
 }
 
 // randomOrgCpu[0]["result"]["random"]["data"][0]

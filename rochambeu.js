@@ -34,7 +34,6 @@
 // In this first iteration I would not implement the conditional for cpu choice to await for human choice
 // Since I think im missing the point on it and getting a bit stuck, and want to continue. I would revisit.
 
-
 // *0 normalize text input function
 
 function uniformInput(string) {   
@@ -66,7 +65,9 @@ const cpuChoiceArray = [rock, paper, scissors]
 
 // *2.1 Cpu choice fetched from Random.org api
 
-// how to include the obj.js in here???
+import { randomOrgCpu, getRandomApiCall, apiFetchObj   } from "./randomOrg.js"; 
+
+console.log(randomOrgCpu);
 
 // RandomOrgCpu[0]["result"]["random"]["data"][0]
 
