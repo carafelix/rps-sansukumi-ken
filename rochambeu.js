@@ -65,7 +65,7 @@ const cpuChoiceArray = [rock, paper, scissors]
 
 // *2.1 Cpu choice fetched from Random.org api
 
-import { getRandomApiCall, randomOrgCpu, apiFetchObj } from "./randomOrg.js";
+import { getRandomApiCall, randomOrgCpu } from "./randomOrg.js";
 
 async function setCpuChoice() {
     await getRandomApiCall();
