@@ -27,11 +27,27 @@ async function getRandomApiCall() {
         });
 };
 
+async function setCpuChoice() {
+    await getRandomApiCall();
+    if ((randomOrgCpu[0]["result"]["random"]["data"][0]) === 0){
+        return rock
+    } else if ((randomOrgCpu[0]["result"]["random"]["data"][0]) === 1 ) {
+        return paper
+    } else {
+        return scissors
+    }
+}
+
 export {
     apiFetchObj,
     randomOrgCpu,
-    getRandomApiCall
+    getRandomApiCall,
+    setCpuChoice
 }
+
+const rock = "Rock"
+const paper = "Paper"
+const scissors = "Scissors"
 
 // randomOrgCpu[0]["result"]["random"]["data"][0]
 
