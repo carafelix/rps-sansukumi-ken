@@ -25,11 +25,11 @@ async function getRandomApiCall() {
         .then((data) =>{
             randomOrgCpu.unshift(data)
         });
-}
-export {
-    getRandomApiCall,
-    randomOrgCpu,
-    apiFetchObj
+};
+
+const setChoice = function(){
+    getRandomApiCall();
+    console.log(randomOrgCpu)
 }
 
 // randomOrgCpu[0]["result"]["random"]["data"][0]
