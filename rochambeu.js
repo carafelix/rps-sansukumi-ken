@@ -110,6 +110,8 @@ function playAgame (rounds) {
             return (`WHAT ARE YOU DOING?? what does your ${usr} is gonna help you in combat!?!?! Make sure you pick the right weapon next time. CPU scores the point.Human ${usrScore} ---- CPU ${cpuScore} -------- Round #${roundCount+1}`);
         }
     }
+
+    // total game code:
     
     for (roundCount = 0; roundCount < bestOfX; roundCount++) {
 
