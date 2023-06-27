@@ -63,13 +63,13 @@ async function playAtrueGame (rounds){
     }
 }
 
-export {
-    apiFetchObj,
-    randomOrgCpu,
-    getRandomApiCall,
-    setCpuChoice,
-    playAtrueGame
-}
+// export {
+//     apiFetchObj,
+//     randomOrgCpu,
+//     getRandomApiCall,
+//     setCpuChoice,
+//     playAtrueGame
+// }
 
 const rock = "Rock"
 const paper = "Paper"
