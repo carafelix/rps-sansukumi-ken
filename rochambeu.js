@@ -131,7 +131,7 @@ function playAgame (rounds) {
 
 
 
-playAgame(10);
+// playAgame(10);
 
 
 // for (let usrScore = 0, usrCpu = 0; usrScore < firstToWhat, usrCpu < firstToWhat; ???? )
