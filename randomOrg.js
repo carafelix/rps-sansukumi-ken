@@ -71,9 +71,6 @@ async function playAtrueGame (rounds){
 //     playAtrueGame
 // }
 
-const rock = "Rock"
-const paper = "Paper"
-const scissors = "Scissors"
 
 // randomOrgCpu[0]["result"]["random"]["data"][0]
 
