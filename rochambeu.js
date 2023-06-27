@@ -88,28 +88,28 @@ function playAgame (rounds) {
 
         // 3* Play a game // console.log(typeof(usrChoice)) | console.log(typeof(cpuChoice)). Compared at a string level
 
-let playRound = function (usr, cpu) {
-    if (usr == cpu) {
-               ++bestOfX;                                //extend round limit on ties
-                return (`It's a tie baby! -------- Round #${roundCount+1}`);
+    let playRound = function (usr, cpu) {
+        if (usr == cpu) {
+                ++bestOfX;                                //extend round limit on ties
+                    return (`It's a tie baby! -------- Round #${roundCount+1}`);
 
-    } else if ((usr == paper && cpu == rock) 
-            || (usr == rock && cpu == scissors)
-            || (usr == scissors && cpu == paper)) {
-                ++usrScore;                                   
-                return (`Humanity ${usr} strike again! CPU ${cpu} is usless against it!!!!!!!! Human ${usrScore} ---- CPU ${cpuScore} -------- Round #${roundCount+1} `);
+        } else if ((usr == paper && cpu == rock) 
+                || (usr == rock && cpu == scissors)
+                || (usr == scissors && cpu == paper)) {
+                    ++usrScore;                                   
+                    return (`Humanity ${usr} strike again! CPU ${cpu} is usless against it!!!!!!!! Human ${usrScore} ---- CPU ${cpuScore} -------- Round #${roundCount+1} `);
 
-    } else if ((cpu == paper && usr == rock) 
-            || (cpu == rock && usr == scissors)
-            || (cpu == scissors && usr == paper)) {
-                ++cpuScore;                                   
-                return (`CPU is taking over with ${cpu} against Humanity ${usr}! Be careful! Human ${usrScore} ---- CPU ${cpuScore} -------- Round #${roundCount+1}`);
+        } else if ((cpu == paper && usr == rock) 
+                || (cpu == rock && usr == scissors)
+                || (cpu == scissors && usr == paper)) {
+                    ++cpuScore;                                   
+                    return (`CPU is taking over with ${cpu} against Humanity ${usr}! Be careful! Human ${usrScore} ---- CPU ${cpuScore} -------- Round #${roundCount+1}`);
 
-    } else {
-        ++cpuScore
-        return (`WHAT ARE YOU DOING?? what does your ${usr} is gonna help you in combat!?!?! Make sure you pick the right weapon next time. CPU scores the point.Human ${usrScore} ---- CPU ${cpuScore} -------- Round #${roundCount+1}`);
+        } else {
+            ++cpuScore
+            return (`WHAT ARE YOU DOING?? what does your ${usr} is gonna help you in combat!?!?! Make sure you pick the right weapon next time. CPU scores the point.Human ${usrScore} ---- CPU ${cpuScore} -------- Round #${roundCount+1}`);
+        }
     }
-}
     
     for (roundCount = 0; roundCount < bestOfX; roundCount++) {
 
