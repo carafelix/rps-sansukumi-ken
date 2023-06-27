@@ -56,11 +56,11 @@ function getUserChoice() {
 
 // *2 Cpu choice
 
-function getCpuChoice(array) {
-    const randomIndex = Math.floor(Math.random() * array.length);
-    const cpuChoice = array[randomIndex];
-    return cpuChoice;
-}
+// function getCpuChoice(array) {
+//     const randomIndex = Math.floor(Math.random() * array.length);
+//     const cpuChoice = array[randomIndex];
+//     return cpuChoice;
+// }
 
 const cpuChoiceArray = [rock, paper, scissors]
 
