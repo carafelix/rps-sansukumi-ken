@@ -17,3 +17,5 @@ Would do multiple iterations to get the flow of it
 - Hestiation is defeat, maybe with a counter like when kids slap their fist into the other hand for count. setTimeout Function. 
 - Maybe implement a Voice-Recognition Library to allow the user to shout like a kid to the computer hahaha.
 - GUI visualitation of rounds/score record.
+- mp3 random + set timout
+
