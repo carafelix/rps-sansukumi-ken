@@ -47,10 +47,9 @@ const scissors = "Scissors"
 
 // *1 Asking the user for a choice and normalize it
 
-function getUserChoice() {
+async function getUserChoice() {
     let chose = prompt("Chose your weapon", "Rock, Paper, Scissors")
-    chose = uniformInput(chose)
-    return chose 
+    return chose = uniformInput(chose);
 }
 
 // *2 Cpu choice pseudo random, only used in playAgame
@@ -62,7 +61,6 @@ function getCpuChoice(array) {
    return array[randomIndex];
 }
 
-// 3* Play a round // console.log(typeof(usrChoice)) | console.log(typeof(cpuChoice)). Compared at a string level
 
 let playRound = function (usr, cpu) {
     if (usr == cpu) {
@@ -73,17 +71,11 @@ let playRound = function (usr, cpu) {
             || (usr == rock && cpu == scissors)
             || (usr == scissors && cpu == paper)) {
                 ++usrScore;                                   
-                return (`Humanity ${usr} strike again! CPU ${cpu} is usless against it!!!!!!!! Human ${usrScore} ---- CPU ${cpuScore} -------- Round #${roundCount+1} `);
-
-    } else if ((cpu == paper && usr == rock) 
-            || (cpu == rock && usr == scissors)
-            || (cpu == scissors && usr == paper)) {
-                ++cpuScore;                                   
-                return (`CPU is taking over with ${cpu} against Humanity ${usr}! Be careful! Human ${usrScore} ---- CPU ${cpuScore} -------- Round #${roundCount+1}`);
+                return (`Humanity Scores ${usr}! CPU ${cpu} Human ${usrScore} ---- CPU ${cpuScore} -------- Round #${roundCount+1} `);
 
     } else {
-        ++cpuScore
-        return (`WHAT ARE YOU DOING?? what does your ${usr} is gonna help you in combat!?!?! Make sure you pick the right weapon next time. CPU scores the point.Human ${usrScore} ---- CPU ${cpuScore} -------- Round #${roundCount+1}`);
+                ++cpuScore;                                   
+                return (`CPU Scores ${cpu} Usr ${usr}! Human ${usrScore} ---- CPU ${cpuScore} -------- Round #${roundCount+1}`);
     }
 }
 
@@ -127,7 +119,7 @@ const apiFetchObj = {
     "jsonrpc": "2.0",
     "method": "generateIntegers",
     "params": {
-        "apiKey": "aa28fec6-cdad-47f8-b471-cc8ee106298f", // I know this shouldn't be public but idk how to keep it secret in a front-end enviroment
+        "apiKey": "aa28fec6-cdad-47f8-b471-cc8ee106298f", // I know this shouldn't be public but idk how to keep it secret in a front-end only enviroment and its a free api with limited requests
         "n": 1,
         "min": 1,
         "max": 3,
@@ -166,31 +158,54 @@ async function setCpuChoice() {
 async function playAtrueGame (rounds){
 
     bestOfX = rounds;
-    
+
     for (roundCount = 0; roundCount < bestOfX; roundCount++) {
 
-            console.log(playRound(getUserChoice(), await setCpuChoice()));
+        console.log(playRound(usrChoice, await setCpuChoice()));
             
             if (usrScore > (Math.floor(rounds/2)) || cpuScore > (Math.floor(rounds/2))) {
                 break;                              // game ends if any gets more than half the points.
             }
-    } if ((usrScore - cpuScore) >= 1) {     // Final win/loss determination
 
-        console.log(`Humankind Strikes Again! ${usrScore} is more than ${cpuScore}. Aprende algo DINERO.`);
-        cpuScore = 0;
-        usrScore = 0;
+            } if ((usrScore - cpuScore) >= 1) {     // Final win/loss determination
 
-    } else {
-        
-        console.log(`CPU has coup the world! Clearly ${cpuScore} is more than ${usrScore}. Bip Bop Soy un robot, gane. `);
-        usrScore = 0;
-        cpuScore = 0;
-    }
+                console.log(`Humankind Strikes Again! ${usrScore} is more than ${cpuScore}. Aprende algo DINERO.`);
+                cpuScore = 0;
+                usrScore = 0;
+
+            } else if (((cpuScore - usrScore) >= 1) ) {
+                
+                console.log(`CPU has coup the world! Clearly ${cpuScore} is more than ${usrScore}. Bip Bop Soy un robot, gane. `);
+                usrScore = 0;
+                cpuScore = 0;
+            }
 }
 
+function getRounds(){
+    return bestOfX = +prompt("Rounds???")
+}
+
+async function setUsrChoice(e){
+    console.log(e.innerText)
+}
 
 const btn = document.querySelector('#play');
-btn.addEventListener('click', () => playAtrueGame(5));
+const askRounds = document.querySelector('#rounds');
+
+let usrChoice = "";  
+
+const rockChoice = document.querySelector('#rock');
+const paperChoice = document.querySelector('#paper');
+const scissorsChoice = document.querySelector('#scissors');
+
+
+btn.addEventListener('click', () => playAtrueGame(bestOfX));
+askRounds.addEventListener('click', () => getRounds())
+
+rockChoice.addEventListener('click', (e) => setUsrChoice(e));
+paperChoice.addEventListener('click', (e) => setUsrChoice(e));
+scissorsChoice.addEventListener('click', (e) => setUsrChoice(e));
+
 
 
 
