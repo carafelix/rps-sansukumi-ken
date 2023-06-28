@@ -156,22 +156,41 @@ async function setUsrChoice(e){
     console.log(e.innerText)
 }
 
-const btn = document.querySelector('#play');
-const askRounds = document.querySelector('#rounds');
+// const btn = document.querySelector('#play');
+// const askRounds = document.querySelector('#rounds');
 
-let usrChoice = "";  
+// let usrChoice = "";  
 
-const rockChoice = document.querySelector('#rock');
-const paperChoice = document.querySelector('#paper');
-const scissorsChoice = document.querySelector('#scissors');
+// const rockChoice = document.querySelector('#rock');
+// const paperChoice = document.querySelector('#paper');
+// const scissorsChoice = document.querySelector('#scissors');
 
 
-btn.addEventListener('click', () => playAtrueGame(bestOfX));
-askRounds.addEventListener('click', () => getRounds())
+// btn.addEventListener('click', () => playAtrueGame(bestOfX));
+// askRounds.addEventListener('click', () => getRounds())
 
-rockChoice.addEventListener('click', (e) => setUsrChoice(e));
-paperChoice.addEventListener('click', (e) => setUsrChoice(e));
-scissorsChoice.addEventListener('click', (e) => setUsrChoice(e));
+// rockChoice.addEventListener('click', (e) => setUsrChoice(e));
+// paperChoice.addEventListener('click', (e) => setUsrChoice(e));
+// scissorsChoice.addEventListener('click', (e) => setUsrChoice(e));
+
+
+
+
+
+
+export function functionTest(){
+
+    let variable = "one"
+
+    function veet(){
+        console.log("veet")
+    } 
+
+
+    console.log(variable)
+    veet();
+
+}
 
 
 
