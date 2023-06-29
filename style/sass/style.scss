@@ -1,0 +1,6 @@
+@import './mixin';
+
+
+body {
+    @include flexCenter();
+}
