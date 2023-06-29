@@ -5,13 +5,21 @@
 const gamediv = document.querySelector('div');
 const btnPlay = document.querySelector('#play')
 
+const sliderDiv = document.createElement('div')
 const slider = document.createElement('input'); 
-const btnRounds = document.createElement('button');
 const sliderOutput = document.createElement('output');
+const btnRounds = document.createElement('button');
 
-//#region slider attributes
 
-slider.setAttribute('id','slider')
+const btnRock = document.createElement('button');
+const btnPaper = document.createElement('button');
+const btnScissors = document.createElement('button');
+
+
+//#region --------- slider attributes -----------
+
+sliderDiv.setAttribute('id', 'slider-div');
+slider.setAttribute('id','slider');
 slider.setAttribute('type','range');
 slider.setAttribute('value','5');
 slider.setAttribute('min', '1');
@@ -19,9 +27,8 @@ slider.setAttribute('max','15');
 slider.addEventListener('input', () => sliderOutput.value = slider.value);
 
 
-// gamediv.appendChild(slider);
-
 //#endregion
+
 
 // rps weapons
 
@@ -93,6 +100,18 @@ const scissors = "Scissors"
     } 
 //#endregion
 
+//#region --------- get user choice ---------
+
+
+
+
+
+
+
+
+
+
+
 // round and game variables
 
 let bestOfX = 0; 
@@ -103,7 +122,7 @@ let roundCount = 0;
 
 //#region --------- play round function -----------
 
-    const playRound = function (usr, cpu) {
+    function playRound (usr, cpu) {
         if (usr === cpu) {
 
                 ++bestOfX;                      
@@ -131,7 +150,7 @@ async function playAtrueGame (rounds){
 
     for (roundCount = 0; roundCount < bestOfX; roundCount++) {
 
-        console.log(playRound(usrChoice, await setCpuChoice()));
+        console.log(playRound(usrChoice, await getRandomApiCall()));
             
             if (usrScore > (Math.floor(rounds/2)) || cpuScore > (Math.floor(rounds/2))) {
                 break;                              // game ends if any gets more than half the points.
@@ -152,17 +171,51 @@ async function playAtrueGame (rounds){
 }
 //#endregion
 
-// transition to round screen
+//#region transition to round screen
 
 const roundScreen = function(){
-    gamediv.removeChild(btnPlay);
-    gamediv.appendChild(btnRounds);
+    gamediv.removeChild(btnPlay); 
+    sliderDiv.appendChild(slider);
+    sliderDiv.appendChild(sliderOutput)
+    sliderDiv.appendChild(btnRounds);
     btnRounds.setAttribute('id', 'rounds')
     btnRounds.innerText = 'rounds';
-    gamediv.appendChild(slider);
-    gamediv.appendChild(sliderOutput);
+    gamediv.appendChild(sliderDiv)
+} 
+//#endregion
+
+
+btnPlay.addEventListener('click', roundScreen);  // homescreen > round screen
+
+
+
+const playScreen = function(){
+    gamediv.removeChild(sliderDiv);
+    gamediv.appendChild(btnRock);
+    gamediv.appendChild(btnPaper);
+    gamediv.appendChild(btnScissors);
 }
 
+btnRounds.addEventListener('click', playScreen)
 
-btnPlay.addEventListener('click', roundScreen);
-btnRounds.addEventListener('click', () => playAgame(slider.value))
+//#region ------------ rps buttons atributes ---------
+
+btnRock.setAttribute('id','rock');
+btnRock.innerText = "Rock";
+btnRock.addEventListener('click', async () => console.log(playRound(rock, await getOrgCpuChoice())));
+
+btnPaper.setAttribute('id','paper');
+btnPaper.innerText = "Paper";
+btnPaper.addEventListener('click', async () => console.log(playRound(paper, await getOrgCpuChoice())));
+
+
+btnScissors.setAttribute('id','scissors'); 
+btnScissors.innerText = "Scissors";
+btnScissors.addEventListener('click', async () => console.log(playRound(scissors, await getOrgCpuChoice())));
+
+
+
+//#endregion
+
+// btnRounds.addEventListener('click', () => playAtrueGame(slider.value));
+
