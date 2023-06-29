@@ -14,9 +14,10 @@ const scissors = "Scissors"
 
 // *1 Asking the user for a choice and normalize it
 
-async function getUserChoice() {
+function getUserChoice() {
     let chose = prompt("Chose your weapon", "Rock, Paper, Scissors")
-    return chose = uniformInput(chose);
+    chose = uniformInput(chose);
+    return chose;
 }
 
 // *2 Cpu choice pseudo random, only used in playAgame
@@ -156,14 +157,39 @@ async function setUsrChoice(e){
     console.log(e.innerText)
 }
 
-// const btn = document.querySelector('#play');
-// const askRounds = document.querySelector('#rounds');
+const slider = document.querySelector('input');
 
-// let usrChoice = "";  
+const gamediv = document.querySelector('div');
 
-// const rockChoice = document.querySelector('#rock');
-// const paperChoice = document.querySelector('#paper');
-// const scissorsChoice = document.querySelector('#scissors');
+const btnRounds = document.createElement('button');
+
+const btnPlay = document.querySelector('#play')
+
+const roundScreen = function(){
+    gamediv.removeChild(btnPlay);
+    gamediv.appendChild(btnRounds);
+    btnRounds.setAttribute('id', 'rounds')
+    btnRounds.innerText = 'rounds';
+}
+
+
+btnPlay.addEventListener('click', roundScreen);
+btnRounds.addEventListener('click', () => playAgame(slider.value))
+
+
+
+
+
+
+
+
+
+const rockChoice = document.querySelector('#rock');
+const paperChoice = document.querySelector('#paper');
+const scissorsChoice = document.querySelector('#scissors');
+
+
+
 
 
 // btn.addEventListener('click', () => playAtrueGame(bestOfX));
@@ -178,7 +204,7 @@ async function setUsrChoice(e){
 
 
 
-export function functionTest(){
+ function functionTest(){
 
     let variable = "one"
 
