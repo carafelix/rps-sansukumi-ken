@@ -1,5 +1,28 @@
 // all this should be wrapp inside a function to pass to the main js
 
+// nodes 
+
+const gamediv = document.querySelector('div');
+const btnPlay = document.querySelector('#play')
+
+const slider = document.createElement('input'); 
+const btnRounds = document.createElement('button');
+const sliderOutput = document.createElement('output');
+
+//#region slider attributes
+
+slider.setAttribute('id','slider')
+slider.setAttribute('type','range');
+slider.setAttribute('value','5');
+slider.setAttribute('min', '1');
+slider.setAttribute('max','15');
+slider.addEventListener('input', () => sliderOutput.value = slider.value);
+
+
+// gamediv.appendChild(slider);
+
+//#endregion
+
 // rps weapons
 
 const rock = "Rock"
@@ -128,3 +151,18 @@ async function playAtrueGame (rounds){
             }
 }
 //#endregion
+
+// transition to round screen
+
+const roundScreen = function(){
+    gamediv.removeChild(btnPlay);
+    gamediv.appendChild(btnRounds);
+    btnRounds.setAttribute('id', 'rounds')
+    btnRounds.innerText = 'rounds';
+    gamediv.appendChild(slider);
+    gamediv.appendChild(sliderOutput);
+}
+
+
+btnPlay.addEventListener('click', roundScreen);
+btnRounds.addEventListener('click', () => playAgame(slider.value))
