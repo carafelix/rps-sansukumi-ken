@@ -1,5 +1,31 @@
+* {
+  box-sizing: border-box;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+}
+
 body {
+  min-height: 100vh;
+  margin: 0;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.gamediv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 600px;
+  min-height: 600px;
+  background-color: rgb(207, 177, 26);
+  border-radius: 20%;
+}
+
+#slider-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100px;
+  flex-basis: 200px;
+  flex-direction: column;
 }/*# sourceMappingURL=style.css.map */

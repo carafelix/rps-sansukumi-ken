@@ -1,6 +1,33 @@
 @import './mixin';
 
+// general stuff
 
-body {
-    @include flexCenter();
+* {
+    box-sizing: border-box;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
+
+body{
+    min-height: 100vh;
+    margin: 0;
+    // background: url("../../assets/img/SC10093.jpg") no-repeat center fixed;
+    @include flexCenter();
+    background-color: 
+}
+
+.gamediv {
+    @include flexCenter();
+    min-width: 600px;
+    min-height: 600px;
+    background-color: rgb(207, 177, 26);
+    border-radius: 20%;
+}
+
+#slider-div {
+    @include flexCenter();
+    min-height: 100px;
+    flex-basis: 200px;
+    flex-direction: column;
+}
+
+

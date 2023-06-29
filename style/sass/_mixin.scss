@@ -3,3 +3,8 @@
     justify-content: center;
     align-items: center;
 }
+
+@mixin fullsize {
+    height: 100%;
+    width: 100%;
+}
