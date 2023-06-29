@@ -1,3 +1,3 @@
-import { functionTest } from "./rps/play-screen.js";
+// import { functionTest } from "./rps/play-screen.js";
 
-const btn = document.querySelector('button').addEventListener('click',functionTest);
+// const btn = document.querySelector('button').addEventListener('click',functionTest);
