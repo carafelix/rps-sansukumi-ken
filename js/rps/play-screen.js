@@ -56,7 +56,7 @@ let usrChoice = null;
 //#endregion
 
 
-//#region --------- get cpu choice from randomg.org ------------
+//#region --------- get cpu choice from randomg.org --------------
 
     // store response obj arr
 
@@ -90,7 +90,7 @@ let usrChoice = null;
             .then(res => res.json())
             .then((data) =>{
                 randomOrg.unshift(data)
-                // randomOrg = data; // works but want to have it as a const and not let
+                // randomOrg = data; // works but want to store them
             });
     };
 
@@ -106,24 +106,28 @@ let usrChoice = null;
         } else if ((randomOrg[0]["result"]["random"]["data"][0]) === 2 ) {
             return scissors
         } else {
-            console.log('Error in api call')
+            console.log('porq chucha ' + randomOrg)
         }
     } 
 //#endregion
 
-//#region --------- get user choice ---------
-
-//#region ------------ prevent spam function -------- 'hesitation is defeat'                // setInterval could be used as event listener // noted. if I want to prevent something, better catch it on the if statement than in the 'else'
+//#region --------- get user choice ------------------------------
 
 
-const noSpam = function(){
+
+//#endregion
+
+//#region --------- prevent spam function, nested playround--------               // setInterval could be used as event listener // noted. if I want to prevent something, better catch it on the if statement than in the 'else'
+
+
+const noSpamPlayRound = async function(rps){
     if (!usrSpam) {
         usrSpam = true;
-        setTimeout(clearUsrSpam, 3000)
-        console.log('we can play a game');
+        setTimeout(clearUsrSpam, 5000);
+        await playTrueRound(rps, await getOrgCpuChoice())
     } else {
         console.log('you must wait my man');
-        // game round function
+        
     }
 }
 
@@ -133,7 +137,11 @@ const clearUsrSpam = function(){
 
 //#endregion
 
-//#region 
+//#region --------- hesitation is defeat function placeholder ----------
+
+const hesitation = function(){
+    setTimeout(()=> console.log('hesitation is defeat function') , 3000)
+}
 
 //#endregion
 
@@ -147,61 +155,69 @@ const clearUsrSpam = function(){
 
 
 
-//#region --------- play round function -----------
+//#region --------- play round function ----------- // add timeout for somewhat of a response await
 
-    function playRound (usr, cpu) {
-        if (usr === cpu) {
+    async function playTrueRound (usr, cpu) {
+
+        setTimeout(() => {
+            
+            if (usr === cpu) {
 
                 ++bestOfX;                      
-                return (`It's a tie baby! -------- Round #${roundCount+1}`);
+                return console.log ((`It's a tie baby! -------- Round #${roundCount+1}`));
 
-        } else if ((usr === paper && cpu === rock)    || 
-                   (usr === rock && cpu === scissors) ||
-                   (usr === scissors && cpu === paper)) {
+    } else if ((usr === paper && cpu === rock)    || 
+               (usr === rock && cpu === scissors) ||
+               (usr === scissors && cpu === paper)) {
 
-                    ++usrScore;                                   
-                    return (`Humanity Scores ${usr}! CPU ${cpu} Human ${usrScore} ---- CPU ${cpuScore} -------- Round #${roundCount+1} `);
+                ++usrScore;                                   
+                return console.log((`Humanity Scores ${usr}! CPU ${cpu} Human ${usrScore} ---- CPU ${cpuScore} -------- Round #${roundCount+1} `));
 
-        } else {
-                    ++cpuScore;                                   
-                    return (`CPU Scores ${cpu} Usr ${usr}! Human ${usrScore} ---- CPU ${cpuScore} -------- Round #${roundCount+1}`);
-        }
+    } else if (cpu === undefined) {
+
+                ++bestOfX
+                return console.log('Erro in Api call, try again, play slower')
+
+    } else {
+                ++cpuScore;                                   
+                return console.log((`CPU Scores ${cpu} Usr ${usr}! Human ${usrScore} ---- CPU ${cpuScore} -------- Round #${roundCount+1}`));
     }
+}
+
+        , 500)};
+
+        
 //#endregion
 
 //#region --------- play a true random game ----------
 
 async function playAtrueGame (rounds){
 
-    noSpam();
+    bestOfX = rounds;
 
-    
+    for (roundCount = 0; roundCount < bestOfX; roundCount++) {
 
+        // hesitation();
+        // setInterval(  'TO-DO CHECK IF USU AS SELECTED A CHOICE'   )
+        
 
-
-
-    // bestOfX = rounds;
-
-    // for (roundCount = 0; roundCount < bestOfX; roundCount++) {
-
-    //     console.log(playRound(usrChoice, await getRandomApiCall()));
             
-    //         if (usrScore > (Math.floor(rounds/2)) || cpuScore > (Math.floor(rounds/2))) {
-    //             break;                              // game ends if any gets more than half the points.
-    //         }
+            if (usrScore > (Math.floor(rounds/2)) || cpuScore > (Math.floor(rounds/2))) {
+                break;                              // game ends if any gets more than half the points.
+            }
 
-    //         } if ((usrScore - cpuScore) >= 1) {     // Final win/loss determination
+            } if ((usrScore - cpuScore) >= 1) {     // Final win/loss determination
 
-    //             console.log(`Humankind Strikes Again! ${usrScore} is more than ${cpuScore}. Aprende algo DINERO.`);
-    //             cpuScore = 0;
-    //             usrScore = 0;
+                console.log(`Humankind Strikes Again! ${usrScore} is more than ${cpuScore}. Aprende algo DINERO.`);
+                cpuScore = 0;
+                usrScore = 0;
 
-    //         } else if (((cpuScore - usrScore) >= 1) ) {
+            } else if (((cpuScore - usrScore) >= 1) ) {
                 
-    //             console.log(`CPU has coup the world! Clearly ${cpuScore} is more than ${usrScore}. Bip Bop Soy un robot, gane. `);
-    //             usrScore = 0;
-    //             cpuScore = 0;
-    //         }
+                console.log(`CPU has coup the world! Clearly ${cpuScore} is more than ${usrScore}. Bip Bop Soy un robot, gane. `);
+                usrScore = 0;
+                cpuScore = 0;
+            }
 }
 //#endregion
 
@@ -237,16 +253,17 @@ btnRounds.addEventListener('click', playScreen) // roundscreen > playscreen
 
 btnRock.setAttribute('id','rock');
 btnRock.innerText = "Rock";
-btnRock.addEventListener('click', async () => usrChoice = rock);
+btnRock.addEventListener('click', async () => noSpamPlayRound(rock));
 
 btnPaper.setAttribute('id','paper');
 btnPaper.innerText = "Paper";
-btnPaper.addEventListener('click', async () => playAtrueGame(slider.value));
+btnPaper.addEventListener('click', async () => noSpamPlayRound(paper));
 
 
 btnScissors.setAttribute('id','scissors'); 
 btnScissors.innerText = "Scissors";
-btnScissors.addEventListener('click', async () => console.log(playRound(scissors, await getOrgCpuChoice())));
+btnScissors.addEventListener('click', async () => noSpamPlayRound(scissors));
+
 
 //#endregion
 
