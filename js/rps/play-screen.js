@@ -1,4 +1,5 @@
 // all this should be wrapp inside a function to pass to the main js
+// to-do // hesitation();
 
 // nodes 
 
@@ -43,6 +44,7 @@ let usrScore = 0;
 let cpuScore = 0;
 let roundCount = 0;
 let usrChoice = null;
+let cpuChoice;
 
 
 //#region --------- get cpu choice from pseudo-random ------------
@@ -81,7 +83,7 @@ let usrChoice = null;
 
     // random.org api function call
 
-    async function getRandomApiCall() {
+    async function getRandomCpu() {
     await fetch("https://api.random.org/json-rpc/4/invoke", {
             method: "POST",
             body: JSON.stringify(apiFetchObj),
@@ -91,25 +93,29 @@ let usrChoice = null;
             .then((data) =>{
                 randomOrg.unshift(data)
                 // randomOrg = data; // works but want to store them
-            });
+            })
+            .then(setCpuChoice);
+            return cpuChoice
     };
 
-
-    // returns r-p-s depending on random.org API response
-
-    async function getOrgCpuChoice() {
-        await getRandomApiCall();
-        if ((randomOrg[0]["result"]["random"]["data"][0]) === 0){
-            return rock
-        } else if ((randomOrg[0]["result"]["random"]["data"][0]) === 1 ) {
-            return paper
-        } else if ((randomOrg[0]["result"]["random"]["data"][0]) === 2 ) {
-            return scissors
-        } else {
-            console.log('porq chucha ' + randomOrg)
-        }
-    } 
 //#endregion
+
+//#region  --- setCpuChoice
+
+const setCpuChoice = function(){
+    if ((randomOrg[0]["result"]["random"]["data"][0]) === 0){
+        cpuChoice = rock
+    } else if ((randomOrg[0]["result"]["random"]["data"][0]) === 1 ) {
+        cpuChoice = paper
+    } else if ((randomOrg[0]["result"]["random"]["data"][0]) === 2 ) {
+        cpuChoice = scissors
+    } else {
+        console.log(randomOrg)}
+    }
+
+
+//#endregion
+
 
 //#region --------- get user choice ------------------------------
 
@@ -123,8 +129,8 @@ let usrChoice = null;
 const noSpamPlayRound = async function(rps){
     if (!usrSpam) {
         usrSpam = true;
-        setTimeout(clearUsrSpam, 5000);
-        await playTrueRound(rps, await getOrgCpuChoice())
+        setTimeout(clearUsrSpam, 3000);
+        playTrueRound(rps, await getRandomCpu());
     } else {
         console.log('you must wait my man');
         
@@ -159,19 +165,22 @@ const hesitation = function(){
 
     async function playTrueRound (usr, cpu) {
 
-        setTimeout(() => {
+        checkLose();
+        
+
+       
             
             if (usr === cpu) {
 
                 ++bestOfX;                      
-                return console.log ((`It's a tie baby! -------- Round #${roundCount+1}`));
+                return console.log ((`It's a tie baby! -------- Round #${roundCount++ +1}`));
 
     } else if ((usr === paper && cpu === rock)    || 
                (usr === rock && cpu === scissors) ||
                (usr === scissors && cpu === paper)) {
-
+                
                 ++usrScore;                                   
-                return console.log((`Humanity Scores ${usr}! CPU ${cpu} Human ${usrScore} ---- CPU ${cpuScore} -------- Round #${roundCount+1} `));
+                return console.log((`Humanity Scores ${usr}! CPU ${cpu} Human ${usrScore} ---- CPU ${cpuScore} -------- Round #${roundCount++ +1} `));
 
     } else if (cpu === undefined) {
 
@@ -180,44 +189,49 @@ const hesitation = function(){
 
     } else {
                 ++cpuScore;                                   
-                return console.log((`CPU Scores ${cpu} Usr ${usr}! Human ${usrScore} ---- CPU ${cpuScore} -------- Round #${roundCount+1}`));
+                return console.log((`CPU Scores ${cpu} Usr ${usr}! Human ${usrScore} ---- CPU ${cpuScore} -------- Round #${roundCount++ +1}`));
     }
 }
 
-        , 500)};
+
 
         
 //#endregion
 
-//#region --------- play a true random game ----------
+//#region --------- check if someone as lost ----------------------
 
-async function playAtrueGame (rounds){
+        
+        
+        const checkLose = function(){
+            
+            if (usrScore > (Math.floor(bestOfX/2)) || cpuScore > (Math.floor(bestOfX/2))) { //check if someone has 50% + 1
 
-    bestOfX = rounds;
+                if ((usrScore - cpuScore) >= 1) {     // Final win/loss determination
+        
+                    console.log(`Humankind Strikes Again! ${usrScore} is more than ${cpuScore}. Aprende algo DINERO.`);
+                    cpuScore = 0;
+                    usrScore = 0;
+                    roundCount = 0;
+                }
 
-    for (roundCount = 0; roundCount < bestOfX; roundCount++) {
-
-        // hesitation();
-        // setInterval(  'TO-DO CHECK IF USU AS SELECTED A CHOICE'   )
+                else if (((cpuScore - usrScore) >= 1) ) {
+                    
+                    console.log(`CPU has coup the world! Clearly ${cpuScore} is more than ${usrScore}. Bip Bop Soy un robot, gane. `);
+                    usrScore = 0;
+                    cpuScore = 0;
+                    roundCount = 0;
+                }
+        }};
+            
         
 
-            
-            if (usrScore > (Math.floor(rounds/2)) || cpuScore > (Math.floor(rounds/2))) {
-                break;                              // game ends if any gets more than half the points.
-            }
+//#endregion
 
-            } if ((usrScore - cpuScore) >= 1) {     // Final win/loss determination
+//#region --------- set rounds function ----------
 
-                console.log(`Humankind Strikes Again! ${usrScore} is more than ${cpuScore}. Aprende algo DINERO.`);
-                cpuScore = 0;
-                usrScore = 0;
+function setRounds (rounds){
 
-            } else if (((cpuScore - usrScore) >= 1) ) {
-                
-                console.log(`CPU has coup the world! Clearly ${cpuScore} is more than ${usrScore}. Bip Bop Soy un robot, gane. `);
-                usrScore = 0;
-                cpuScore = 0;
-            }
+    bestOfX = rounds;
 }
 //#endregion
 
@@ -243,7 +257,7 @@ const playScreen = function(){
     gamediv.appendChild(btnRock);
     gamediv.appendChild(btnPaper);
     gamediv.appendChild(btnScissors);
-    playAtrueGame(slider.value);
+    setRounds(slider.value);
 }
 
 btnRounds.addEventListener('click', playScreen) // roundscreen > playscreen
