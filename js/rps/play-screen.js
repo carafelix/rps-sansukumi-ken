@@ -113,8 +113,29 @@ let usrChoice = null;
 
 //#region --------- get user choice ---------
 
+//#region ------------ prevent spam function -------- 'hesitation is defeat'                // setInterval could be used as event listener // noted. if I want to prevent something, better catch it on the if statement than in the 'else'
 
 
+const noSpam = function(){
+    if (!usrSpam) {
+        usrSpam = true;
+        setTimeout(clearUsrSpam, 3000)
+        console.log('we can play a game');
+    } else {
+        console.log('you must wait my man');
+        // game round function
+    }
+}
+
+const clearUsrSpam = function(){
+    usrSpam = false;
+}
+
+//#endregion
+
+//#region 
+
+//#endregion
 
 
 
@@ -206,29 +227,11 @@ const playScreen = function(){
     gamediv.appendChild(btnRock);
     gamediv.appendChild(btnPaper);
     gamediv.appendChild(btnScissors);
+    playAtrueGame(slider.value);
 }
 
 btnRounds.addEventListener('click', playScreen) // roundscreen > playscreen
 
-//#region ------------ fix Timout functions for preventing apicall spam & 'hesitation is defeat' // setInterval could be used as event listener
-// noted. if I want to prevent something, better catch it on the if statement than in the 'else'
-
-const noSpam = function(){
-    if (!usrSpam) {
-        usrSpam = true;
-        setTimeout(clearUsrSpam, 3000)
-        console.log('we can play a game');
-    } else {
-        console.log('you must wait my man');
-        // game round function
-    }
-}
-
-const clearUsrSpam = function(){
-    usrSpam = false;
-}
-
-//#endregion
 
 //#region ------------ rps buttons atributes ---------
 
@@ -238,7 +241,7 @@ btnRock.addEventListener('click', async () => usrChoice = rock);
 
 btnPaper.setAttribute('id','paper');
 btnPaper.innerText = "Paper";
-btnPaper.addEventListener('click', async () => playAtrueGame(5));
+btnPaper.addEventListener('click', async () => playAtrueGame(slider.value));
 
 
 btnScissors.setAttribute('id','scissors'); 
