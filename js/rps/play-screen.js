@@ -36,6 +36,14 @@ const rock = "Rock"
 const paper = "Paper"
 const scissors = "Scissors"
 
+// rps variables
+let usrSpam = false;
+let bestOfX = 0; 
+let usrScore = 0;
+let cpuScore = 0;
+let roundCount = 0;
+let usrChoice = null;
+
 
 //#region --------- get cpu choice from pseudo-random ------------
 
@@ -82,6 +90,7 @@ const scissors = "Scissors"
             .then(res => res.json())
             .then((data) =>{
                 randomOrg.unshift(data)
+                // randomOrg = data; // works but want to have it as a const and not let
             });
     };
 
@@ -94,8 +103,10 @@ const scissors = "Scissors"
             return rock
         } else if ((randomOrg[0]["result"]["random"]["data"][0]) === 1 ) {
             return paper
-        } else {
+        } else if ((randomOrg[0]["result"]["random"]["data"][0]) === 2 ) {
             return scissors
+        } else {
+            console.log('Error in api call')
         }
     } 
 //#endregion
@@ -112,12 +123,7 @@ const scissors = "Scissors"
 
 
 
-// round and game variables
 
-let bestOfX = 0; 
-let usrScore = 0;
-let cpuScore = 0;
-let roundCount = 0;
 
 
 //#region --------- play round function -----------
@@ -146,28 +152,35 @@ let roundCount = 0;
 
 async function playAtrueGame (rounds){
 
-    bestOfX = rounds;
+    noSpam();
 
-    for (roundCount = 0; roundCount < bestOfX; roundCount++) {
+    
 
-        console.log(playRound(usrChoice, await getRandomApiCall()));
+
+
+
+    // bestOfX = rounds;
+
+    // for (roundCount = 0; roundCount < bestOfX; roundCount++) {
+
+    //     console.log(playRound(usrChoice, await getRandomApiCall()));
             
-            if (usrScore > (Math.floor(rounds/2)) || cpuScore > (Math.floor(rounds/2))) {
-                break;                              // game ends if any gets more than half the points.
-            }
+    //         if (usrScore > (Math.floor(rounds/2)) || cpuScore > (Math.floor(rounds/2))) {
+    //             break;                              // game ends if any gets more than half the points.
+    //         }
 
-            } if ((usrScore - cpuScore) >= 1) {     // Final win/loss determination
+    //         } if ((usrScore - cpuScore) >= 1) {     // Final win/loss determination
 
-                console.log(`Humankind Strikes Again! ${usrScore} is more than ${cpuScore}. Aprende algo DINERO.`);
-                cpuScore = 0;
-                usrScore = 0;
+    //             console.log(`Humankind Strikes Again! ${usrScore} is more than ${cpuScore}. Aprende algo DINERO.`);
+    //             cpuScore = 0;
+    //             usrScore = 0;
 
-            } else if (((cpuScore - usrScore) >= 1) ) {
+    //         } else if (((cpuScore - usrScore) >= 1) ) {
                 
-                console.log(`CPU has coup the world! Clearly ${cpuScore} is more than ${usrScore}. Bip Bop Soy un robot, gane. `);
-                usrScore = 0;
-                cpuScore = 0;
-            }
+    //             console.log(`CPU has coup the world! Clearly ${cpuScore} is more than ${usrScore}. Bip Bop Soy un robot, gane. `);
+    //             usrScore = 0;
+    //             cpuScore = 0;
+    //         }
 }
 //#endregion
 
@@ -188,7 +201,6 @@ const roundScreen = function(){
 btnPlay.addEventListener('click', roundScreen);  // homescreen > round screen
 
 
-
 const playScreen = function(){
     gamediv.removeChild(sliderDiv);
     gamediv.appendChild(btnRock);
@@ -196,26 +208,48 @@ const playScreen = function(){
     gamediv.appendChild(btnScissors);
 }
 
-btnRounds.addEventListener('click', playScreen)
+btnRounds.addEventListener('click', playScreen) // roundscreen > playscreen
+
+//#region ------------ fix Timout functions for preventing apicall spam & 'hesitation is defeat' // setInterval could be used as event listener
+// noted. if I want to prevent something, better catch it on the if statement than in the 'else'
+
+const noSpam = function(){
+    if (!usrSpam) {
+        usrSpam = true;
+        setTimeout(clearUsrSpam, 3000)
+        console.log('we can play a game');
+    } else {
+        console.log('you must wait my man');
+        // game round function
+    }
+}
+
+const clearUsrSpam = function(){
+    usrSpam = false;
+}
+
+//#endregion
 
 //#region ------------ rps buttons atributes ---------
 
 btnRock.setAttribute('id','rock');
 btnRock.innerText = "Rock";
-btnRock.addEventListener('click', async () => console.log(playRound(rock, await getOrgCpuChoice())));
+btnRock.addEventListener('click', async () => usrChoice = rock);
 
 btnPaper.setAttribute('id','paper');
 btnPaper.innerText = "Paper";
-btnPaper.addEventListener('click', async () => console.log(playRound(paper, await getOrgCpuChoice())));
+btnPaper.addEventListener('click', async () => playAtrueGame(5));
 
 
 btnScissors.setAttribute('id','scissors'); 
 btnScissors.innerText = "Scissors";
 btnScissors.addEventListener('click', async () => console.log(playRound(scissors, await getOrgCpuChoice())));
 
-
-
 //#endregion
+
+
+
+// btnRock.addEventListener('click', async () => console.log(playRound(rock, await getOrgCpuChoice())));
 
 // btnRounds.addEventListener('click', () => playAtrueGame(slider.value));
 
