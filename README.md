@@ -18,4 +18,5 @@ Would do multiple iterations to get the flow of it
 - Maybe implement a Voice-Recognition Library to allow the user to shout like a kid to the computer hahaha.
 - GUI visualitation of rounds/score record.
 - mp3 random + set timout
+- promise base set cpu choice
 

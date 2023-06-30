@@ -110,7 +110,8 @@ const setCpuChoice = function(){
     } else if ((randomOrg[0]["result"]["random"]["data"][0]) === 2 ) {
         cpuChoice = scissors
     } else {
-        console.log(randomOrg)}
+        console.log("You played too fast, API call rejected and true random was compromise")};
+        cpuChoice = getCpuChoice(cpuChoiceArray);
     }
 
 
