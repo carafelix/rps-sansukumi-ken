@@ -9,10 +9,16 @@ function randomIndex(){
     return Math.floor(Math.random() * 11)
 }
 
-function bgMusic(){
-    setTimeout(() => {
-        audioArr
-    }, randomTime());
+const bgMusic = function(){
+    setInterval(() => {
+        let rAudio = audioArr[randomIndex()];
+        rAudio.volume = 0.4;
+        rAudio.play();
+    }, randomTime()*1000);
 }
 
 // document.addEventListener('load', audioArr[randomIndex()].play() ) 
+
+
+document.addEventListener('load', bgMusic()) 
+
