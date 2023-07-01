@@ -2,14 +2,14 @@ const audio = document.querySelectorAll('audio');
 const audioArr = Array.from(audio);
 
 function randomTime(){
-   return Math.floor(Math.random() * 12)*1000
+   return Math.floor(Math.random() * 10)*1000
 }
 
 function randomIndex(){
     return Math.floor(Math.random() * 10)
 }
 
-const bgMusicA = function(){  // messy
+const bgMusicA = function(){  // define once, play interval
     setInterval(() => {
         let rAudio = audioArr[randomIndex()];
         rAudio.volume = 0.35;
@@ -17,7 +17,7 @@ const bgMusicA = function(){  // messy
     }, randomTime());
 }
 
-const bgMusicB = function(){ // messy messy
+const bgMusicB = function(){ // define once the interval, play the sound at different distance every time
     setInterval(() => {
         setTimeout(() => {
             let rAudio = audioArr[randomIndex()];
@@ -32,7 +32,7 @@ const bgMusicC = function(){ //chill random interval
         let rAudio = audioArr[randomIndex()];
         rAudio.volume = 0.35;
         rAudio.play();
-        setTimeout(bgMusicC(), randomTime())
+        setTimeout(bgMusicC(), randomTime()*randomTime())  // such a good thing to know!
     }, randomTime());
 }
 
