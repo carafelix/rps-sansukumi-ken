@@ -28,6 +28,17 @@ slider.setAttribute('min', '1');
 slider.setAttribute('max','15');
 slider.addEventListener('input', () => sliderOutput.value = slider.value);
 
+// ---------- slider output random color ---------
+
+function sliderColorRandom(){
+    let red = Math.floor(Math.random() * 256);
+    let green = Math.floor(Math.random() * 256);
+    let blue = Math.floor(Math.random() * 256);
+
+    const newColor = "rgb(" + red + "," + green + "," + blue + ")";
+    return newColor;
+}
+
 
 //#endregion
 
@@ -239,11 +250,17 @@ function setRounds (rounds){
 const roundScreen = function(){
     gamediv.removeChild(btnPlay); 
     sliderDiv.appendChild(slider);
-    sliderDiv.appendChild(sliderOutput)
+    sliderOutput.textContent = '5';
+    sliderDiv.appendChild(sliderOutput);
     sliderDiv.appendChild(btnRounds);
-    btnRounds.setAttribute('id', 'rounds')
+    btnRounds.setAttribute('id', 'rounds');
     btnRounds.innerText = 'rounds';
-    gamediv.appendChild(sliderDiv)
+    gamediv.appendChild(sliderDiv);
+    sliderOutput.style.fontSize = "80px";
+    sliderOutput.style.webkitTextStroke = "1.5px black";
+    slider.addEventListener('change', (e) => {
+        sliderOutput.style.color = sliderColorRandom();
+    });
 } 
 //#endregion
 
