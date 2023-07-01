@@ -6,10 +6,18 @@ function randomTime(){
 }
 
 function randomIndex(){
-    return Math.floor(Math.random() * 10)
+    return Math.floor(Math.random() * 11)
 }
 
 const bgMusic = function(){
+    setInterval(() => {
+        let rAudio = audioArr[randomIndex()];
+        rAudio.volume = 0.4;
+        rAudio.play();
+    }, randomTime()*1000);
+}
+
+const bgMusicD = function(){
     setInterval(() => {
         setTimeout(() => {
             let rAudio = audioArr[randomIndex()];
