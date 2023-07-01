@@ -6,10 +6,10 @@
 body {
   min-height: 100vh;
   margin: 0;
+  background: url("../../assets/img/background/backgroundtwo-42.png") 252.5vh fixed;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: grey;
 }
 
 .gamediv {

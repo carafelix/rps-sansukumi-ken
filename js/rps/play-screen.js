@@ -10,6 +10,7 @@ const sliderDiv = document.createElement('div')
 const slider = document.createElement('input'); 
 const sliderOutput = document.createElement('output');
 const btnRounds = document.createElement('button');
+const pPlayscren = document.createElement('p');
 
 
 const btnRock = document.createElement('button');
@@ -162,36 +163,33 @@ const hesitation = function(){
 
 
 
-//#region --------- play round function ----------- // add timeout for somewhat of a response await
+//#region --------- play round function ----------- // todo hesitation
 
     async function playTrueRound (usr, cpu) {
 
-        checkLose();
-        
-
-       
-            
+        checkGameLose();
+              
             if (usr === cpu) {
 
                 ++bestOfX;                      
-                return console.log ((`It's a tie baby! -------- Round #${roundCount++ +1}`));
+                return console.log ((`It's a tie baby! -------- Round #${++roundCount}`));
 
-    } else if ((usr === paper && cpu === rock)    || 
-               (usr === rock && cpu === scissors) ||
-               (usr === scissors && cpu === paper)) {
-                
-                ++usrScore;                                   
-                return console.log((`Humanity Scores ${usr}! CPU ${cpu} Human ${usrScore} ---- CPU ${cpuScore} -------- Round #${roundCount++ +1} `));
+            } else if ((usr === paper && cpu === rock)    || 
+                    (usr === rock && cpu === scissors) ||
+                    (usr === scissors && cpu === paper)) {
+                        
+                        ++usrScore;                                   
+                        return console.log((`Humanity Scores ${usr}! CPU ${cpu} Human ${usrScore} ---- CPU ${cpuScore} -------- Round #${++roundCount} `));
 
-    } else if (cpu === undefined) {
+            } else if (cpu === undefined) {
 
-                ++bestOfX
-                return console.log('Erro in Api call, try again, play slower')
+                        ++bestOfX
+                        return console.log('Erro in Api call, try again, play slower')
 
-    } else {
-                ++cpuScore;                                   
-                return console.log((`CPU Scores ${cpu} Usr ${usr}! Human ${usrScore} ---- CPU ${cpuScore} -------- Round #${roundCount++ +1}`));
-    }
+            } else {
+                        ++cpuScore;                                   
+                        return console.log((`CPU Scores ${cpu} Usr ${usr}! Human ${usrScore} ---- CPU ${cpuScore} -------- Round #${++roundCount}`));
+            }
 }
 
 
@@ -203,7 +201,7 @@ const hesitation = function(){
 
         
         
-        const checkLose = function(){
+        const checkGameLose = function(){  // here I must transition into endscreen
             
             if (usrScore > (Math.floor(bestOfX/2)) || cpuScore > (Math.floor(bestOfX/2))) { //check if someone has 50% + 1
 
@@ -213,9 +211,9 @@ const hesitation = function(){
                     cpuScore = 0;
                     usrScore = 0;
                     roundCount = 0;
-                }
+                
 
-                else if (((cpuScore - usrScore) >= 1) ) {
+                } else if (((cpuScore - usrScore) >= 1) ) {
                     
                     console.log(`CPU has coup the world! Clearly ${cpuScore} is more than ${usrScore}. Bip Bop Soy un robot, gane. `);
                     usrScore = 0;

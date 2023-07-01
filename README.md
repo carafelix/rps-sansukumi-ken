@@ -19,4 +19,5 @@ Would do multiple iterations to get the flow of it
 - GUI visualitation of rounds/score record.
 - mp3 random + set timout
 - promise base set cpu choice
+- rounds output number color random
 
