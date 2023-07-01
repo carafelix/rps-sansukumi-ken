@@ -6,14 +6,16 @@ function randomTime(){
 }
 
 function randomIndex(){
-    return Math.floor(Math.random() * 11)
+    return Math.floor(Math.random() * 10)
 }
 
 const bgMusic = function(){
     setInterval(() => {
-        let rAudio = audioArr[randomIndex()];
-        rAudio.volume = 0.4;
-        rAudio.play();
+        setTimeout(() => {
+            let rAudio = audioArr[randomIndex()];
+            rAudio.volume = 0.35;
+            rAudio.play();
+        }, randomTime()*1000);
     }, randomTime()*1000);
 }
 
