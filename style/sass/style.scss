@@ -14,12 +14,13 @@ body{
     @include flexCenter();
 }
 
-.gamediv {
+#gamediv {
     @include flexCenter();
     min-width: 600px;
     min-height: 600px;
-    background-color: rgb(207, 177, 26);
-    border-radius: 20%;
+    background-color: #c8c3b6;
+    border-radius: 10%;
+    box-shadow: 2px 3px 15px hsla(0, 0%, 0%, 0.419);
 }
 
 #slider-div {

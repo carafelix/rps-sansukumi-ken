@@ -3,7 +3,7 @@
 
 // nodes 
 
-const gamediv = document.querySelector('div');
+const gamediv = document.querySelector('#gamediv');
 const btnPlay = document.querySelector('#play')
 
 const sliderDiv = document.createElement('div')
