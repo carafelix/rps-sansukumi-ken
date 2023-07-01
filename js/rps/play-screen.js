@@ -258,7 +258,7 @@ const roundScreen = function(){
     gamediv.appendChild(sliderDiv);
     sliderOutput.style.fontSize = "80px";
     sliderOutput.style.webkitTextStroke = "1.5px black";
-    slider.addEventListener('change', (e) => {
+    slider.addEventListener('change', () => {
         sliderOutput.style.color = sliderColorRandom();
     });
 } 
