@@ -2,33 +2,42 @@ const audio = document.querySelectorAll('audio');
 const audioArr = Array.from(audio);
 
 function randomTime(){
-   return Math.floor(Math.random() * 5)
+   return Math.floor(Math.random() * 12)*1000
 }
 
 function randomIndex(){
-    return Math.floor(Math.random() * 11)
+    return Math.floor(Math.random() * 10)
 }
 
-const bgMusic = function(){
+const bgMusicA = function(){  // messy
     setInterval(() => {
         let rAudio = audioArr[randomIndex()];
-        rAudio.volume = 0.4;
+        rAudio.volume = 0.35;
         rAudio.play();
-    }, randomTime()*1000);
+    }, randomTime());
 }
 
-const bgMusicD = function(){
+const bgMusicB = function(){ // messy messy
     setInterval(() => {
         setTimeout(() => {
             let rAudio = audioArr[randomIndex()];
             rAudio.volume = 0.35;
             rAudio.play();
-        }, randomTime()*1000);
-    }, randomTime()*1000);
+        }, randomTime());
+    }, randomTime());
+}
+
+const bgMusicC = function(){ //chill random interval
+    setTimeout(() => {
+        let rAudio = audioArr[randomIndex()];
+        rAudio.volume = 0.35;
+        rAudio.play();
+        setTimeout(bgMusicC(), randomTime())
+    }, randomTime());
 }
 
 // document.addEventListener('load', audioArr[randomIndex()].play() ) 
 
 
-document.addEventListener('load', bgMusic()) 
+document.addEventListener('load', bgMusicC()) 
 
