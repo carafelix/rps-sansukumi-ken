@@ -20,12 +20,15 @@ const usrCards = document.createElement('div')
 const btnRock = document.createElement('button');
 const btnPaper = document.createElement('button');
 const btnScissors = document.createElement('button');
-btnRock.classList.add('cards');
-btnRock.classList.add('hoverable');
-btnPaper.classList.add('cards');
-btnPaper.classList.add('hoverable');
-btnScissors.classList.add('cards');
-btnScissors.classList.add('hoverable');
+const cardsArr = [btnRock, btnPaper, btnScissors];
+cardsArr.forEach(card => card.classList.add('cards'));
+cardsArr.forEach(card => card.classList.add('hoverable'));
+// btnRock.classList.add('cards');
+// btnRock.classList.add('hoverable');
+// btnPaper.classList.add('cards');
+// btnPaper.classList.add('hoverable');
+// btnScissors.classList.add('cards');
+// btnScissors.classList.add('hoverable');
 
 function removeHover(){
     btnRock.classList.remove('hoverable');
@@ -34,9 +37,11 @@ function removeHover(){
 
 }
 
-function turnCard(){
-    this.classList.add('turn')
+function fadeCard(){
+    this.classList.add('animate__animated','animate__bounceOut');
 }
+
+
 
 //#endregion
 
@@ -298,9 +303,12 @@ const playScreen = function(){
     usrCards.appendChild(btnRock);
     usrCards.appendChild(btnPaper);
     usrCards.appendChild(btnScissors);
-    btnRock.addEventListener('click', removeHover)
-    btnPaper.addEventListener('click', removeHover)
-    btnScissors.addEventListener('click', removeHover)
+    btnRock.addEventListener('click', fadeCard);
+    btnPaper.addEventListener('click', fadeCard);
+    btnScissors.addEventListener('click', fadeCard);
+    btnRock.addEventListener('click', removeHover   );
+    btnPaper.addEventListener('click', removeHover);
+    btnScissors.addEventListener('click', removeHover);
     usrCards.setAttribute('id','usr-cards   ')
     botDiv.appendChild(usrCards);
     setRounds(slider.value);

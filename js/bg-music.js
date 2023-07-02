@@ -42,5 +42,6 @@ const bgMusicB = function(){ // define once the interval, play the sound at diff
 }
 //#endregion
 
-document.addEventListener('load', bgMusicC()) 
+document.addEventListener('load', bgMusicC());
+
 
