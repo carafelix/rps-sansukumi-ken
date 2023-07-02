@@ -16,6 +16,11 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
+}
+
+.animate__animated.animate__backInUp {
+  --animate-duration: 1.8s;
 }
 
 #gamediv {

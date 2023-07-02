@@ -23,25 +23,35 @@ const btnScissors = document.createElement('button');
 const cardsArr = [btnRock, btnPaper, btnScissors];
 cardsArr.forEach(card => card.classList.add('cards'));
 cardsArr.forEach(card => card.classList.add('hoverable'));
-// btnRock.classList.add('cards');
-// btnRock.classList.add('hoverable');
-// btnPaper.classList.add('cards');
-// btnPaper.classList.add('hoverable');
-// btnScissors.classList.add('cards');
-// btnScissors.classList.add('hoverable');
 
-function removeHover(){
-    btnRock.classList.remove('hoverable');
-    btnPaper.classList.remove('hoverable');
-    btnScissors.classList.remove('hoverable');
+const removeHover = function (){
+    cardsArr.forEach(card => card.classList.remove('hoverable'));
 
+}
+
+const addHover = function(){
+    cardsArr.forEach(card => card.classList.add('hoverable'));
 }
 
 function fadeCard(){
-    this.classList.add('animate__animated','animate__bounceOut');
+    this.classList.add('animate__bounceOut');
+    cardsArr.forEach(card => card.disabled = true);
+
+
 }
 
 
+function cardIn(e){
+    if (e.animationName == 'bounceOut') {
+        e.target.classList.add('animate__backInUp');
+        e.target.classList.remove('animate__bounceOut');        
+        setTimeout(() => {            
+            cardsArr.forEach(card => card.classList.remove('animate__backInUp'));
+            cardsArr.forEach(card => card.disabled = false);
+            addHover();
+        }, 2500);
+    }
+}
 
 //#endregion
 
@@ -303,13 +313,11 @@ const playScreen = function(){
     usrCards.appendChild(btnRock);
     usrCards.appendChild(btnPaper);
     usrCards.appendChild(btnScissors);
-    btnRock.addEventListener('click', fadeCard);
-    btnPaper.addEventListener('click', fadeCard);
-    btnScissors.addEventListener('click', fadeCard);
-    btnRock.addEventListener('click', removeHover   );
-    btnPaper.addEventListener('click', removeHover);
-    btnScissors.addEventListener('click', removeHover);
-    usrCards.setAttribute('id','usr-cards   ')
+    cardsArr.forEach(card => card.classList.add('animate__animated'));
+    cardsArr.forEach(card => card.addEventListener('click', fadeCard));
+    cardsArr.forEach(card => card.addEventListener('click', removeHover));
+    cardsArr.forEach(card => card.addEventListener('animationend', cardIn));
+    usrCards.setAttribute('id','usr-cards')
     botDiv.appendChild(usrCards);
     setRounds(slider.value);
 
