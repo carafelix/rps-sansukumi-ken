@@ -4,7 +4,9 @@
 // nodes 
 
 const gamediv = document.querySelector('#gamediv');
-const btnPlay = document.querySelector('#play')
+const topDiv = document.querySelector('#topdiv');
+const botDiv = document.querySelector('#botdiv');
+const btnPlay = document.querySelector('#play');
 
 const sliderDiv = document.createElement('div')
 const slider = document.createElement('input'); 
@@ -12,10 +14,31 @@ const sliderOutput = document.createElement('output');
 const btnRounds = document.createElement('button');
 const pPlayscren = document.createElement('p');
 
+//#region --------- card atributtes
 
+const usrCards = document.createElement('div')
 const btnRock = document.createElement('button');
 const btnPaper = document.createElement('button');
 const btnScissors = document.createElement('button');
+btnRock.classList.add('cards');
+btnRock.classList.add('hoverable');
+btnPaper.classList.add('cards');
+btnPaper.classList.add('hoverable');
+btnScissors.classList.add('cards');
+btnScissors.classList.add('hoverable');
+
+function removeHover(){
+    btnRock.classList.remove('hoverable');
+    btnPaper.classList.remove('hoverable');
+    btnScissors.classList.remove('hoverable');
+
+}
+
+function turnCard(){
+    this.classList.add('turn')
+}
+
+//#endregion
 
 
 //#region --------- slider attributes -----------
@@ -248,14 +271,15 @@ function setRounds (rounds){
 //#region transition to round screen
 
 const roundScreen = function(){
-    gamediv.removeChild(btnPlay); 
+    botDiv.removeChild(btnPlay); 
     sliderDiv.appendChild(slider);
     sliderOutput.textContent = '5';
+    botDiv.appendChild(sliderDiv);
     sliderDiv.appendChild(sliderOutput);
-    sliderDiv.appendChild(btnRounds);
+    botDiv.appendChild(btnRounds);
     btnRounds.setAttribute('id', 'rounds');
     btnRounds.innerText = 'rounds';
-    gamediv.appendChild(sliderDiv);
+    
     sliderOutput.style.fontSize = "80px";
     sliderOutput.style.webkitTextStroke = "1.5px black";
     slider.addEventListener('change', () => {
@@ -269,11 +293,18 @@ btnPlay.addEventListener('click', roundScreen);  // homescreen > round screen
 
 
 const playScreen = function(){
-    gamediv.removeChild(sliderDiv);
-    gamediv.appendChild(btnRock);
-    gamediv.appendChild(btnPaper);
-    gamediv.appendChild(btnScissors);
+    botDiv.removeChild(sliderDiv);
+    botDiv.removeChild(btnRounds)
+    usrCards.appendChild(btnRock);
+    usrCards.appendChild(btnPaper);
+    usrCards.appendChild(btnScissors);
+    btnRock.addEventListener('click', removeHover)
+    btnPaper.addEventListener('click', removeHover)
+    btnScissors.addEventListener('click', removeHover)
+    usrCards.setAttribute('id','usr-cards   ')
+    botDiv.appendChild(usrCards);
     setRounds(slider.value);
+
 }
 
 btnRounds.addEventListener('click', playScreen) // roundscreen > playscreen
@@ -282,16 +313,16 @@ btnRounds.addEventListener('click', playScreen) // roundscreen > playscreen
 //#region ------------ rps buttons atributes ---------
 
 btnRock.setAttribute('id','rock');
-btnRock.innerText = "Rock";
+// btnRock.innerText = "Rock";
 btnRock.addEventListener('click', async () => noSpamPlayRound(rock));
 
 btnPaper.setAttribute('id','paper');
-btnPaper.innerText = "Paper";
+// btnPaper.innerText = "Paper";
 btnPaper.addEventListener('click', async () => noSpamPlayRound(paper));
 
 
 btnScissors.setAttribute('id','scissors'); 
-btnScissors.innerText = "Scissors";
+// btnScissors.innerText = "Scissors";
 btnScissors.addEventListener('click', async () => noSpamPlayRound(scissors));
 
 

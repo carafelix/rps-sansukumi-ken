@@ -5,33 +5,73 @@
 * {
     box-sizing: border-box;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 1.15em;
+}
+
+p {
+    word-break: break-all;
+    white-space: normal;
 }
 
 body{
     min-height: 100vh;
     margin: 0;
-    background: url("../../assets/img/background/backgroundtwo-42.png") 252.5vh fixed; 
+    background: url("../../assets/img/background/backgroundtwo-42.png") 252.5vh repeat; 
     @include flexCenter();
 }
 
 #gamediv {
     @include flexCenter();
-    min-width: 600px;
-    min-height: 600px;
-    background-color: #c8c3b6;
+    width: 800px;
+    min-height: 800px;
+    background: url(../../assets/img/humans/primates2.jpg) no-repeat right 30% center/770px;
+    background-color: #fff8de;
     border-radius: 10%;
     box-shadow: 2px 3px 15px hsla(0, 0%, 0%, 0.419);
-}
-
-#slider-div {
-    @include flexCenter();
-    min-height: 100px;
-    flex-basis: 200px;
     flex-direction: column;
-
-        input {
-            width: 250px;
+    justify-content: space-between;
+    align-items: center;
+        
+        > * {
+            margin: 15px;
         }
-}
 
+        #botdiv {
+            @include flexCenter;
+                .cards {
+                    margin:15px;
+                    background-size: 200px;
+                    background-position: center 230px;
+                    width: 150px;
+                    height: 180px;
+                    border-radius: 5px;
+                    transition: all 0.5s;
+                }
+                #rock {
+                    background-image: url(../../assets/img/cards/slug.png);
+                }
+                #paper{
+                    background-image: url(../../assets/img/cards/frog.png);
+                }
+                #scissors {
+                    background-image: url(../../assets/img/cards/snake.png);
+
+                }
+                
+                .hoverable:hover{
+                    scale: 1.2;
+                }
+
+        }
+
+        #slider-div {
+            @include flexCenter;
+            align-items: center;
+            gap: 50px;
+            input {
+                width: 250px;
+            }
+        }
+
+}
 
