@@ -10,12 +10,12 @@ p {
 }
 
 body {
-  min-height: 100vh;
-  margin: 0;
-  background: url("../../assets/img/background/backgroundtwo-42.png") 252.5vh repeat;
   display: flex;
   justify-content: center;
   align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  background: url("../../assets/img/background/backgroundtwo-42.png") 252.5vh repeat;
   overflow: hidden;
 }
 
@@ -75,4 +75,32 @@ body {
 }
 #gamediv #slider-div input {
   width: 250px;
+}
+
+.hide {
+  opacity: 0;
+}
+
+.show {
+  opacity: 1;
+}
+
+#leftdiv, #rightdiv {
+  position: relative;
+  height: 475px;
+  width: 475px;
+}
+
+#leftdiv {
+  margin-right: 20px;
+}
+
+#rightdiv {
+  margin-left: 20px;
+}
+
+.stickers {
+  position: absolute;
+  height: 475px;
+  width: 475px;
 }/*# sourceMappingURL=style.css.map */

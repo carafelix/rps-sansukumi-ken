@@ -14,6 +14,7 @@ const sliderOutput = document.createElement('output');
 const btnRounds = document.createElement('button');
 const pPlayscren = document.createElement('p');
 
+
 //#region --------- card atributtes
 
 const usrCards = document.createElement('div')
@@ -24,6 +25,8 @@ const cardsArr = [btnRock, btnPaper, btnScissors];
 cardsArr.forEach(card => card.classList.add('cards'));
 cardsArr.forEach(card => card.classList.add('hoverable'));
 
+
+// ---------- animation stuff
 const removeHover = function (){
     cardsArr.forEach(card => card.classList.remove('hoverable'));
 
@@ -36,8 +39,7 @@ const addHover = function(){
 function fadeCard(){
     this.classList.add('animate__bounceOut');
     cardsArr.forEach(card => card.disabled = true);
-
-
+    removeHover();
 }
 
 
@@ -52,6 +54,16 @@ function cardIn(e){
         }, 2500);
     }
 }
+
+//#endregion
+
+//#region -------- monster show -------
+
+function showLateral(){
+    'left lateral'
+    'right lateral'
+}
+
 
 //#endregion
 
@@ -315,8 +327,8 @@ const playScreen = function(){
     usrCards.appendChild(btnScissors);
     cardsArr.forEach(card => card.classList.add('animate__animated'));
     cardsArr.forEach(card => card.addEventListener('click', fadeCard));
-    cardsArr.forEach(card => card.addEventListener('click', removeHover));
     cardsArr.forEach(card => card.addEventListener('animationend', cardIn));
+    cardsArr.forEach(card => card.addEventListener('click', showLateral));
     usrCards.setAttribute('id','usr-cards')
     botDiv.appendChild(usrCards);
     setRounds(slider.value);
