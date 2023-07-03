@@ -9,7 +9,7 @@
 }
 
 p {
-    word-break: break-all;
+    line-break: loose;
     white-space: normal;
 }
 
@@ -33,7 +33,7 @@ body{
     @include flexCenter();
     width: 800px;
     min-height: 800px;
-    background: url(../../assets/img/humans/primates2.jpg) no-repeat right 30% top 40%/770px;
+    background: url(../../assets/img/humans/primates3.jpg) no-repeat right 30% top 40%/770px;
     background-color: #fff8de;
     border-radius: 10%;
     box-shadow: 2px 3px 15px hsla(0, 0%, 0%, 0.419);
@@ -45,8 +45,33 @@ body{
             margin: 15px;
         }
 
+        
+        #topdiv {
+            @include flexCenter;
+            width: 650px;
+            p {
+                height: 93px;
+                font-family: 'Ysabeau Office ', 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            }
+        }
+
+        #middlediv {
+            @include flexCenter;
+            flex: 1 0 0;
+            font-size: 45px;
+            color: #fff8de ;
+            -webkit-text-stroke: 2px black;
+                p {
+                    position: relative;
+                    top: 125px;
+                }
+                    
+        }
+
         #botdiv {
             @include flexCenter;
+            gap: 2em;
+            height: 210px;
                 .cards {
                     margin:15px;
                     background-size: 200px;
@@ -66,23 +91,34 @@ body{
                     background-image: url(../../assets/img/cards/snake.png);
 
                 }
-                
+                #play, #slider-div, #rounds {
+                    margin-bottom: 30px;
+                }
+
+                #play, #rounds{
+                    padding: 8px;
+                }
+                                
                 .hoverable:hover{
                     scale: 1.2;
                 }
+                output {
+                    font-size: 50px;
+                }
 
-        }
+                }
 
-        #slider-div {
-            @include flexCenter;
-            align-items: center;
-            gap: 50px;
-            input {
-                width: 250px;
-            }
-        }
+                #slider-div {
+                    @include flexCenter;
+                    align-items: center;
+                    gap: 50px;
+                    input {
+                        width: 250px;
+                    }
+                }
+                
 
-}
+    }
 
 .hide {
     opacity: 0;

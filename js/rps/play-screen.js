@@ -12,7 +12,12 @@ const sliderDiv = document.createElement('div')
 const slider = document.createElement('input'); 
 const sliderOutput = document.createElement('output');
 const btnRounds = document.createElement('button');
-const pPlayscren = document.createElement('p');
+const pTopDiv = document.querySelector('p');
+
+const pMidDiv = document.querySelector('#scores');
+
+const imgLeft = document.querySelectorAll('.left');
+const imgRight = document.querySelectorAll('.right');
 
 
 //#region --------- card atributtes
@@ -59,9 +64,18 @@ function cardIn(e){
 
 //#region -------- monster show -------
 
+function imgSelect(cpu){
+    if cpu    
+}
+
 function showLateral(){
-    'left lateral'
-    'right lateral'
+    imgLeft.forEach(img => img.classList.add('show'));
+    imgRight.forEach(img => img.classList.add('show'))
+}
+
+function hideLateral(){
+    imgLeft.forEach(img => img.classList.remove('show'));
+    imgRight.forEach(img => img.classList.remove('show'))
 }
 
 
@@ -172,19 +186,13 @@ const setCpuChoice = function(){
     } else if ((randomOrg[0]["result"]["random"]["data"][0]) === 2 ) {
         cpuChoice = scissors
     } else {
-        console.log("You played too fast, API call rejected and true random was compromise")};
+        console.log("API call rejected or too late, true random was compromise")};
         cpuChoice = getCpuChoice(cpuChoiceArray);
     }
 
 
 //#endregion
 
-
-//#region --------- get user choice ------------------------------
-
-
-
-//#endregion
 
 //#region --------- prevent spam function, nested playround--------               // setInterval could be used as event listener // noted. if I want to prevent something, better catch it on the if statement than in the 'else'
 
@@ -208,48 +216,39 @@ const clearUsrSpam = function(){
 
 //#region --------- hesitation is defeat function placeholder ----------
 
-const hesitation = function(){
-    setTimeout(()=> console.log('hesitation is defeat function') , 3000)
-}
 
 //#endregion
 
 
 
 
-
-
-
-
-
-
-
 //#region --------- play round function ----------- // todo hesitation
 
-    async function playTrueRound (usr, cpu) {
-
-        checkGameLose();
+    async function playTrueRound (usr, cpu) {        
               
             if (usr === cpu) {
 
-                ++bestOfX;                      
-                return console.log ((`It's a tie baby! -------- Round #${++roundCount}`));
+                ++roundCount
+                pMidDiv.textContent = `${usrScore} - ${cpuScore}`;  
+                pTopDiv.innerText = `It's a tie baby!`;
+                checkGameLose();              
 
             } else if ((usr === paper && cpu === rock)    || 
                     (usr === rock && cpu === scissors) ||
                     (usr === scissors && cpu === paper)) {
-                        
-                        ++usrScore;                                   
-                        return console.log((`Humanity Scores ${usr}! CPU ${cpu} Human ${usrScore} ---- CPU ${cpuScore} -------- Round #${++roundCount} `));
-
-            } else if (cpu === undefined) {
-
-                        ++bestOfX
-                        return console.log('Erro in Api call, try again, play slower')
+                        ++roundCount
+                        ++usrScore;
+                        pMidDiv.textContent = `${usrScore} - ${cpuScore}`;
+                        pTopDiv.innerText = `Human Will can go against all odds!`;
+                        checkGameLose();
+                                       
 
             } else {
-                        ++cpuScore;                                   
-                        return console.log((`CPU Scores ${cpu} Usr ${usr}! Human ${usrScore} ---- CPU ${cpuScore} -------- Round #${++roundCount}`));
+                        ++roundCount
+                        ++cpuScore;               
+                        pMidDiv.textContent = `${usrScore} - ${cpuScore}`;                    
+                        pTopDiv.innerText = `Entrophy will be against humans no matter what.`;
+                        checkGameLose();
             }
 }
 
@@ -268,7 +267,7 @@ const hesitation = function(){
 
                 if ((usrScore - cpuScore) >= 1) {     // Final win/loss determination
         
-                    console.log(`Humankind Strikes Again! ${usrScore} is more than ${cpuScore}. Aprende algo DINERO.`);
+                    pTopDiv.innerText = `Humankind Strikes Again! ${usrScore} is clearly more than ${cpuScore}. Learn to count, universe!`;
                     cpuScore = 0;
                     usrScore = 0;
                     roundCount = 0;
@@ -276,7 +275,7 @@ const hesitation = function(){
 
                 } else if (((cpuScore - usrScore) >= 1) ) {
                     
-                    console.log(`CPU has coup the world! Clearly ${cpuScore} is more than ${usrScore}. Bip Bop Soy un robot, gane. `);
+                    pTopDiv.innerText = `Chaos took over! Ambient sound: ${cpuScore} who is the real winner? Humans: ${usrScore}.`;
                     usrScore = 0;
                     cpuScore = 0;
                     roundCount = 0;
@@ -306,12 +305,12 @@ const roundScreen = function(){
     botDiv.appendChild(btnRounds);
     btnRounds.setAttribute('id', 'rounds');
     btnRounds.innerText = 'rounds';
-    
-    sliderOutput.style.fontSize = "80px";
     sliderOutput.style.webkitTextStroke = "1.5px black";
     slider.addEventListener('change', () => {
-        sliderOutput.style.color = sliderColorRandom();
+    sliderOutput.style.color = sliderColorRandom();
     });
+    pTopDiv.textContent = "Select the 'best of' how many rounds you want to play for";
+
 } 
 //#endregion
 
@@ -332,6 +331,7 @@ const playScreen = function(){
     usrCards.setAttribute('id','usr-cards')
     botDiv.appendChild(usrCards);
     setRounds(slider.value);
+    pTopDiv.innerText = "Choose wisely";
 
 }
 
