@@ -64,18 +64,33 @@ function cardIn(e){
 
 //#region -------- monster show -------
 
-function imgSelect(cpu){
-    if cpu    
+function usrImgSelect(usr, cpu){
+    if (usr == cpu) {
+        imgLeft[3].classList.add('show'); 
+    } else if (usr == rock){
+        imgLeft[0].classList.add('show');
+    } else if (usr == paper){
+        imgLeft[1].classList.add('show');
+    } else if (usr == scissors){
+        imgLeft[2].classList.add('show');
+    }    
 }
 
-function showLateral(){
-    imgLeft.forEach(img => img.classList.add('show'));
-    imgRight.forEach(img => img.classList.add('show'))
+function cpuImgSelect(cpu, usr){
+    if (usr == cpu) {
+        imgRight[3].classList.add('show');
+    } else if (cpu == rock){
+        imgRight[0].classList.add('show');
+    } else if (cpu == paper){
+        imgRight[1].classList.add('show');
+    } else if (cpu == scissors){
+        imgRight[2].classList.add('show');
+    }
 }
 
-function hideLateral(){
+function clearImg(){
     imgLeft.forEach(img => img.classList.remove('show'));
-    imgRight.forEach(img => img.classList.remove('show'))
+    imgRight.forEach(img => img.classList.remove('show'));
 }
 
 
@@ -225,7 +240,9 @@ const clearUsrSpam = function(){
 //#region --------- play round function ----------- // todo hesitation
 
     async function playTrueRound (usr, cpu) {        
-              
+        clearImg();
+        usrImgSelect(usr, cpu); cpuImgSelect(cpu, usr);
+        
             if (usr === cpu) {
 
                 ++roundCount
@@ -271,7 +288,7 @@ const clearUsrSpam = function(){
                     cpuScore = 0;
                     usrScore = 0;
                     roundCount = 0;
-                
+                    clearImg();
 
                 } else if (((cpuScore - usrScore) >= 1) ) {
                     
@@ -327,7 +344,6 @@ const playScreen = function(){
     cardsArr.forEach(card => card.classList.add('animate__animated'));
     cardsArr.forEach(card => card.addEventListener('click', fadeCard));
     cardsArr.forEach(card => card.addEventListener('animationend', cardIn));
-    cardsArr.forEach(card => card.addEventListener('click', showLateral));
     usrCards.setAttribute('id','usr-cards')
     botDiv.appendChild(usrCards);
     setRounds(slider.value);
