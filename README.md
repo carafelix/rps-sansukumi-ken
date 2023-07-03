@@ -21,3 +21,9 @@ Would do multiple iterations to get the flow of it
 - promise base set cpu choice
 - rounds output number color random
 
+
+## to-do
+
+- play music on round determination
+- animation falling humans on humanity win
+- animation falling ??? on cpu wins
