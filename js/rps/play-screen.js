@@ -437,28 +437,5 @@ infoBtn.addEventListener('click', (e) => divToggle(e));
 
 //#endregion
 
-//#region --------- audio toggle -----------
-
-function audioToggle(e) {
-    if (!e.target.dataset.clicked){
-
-        e.target.setAttribute('data-clicked', 'true');
-
-        window.volume = 0;
-
-    } else {
-
-        e.target.removeAttribute("data-clicked");
-
-        window.volume = 1;  // = variable
-
-    }
-}
-
-audioBtn.addEventListener('click', (e)=> audioToggle(e));
-
-
-//#endregion
-
 
 

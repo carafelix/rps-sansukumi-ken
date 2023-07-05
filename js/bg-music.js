@@ -49,3 +49,34 @@ const bgMusicB = function(){ // define once the interval, play the sound at diff
 document.addEventListener('load', bgMusicC());
 
 
+//#region --------- audio toggle -----------
+
+function audioToggle(e) {
+    if (!e.target.dataset.clicked){
+
+        e.target.setAttribute('data-clicked', 'true');
+        audioMute();
+
+    } else {
+
+        e.target.removeAttribute("data-clicked");
+
+        audioFull();
+
+    }
+}
+
+function audioMute(){
+    audioArr.forEach(audio => audio.volume = 0);
+}
+
+function audioFull(){
+    audioArr.forEach(audio => audio.volume = 1); // variable instead of = 0
+}
+
+audioBtn.addEventListener('click', (e)=> audioToggle(e));
+
+
+//#endregion
+
+
