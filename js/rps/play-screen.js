@@ -1,6 +1,10 @@
 // all this should be wrapp inside a function to pass to the main js
 // to-do // hesitation();
 
+// variables
+
+let audioVolume = 0.1; //initial
+
 // nodes 
 
 const gamediv = document.querySelector('#gamediv');
@@ -436,6 +440,72 @@ settingsBtn.addEventListener('click', (e) => divToggle(e));
 infoBtn.addEventListener('click', (e) => divToggle(e));
 
 //#endregion
+
+
+
+
+//#region  ------------ background random music -----------
+
+const audio = document.querySelectorAll('.long-audio');
+const audioArr = Array.from(audio);
+const audioBtn = document.querySelector('#audio-settings-btn');
+
+
+function randomTime(){
+   return Math.floor(Math.random() * 12)*1000
+}
+
+function randomIndex(){
+    return Math.floor(Math.random() * 13)
+}
+
+
+const bgMusicC = function(){ //chill random interval
+    setTimeout(() => {
+        let rAudio = audioArr[randomIndex()];
+        rAudio.volume = audioVolume; 
+        rAudio.play();
+        setTimeout(bgMusicC(), randomTime()*randomTime())  // such a good thing to know!
+    }, randomTime());
+}
+
+
+document.addEventListener('load', bgMusicC());
+
+
+//#region --------- audio toggle -----------
+
+function audioToggle(e) {
+    if (!e.target.dataset.clicked){
+
+        e.target.setAttribute('data-clicked', 'true');
+        audioMute();
+
+        audioBtn.innerText = 'volume_off' 
+
+    } else {
+
+        e.target.removeAttribute("data-clicked");
+        audioFull();
+        audioBtn.innerText = 'volume_up' 
+
+
+    }
+}
+
+function audioMute(){
+    audioArr.forEach(audio => audio.volume = 0);
+}
+
+function audioFull(){
+    audioArr.forEach(audio => audio.volume = audioVolume); // variable instead of = 0.1 PLEASE
+}
+
+audioBtn.addEventListener('click', (e)=> audioToggle(e));
+
+
+//#endregion
+
 
 
 
