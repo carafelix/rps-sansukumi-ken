@@ -1,3 +1,5 @@
+// ------------ background random music -----------
+
 const audio = document.querySelectorAll('.long-audio');
 const audioArr = Array.from(audio);
 
@@ -43,11 +45,3 @@ const bgMusicB = function(){ // define once the interval, play the sound at diff
 //#endregion
 
 document.addEventListener('load', bgMusicC());
-
-//#region --------- audio effects -------------
-
-const effects = document.querySelectorAll('.short-audio')
-
-
-//#endregion
-
