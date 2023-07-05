@@ -1,4 +1,4 @@
-const audio = document.querySelectorAll('audio');
+const audio = document.querySelectorAll('.long-audio');
 const audioArr = Array.from(audio);
 
 function randomTime(){
@@ -44,4 +44,10 @@ const bgMusicB = function(){ // define once the interval, play the sound at diff
 
 document.addEventListener('load', bgMusicC());
 
+//#region --------- audio effects -------------
+
+const effects = document.querySelectorAll('.short-audio')
+
+
+//#endregion
 

@@ -292,10 +292,11 @@ const clearUsrSpam = function(){
 
                 } else if (((cpuScore - usrScore) >= 1) ) {
                     
-                    pTopDiv.innerText = `Chaos took over! Ambient sound: ${cpuScore} who is the real winner? Humans: ${usrScore}.`;
+                    pTopDiv.innerText = `Chaos took over! Universe: ${cpuScore} Humanity: ${usrScore}.`;
                     usrScore = 0;
                     cpuScore = 0;
                     roundCount = 0;
+                    clearImg();
                 }
         }};
             
