@@ -19,6 +19,17 @@ const pMidDiv = document.querySelector('#scores');
 const imgLeft = document.querySelectorAll('.left');
 const imgRight = document.querySelectorAll('.right');
 
+const leftDiv = document.querySelector('#leftdiv');
+const rightDiv = document.querySelector('#rightdiv')
+
+const settingsBtn = document.querySelector('#settings-btn');
+const infoBtn = document.querySelector('#info-btn');
+
+const settings = document.createElement('div'); settings.setAttribute('id','settings');
+const info = document.createElement('div'); info.setAttribute('id','info');
+
+
+
 
 //#region --------- card atributtes
 
@@ -31,7 +42,7 @@ cardsArr.forEach(card => card.classList.add('cards'));
 cardsArr.forEach(card => card.classList.add('hoverable'));
 
 
-// ---------- animation stuff
+// ---------- animations for cards
 const removeHover = function (){
     cardsArr.forEach(card => card.classList.remove('hoverable'));
 
@@ -229,10 +240,6 @@ const clearUsrSpam = function(){
 
 //#endregion
 
-//#region --------- hesitation is defeat function placeholder ----------
-
-
-//#endregion
 
 
 
@@ -323,7 +330,6 @@ const roundScreen = function(){
     botDiv.appendChild(btnRounds);
     btnRounds.setAttribute('id', 'rounds');
     btnRounds.innerText = 'rounds';
-    sliderOutput.style.webkitTextStroke = "1.5px black";
     slider.addEventListener('change', () => {
     sliderOutput.style.color = sliderColorRandom();
     });
@@ -374,8 +380,85 @@ btnScissors.addEventListener('click', async () => noSpamPlayRound(scissors));
 //#endregion
 
 
+//#region --------- audio rounds effects ------------- TODO
 
-// btnRock.addEventListener('click', async () => console.log(playRound(rock, await getOrgCpuChoice())));
+const effects = document.querySelectorAll('.short-audio');
+const effectWin = effects[5] // 0-lose 1-win 2 win? 6 big lose 5 tie
 
-// btnRounds.addEventListener('click', () => playAtrueGame(slider.value));
+HTMLAudioElement.volume = 0.1;
+
+btnScissors.addEventListener('click', ()=> effectWin.play())
+
+//#endregion
+
+
+//#region ------------ audio config toggle buttons -------- this should or could be refactor to use template literal 
+
+function divToggle(e){
+    if (!e.target.dataset.clicked){
+
+        e.target.setAttribute('data-clicked', 'true');
+
+        appendWich(e);
+
+    } else {
+
+        e.target.removeAttribute("data-clicked");
+
+        unAppendWich(e);
+    }
+}
+
+function appendWich(e){
+    if (e.target.dataset.span == 'settings'){
+
+        rightDiv.appendChild(settings);
+
+
+    } else if (e.target.dataset.span == 'info'){
+
+        leftDiv.appendChild(info);
+    }
+
+}
+
+function unAppendWich(e){
+    if (e.target.dataset.span == 'settings'){
+
+        rightDiv.removeChild(settings);
+
+    } else if (e.target.dataset.span == 'info'){
+        leftDiv.removeChild(info);
+    }
+}
+
+settingsBtn.addEventListener('click', (e) => divToggle(e));
+infoBtn.addEventListener('click', (e) => divToggle(e));
+
+//#endregion
+
+//#region --------- audio toggle -----------
+
+function audioToggle(e) {
+    if (!e.target.dataset.clicked){
+
+        e.target.setAttribute('data-clicked', 'true');
+
+        window.volume = 0;
+
+    } else {
+
+        e.target.removeAttribute("data-clicked");
+
+        window.volume = 1;  // = variable
+
+    }
+}
+
+audioBtn.addEventListener('click', (e)=> audioToggle(e));
+
+
+//#endregion
+
+
 

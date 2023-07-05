@@ -2,6 +2,8 @@
 
 const audio = document.querySelectorAll('.long-audio');
 const audioArr = Array.from(audio);
+const audioBtn = document.querySelector('#audio-settings-btn');
+
 
 function randomTime(){
    return Math.floor(Math.random() * 12)*1000
@@ -15,7 +17,7 @@ function randomIndex(){
 const bgMusicC = function(){ //chill random interval
     setTimeout(() => {
         let rAudio = audioArr[randomIndex()];
-        rAudio.volume = 0.35;
+        rAudio.volume = 0.2;
         rAudio.play();
         setTimeout(bgMusicC(), randomTime()*randomTime())  // such a good thing to know!
     }, randomTime());
@@ -45,3 +47,5 @@ const bgMusicB = function(){ // define once the interval, play the sound at diff
 //#endregion
 
 document.addEventListener('load', bgMusicC());
+
+

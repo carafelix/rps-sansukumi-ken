@@ -8,3 +8,11 @@
     height: 100%;
     width: 100%;
 }
+
+@mixin borderShadow {
+    box-shadow: 2px 3px 15px hsla(0, 0%, 0%, 0.419);
+    border-radius: 12px;
+}
+
+$white: #fff8de;
+$dark: #1f1f1f; 

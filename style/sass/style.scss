@@ -1,4 +1,4 @@
-@import './mixin';
+@import './mixinVar';
 
 // general stuff
 
@@ -11,6 +11,15 @@
 p {
     line-break: loose;
     white-space: normal;
+}
+
+p, span {
+    color: $dark;
+    user-select: none;
+}
+
+span {
+    width: 24px;
 }
 
 body{
@@ -34,9 +43,9 @@ body{
     width: 800px;
     min-height: 800px;
     background: url(../../assets/img/humans/primates3.jpg) no-repeat right 30% top 40%/770px;
-    background-color: #fff8de;
-    border-radius: 10%;
-    box-shadow: 2px 3px 15px hsla(0, 0%, 0%, 0.419);
+    background-color: $white;
+    @include borderShadow;
+    border-radius: 5%;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
@@ -48,24 +57,24 @@ body{
         
         #topdiv {
             @include flexCenter;
-            width: 650px;
+            width: 750px;
             p {
                 height: 93px;
                 font-family: 'Ysabeau Office ', 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
             }
+            span, .config {
+                margin: 4px;
+                align-self: flex-start;
+              }
         }
 
         #middlediv {
             @include flexCenter;
             flex: 1 0 0;
             font-size: 45px;
-            color: #fff8de ;
+            color: $white ;
             -webkit-text-stroke: 2px black;
-                p {
-                    position: relative;
-                    top: 125px;
-                }
-                    
+                                
         }
 
         #botdiv {
@@ -104,6 +113,7 @@ body{
                 }
                 output {
                     font-size: 50px;
+                    -webkit-text-stroke: 1.5px black;
                 }
 
                 }
@@ -129,8 +139,9 @@ body{
 }
 
 #leftdiv, #rightdiv {
+    @include flexCenter;
     position: relative;
-    height: 475px;
+    height: 800px;
     width: 475px;
 }
 #leftdiv {
@@ -147,3 +158,51 @@ body{
     width: 475px;
     transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
+
+#settings, #info, #audio-settings {
+    position: absolute;
+    width: 300px;
+    height: 120px;
+    background-color: $white;
+    @include borderShadow
+  }
+
+#settings, #audio-settings {
+    top: -7.5%;
+    left: -10%;
+  }
+
+#info {
+    top: -7.5%;
+    right: -10%;
+  }
+
+  #info-btn {
+    position: relative;
+    left:15px;
+  }
+
+
+//   @media (prefers-color-scheme: dark) {
+
+//     p, span {
+//         color: $white;  
+//     }
+
+//     body {
+//         background: url("../../assets/img/background/backgroundtwo-42-inv.png") 252.5vh repeat; 
+//     }
+
+//     #gamediv {
+//     background: url(../../assets/img/humans/primates3-inv.jpg) no-repeat right 30% top 40%/770px;
+//     background-color: $dark;
+//         #botdiv output {
+//             -webkit-text-stroke: 1.5spx $white;
+//         }
+        
+//     }
+//     #audio-control, #info {
+//         background-color: $dark;
+//     }
+
+//   }
