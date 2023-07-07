@@ -33,7 +33,8 @@ const bgSlider = document.createElement('input');
 const effectSliderDiv = document.createElement('div'); 
 const effectSlider = document.createElement('input'); 
 
-
+const darkToggleDiv = document.createElement('div');
+const darkToggleSpan = document.createElement('span'); 
 const darkToggle = document.createElement('span'); darkToggle.classList.add('material-symbols-rounded');
 
 
@@ -397,7 +398,7 @@ btnScissors.addEventListener('click', ()=> effectWin.play())
 
 //#endregion
 
-//#region  ----------- config div & darkmode toggle ---------------
+//#region  ----------- darkmode toggle ---------------
 
 function checkInitialLightMode(){
     if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
@@ -432,7 +433,7 @@ function toggleDarkMode(){
 checkInitialLightMode();
 
 darkToggle.addEventListener('click', toggleDarkMode);
-settings.appendChild(darkToggle);
+
 
 
 
@@ -498,7 +499,7 @@ const audioBtn = document.querySelector('#audio-settings-btn');
 
 
 function randomTime(){
-   return Math.floor(Math.random() * 12)*1000
+   return Math.floor(Math.random() * 1000)*12
 }
 
 function randomIndex(){
@@ -510,7 +511,7 @@ const bgMusicC = function(){ //chill random interval
     setTimeout(() => {
         let rAudio = audioBgArr[randomIndex()];
         rAudio.play();
-        setTimeout(bgMusicC(), randomTime()*randomTime())  // such a good thing to know!
+        setTimeout(bgMusicC(), randomTime()*randomTime()) 
     }, randomTime());
 }
 
@@ -563,7 +564,7 @@ audioBtn.addEventListener('click', (e)=> audioToggle(e));
 bgSlider.setAttribute('id','slider-bg');
 bgSlider.classList.add('config-slider');
 bgSlider.setAttribute('type','range');
-bgSlider.setAttribute('value','20');
+bgSlider.setAttribute('value','15');
 bgSlider.setAttribute('min', '1');
 bgSlider.setAttribute('max','100');
 bgSlider.addEventListener('input', () =>  setBgVolume());
@@ -571,7 +572,7 @@ bgSlider.addEventListener('input', () =>  setBgVolume());
 effectSlider.setAttribute('id','slider-effects');
 effectSlider.classList.add('config-slider');
 effectSlider.setAttribute('type','range');
-effectSlider.setAttribute('value','20');
+effectSlider.setAttribute('value','15');
 effectSlider.setAttribute('min', '1');
 effectSlider.setAttribute('max','100');
 effectSlider.addEventListener('input', () => setEffectVolume());
@@ -581,10 +582,21 @@ effectSlider.addEventListener('input', () => setEffectVolume());
 
 //#region ----------- config div ------------
 
+const githubLogo = document.createElement('img'); githubLogo.setAttribute('src', './assets/img/icon/github-mark.png')
+info.appendChild(githubLogo);
 
+
+darkToggleDiv.appendChild(darkToggleSpan);
+darkToggleDiv.appendChild(darkToggle);
+
+
+darkToggleSpan.textContent = "Display Mode:"
+settings.appendChild(darkToggleDiv);
+
+bgsliderDiv.innerText = "Background Volume:"
 bgsliderDiv.appendChild(bgSlider);
 
-
+effectSliderDiv.innerText = "Effects Volume:"
 effectSliderDiv.appendChild(effectSlider);
 
 
