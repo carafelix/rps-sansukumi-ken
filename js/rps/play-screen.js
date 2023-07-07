@@ -13,7 +13,7 @@ const botDiv = document.querySelector('#botdiv');
 const btnPlay = document.querySelector('#play');
 
 const sliderDiv = document.createElement('div')
-const slider = document.createElement('input'); 
+const sliderRounds = document.createElement('input'); 
 const sliderOutput = document.createElement('output');
 const btnRounds = document.createElement('button');
 const pTopDiv = document.querySelector('p');
@@ -31,6 +31,8 @@ const infoBtn = document.querySelector('#info-btn');
 
 const settings = document.createElement('div'); settings.setAttribute('id','settings');
 const info = document.createElement('div'); info.setAttribute('id','info');
+const bgSlider = document.createElement('input');
+const effectSlider = document.createElement('input');
 
 const darkToggle = document.createElement('span'); darkToggle.classList.add('material-symbols-rounded');
 
@@ -117,12 +119,12 @@ function clearImg(){
 //#region --------- slider attributes -----------
 
 sliderDiv.setAttribute('id', 'slider-div');
-slider.setAttribute('id','slider');
-slider.setAttribute('type','range');
-slider.setAttribute('value','5');
-slider.setAttribute('min', '1');
-slider.setAttribute('max','15');
-slider.addEventListener('input', () => sliderOutput.value = slider.value);
+sliderRounds.setAttribute('id','slider-rounds');
+sliderRounds.setAttribute('type','range');
+sliderRounds.setAttribute('value','5');
+sliderRounds.setAttribute('min', '1');
+sliderRounds.setAttribute('max','15');
+sliderRounds.addEventListener('input', () => sliderOutput.value = sliderRounds.value);
 
 // ---------- slider output random color ---------
 
@@ -329,14 +331,14 @@ function setRounds (rounds){
 
 const roundScreen = function(){
     botDiv.removeChild(btnPlay); 
-    sliderDiv.appendChild(slider);
+    sliderDiv.appendChild(sliderRounds);
     sliderOutput.textContent = '5';
     botDiv.appendChild(sliderDiv);
     sliderDiv.appendChild(sliderOutput);
     botDiv.appendChild(btnRounds);
     btnRounds.setAttribute('id', 'rounds');
     btnRounds.innerText = 'rounds';
-    slider.addEventListener('change', () => {
+    sliderRounds.addEventListener('change', () => {
     sliderOutput.style.color = sliderColorRandom();
     });
     pTopDiv.textContent = "Select the 'best of' how many rounds you want to play for";
@@ -420,7 +422,7 @@ function setDarkMode(){
 function toggleDarkMode(){
 
     if (    darkToggle.innerText === 'light_mode'    ) {
-        
+
         setDarkMode()
 
     } else  {
@@ -488,10 +490,12 @@ infoBtn.addEventListener('click', (e) => divToggle(e));
 
 
 
-//#region  ------------ background random music -----------
+//#region  ------------ Music -----------
 
-const audio = document.querySelectorAll('.long-audio');
-const audioArr = Array.from(audio);
+const audioBg = document.querySelectorAll('.long-audio');
+const audioBgArr = Array.from(audioBg);
+const audioEffect = document.querySelectorAll('.short-audio');
+const audioEffectArr = Array.from(audioEffect);
 const audioBtn = document.querySelector('#audio-settings-btn');
 
 
@@ -506,7 +510,7 @@ function randomIndex(){
 
 const bgMusicC = function(){ //chill random interval
     setTimeout(() => {
-        let rAudio = audioArr[randomIndex()];
+        let rAudio = audioBgArr[randomIndex()];
         rAudio.volume = audioVolume; 
         rAudio.play();
         setTimeout(bgMusicC(), randomTime()*randomTime())  // such a good thing to know!
@@ -538,11 +542,12 @@ function audioToggle(e) {
 }
 
 function audioMute(){
-    audioArr.forEach(audio => audio.volume = 0);
+    audioBgArr.forEach(audio => audio.volume = 0);
 }
 
 function audioFull(){
-    audioArr.forEach(audio => audio.volume = audioVolume); // variable instead of = 0.1 PLEASE
+    audioBgArr.forEach(audio => audio.volume = audioVolume); // variable instead of = 0.1 PLEASE
+    
 }
 
 audioBtn.addEventListener('click', (e)=> audioToggle(e));
