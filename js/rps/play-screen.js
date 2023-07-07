@@ -274,7 +274,7 @@ const clearUsrSpam = function(){
 
 
 
-//#region --------- play round function ----------- // todo hesitation
+//#region --------- play round function ----------- 
 
     async function playTrueRound (usr, cpu) {        
         clearImg();
@@ -282,27 +282,44 @@ const clearUsrSpam = function(){
         
             if (usr === cpu) {
 
+                
+
                 ++roundCount
                 pMidDiv.textContent = `${usrScore} - ${cpuScore}`;  
                 pTopDiv.innerText = `It's a tie baby!`;
-                checkGameLose();              
+
+                    if (!(checkGameLose())) {
+                        effectTie.play()  
+                    }
+                            
 
             } else if ((usr === paper && cpu === rock)    || 
                     (usr === rock && cpu === scissors) ||
                     (usr === scissors && cpu === paper)) {
+
+                        
+
                         ++roundCount
                         ++usrScore;
                         pMidDiv.textContent = `${usrScore} - ${cpuScore}`;
                         pTopDiv.innerText = `Human Will can go against all odds!`;
-                        checkGameLose();
+
+                            if (!(checkGameLose())) {
+                                effectWin.play()  
+                            }
                                        
 
             } else {
+                        
+                        
                         ++roundCount
                         ++cpuScore;               
                         pMidDiv.textContent = `${usrScore} - ${cpuScore}`;                    
                         pTopDiv.innerText = `Entrophy will be against humans no matter what.`;
-                        checkGameLose();
+
+                            if (!(checkGameLose())) {
+                                effectWin.play()  
+                            }
             }
 }
 
@@ -318,27 +335,36 @@ const clearUsrSpam = function(){
 
         
         
-        const checkGameLose = function(){  // here I must transition into endscreen
+    const checkGameLose = function(){  // here I must transition into endscreen
             
             if (usrScore > (Math.floor(bestOfX/2)) || cpuScore > (Math.floor(bestOfX/2))) { //check if someone has 50% + 1
 
                 if ((usrScore - cpuScore) >= 1) {     // Final win/loss determination
+
+                    effectBigWin.play();
         
                     pTopDiv.innerText = `Humankind Strikes Again! ${usrScore} is clearly more than ${cpuScore}. Learn to count, universe!`;
                     cpuScore = 0;
                     usrScore = 0;
                     roundCount = 0;
                     clearImg();
+                    return true;
 
                 } else if (((cpuScore - usrScore) >= 1) ) {
                     
+                    effectBigLose.play();
+
                     pTopDiv.innerText = `Chaos took over! Universe: ${cpuScore} Humanity: ${usrScore}.`;
                     usrScore = 0;
                     cpuScore = 0;
                     roundCount = 0;
                     clearImg();
+                    return true;
+                } else {
+                    return false;
                 }
-        }};
+        }         
+};
             
         
 
@@ -434,16 +460,16 @@ btnScissors.addEventListener('click', async () => noSpamPlayRound(scissors));
 bgSlider.setAttribute('id','slider-bg');
 bgSlider.classList.add('config-slider');
 bgSlider.setAttribute('type','range');
-bgSlider.setAttribute('value','15');
-bgSlider.setAttribute('min', '1');
+bgSlider.setAttribute('value','2');
+bgSlider.setAttribute('min', '0');
 bgSlider.setAttribute('max','100');
 bgSlider.addEventListener('input', () =>  setBgVolume());
 
 effectSlider.setAttribute('id','slider-effects');
 effectSlider.classList.add('config-slider');
 effectSlider.setAttribute('type','range');
-effectSlider.setAttribute('value','15');
-effectSlider.setAttribute('min', '1');
+effectSlider.setAttribute('value','10');
+effectSlider.setAttribute('min', '0');
 effectSlider.setAttribute('max','100');
 effectSlider.addEventListener('input', () => setEffectVolume());
 
@@ -506,7 +532,12 @@ infoBtn.addEventListener('click', (e) => divToggle(e));
 const audioEffect = document.querySelectorAll('.short-audio');
 const audioEffectArr = Array.from(audioEffect);    // 0-lose 1-win 2 win? 6 big lose 5 tie
 
-btnScissors.addEventListener('click', ()=> audioEffectArr[5].play())
+const effectLose = audioEffectArr[0];
+const effectWin = audioEffectArr[1];
+const effectTie = audioEffectArr[2];
+const effectBigLose = audioEffectArr[3];
+const effectBigWin = audioEffectArr[4];
+
 
 //#endregion
 

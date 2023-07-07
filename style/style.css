@@ -55,6 +55,7 @@ body {
   justify-content: center;
   align-items: center;
   width: 750px;
+  height: 93px;
 }
 #gamediv #topdiv #p-span {
   display: flex;
@@ -75,6 +76,10 @@ body {
   font-size: 45px;
   color: #fff8de;
   -webkit-text-stroke: 2px black;
+}
+#gamediv #middlediv #scores {
+  position: relative;
+  top: 150px;
 }
 #gamediv #botdiv {
   display: flex;
@@ -180,7 +185,7 @@ body {
 }
 
 #info {
-  top: -7.5%;
+  top: 0%;
   right: 0%;
   padding: 10px;
   display: flex;
