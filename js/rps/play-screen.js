@@ -142,6 +142,8 @@ function sliderColorRandom(){
 //#endregion
 
 
+//#region --------- rps variables ----------
+
 // rps weapons
 
 const rock = "Rock"
@@ -157,6 +159,7 @@ let roundCount = 0;
 let usrChoice = null;
 let cpuChoice;
 
+//#endregion
 
 //#region --------- get cpu choice from pseudo-random ------------
 
@@ -328,7 +331,7 @@ function setRounds (rounds){
 }
 //#endregion
 
-//#region transition to round screen
+//#region  --------- Round Screen
 
 const roundScreen = function(){
     botDiv.removeChild(btnPlay); 
@@ -345,10 +348,13 @@ const roundScreen = function(){
     pTopDiv.textContent = "Select the 'best of' how many rounds you want to play for";
 
 } 
+
+btnPlay.addEventListener('click', roundScreen);  // homescreen > round screen   
+
 //#endregion
 
 
-btnPlay.addEventListener('click', roundScreen);  // homescreen > round screen
+//#region  --------- Play Screen -----------
 
 
 const playScreen = function(){
@@ -369,6 +375,7 @@ const playScreen = function(){
 
 btnRounds.addEventListener('click', playScreen) // roundscreen > playscreen
 
+//#endregion
 
 //#region ------------ rps buttons atributes ---------
 
@@ -517,6 +524,8 @@ const bgMusicC = function(){ //chill random interval
 
 
 document.addEventListener('load', bgMusicC());
+
+//#endregion
 
 
 //#region --------- audio mute toggle -----------
