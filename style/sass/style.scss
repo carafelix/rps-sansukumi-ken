@@ -13,7 +13,7 @@ p {
     white-space: normal;
 }
 
-p, span {
+p, span, label {
     color: $dark;
     user-select: none;
 }
@@ -134,12 +134,29 @@ body{
                         width: 250px;
                     }
                 }
+                
+                .endBtn{
+                    margin: 10px;
+                }
 
                 #samerounds {
-                    width: 20px;
-                    height: 20px;
+                    width: 30px;
+                    height: 30px;
                 }
                 
+                .endDiv {
+                    @include flexCenter;
+                    margin-top: 40px;
+                    align-self:flex-start;
+                    flex-direction: column;
+                    font-size: 1.115em;
+                        button {
+                            font-size: 30px;
+                        }
+                        label {
+                    font-size: 1.115em;
+                        }
+                }
 
     }
 

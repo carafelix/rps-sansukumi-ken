@@ -41,8 +41,9 @@ const againYesBtn = document.createElement('button');
 const againNoBtn = document.createElement('button'); 
 const sameRounds = document.createElement('input'); 
 const sameRoundsLabel = document.createElement('label');
-const sameRoundsDiv = document.createElement('div');
-const playAgainDiv = document.createElement('div');
+const sameRoundsDiv = document.createElement('div'); sameRoundsDiv.classList.add('endDiv');
+const playAgainDiv = document.createElement('div'); playAgainDiv.classList.add('endDiv');
+const playAgainBtnsDiv = document.createElement('div');
 
 //#endregion
 
@@ -325,7 +326,7 @@ const clearUsrSpam = function(){
                         pTopDiv.innerText = `Entrophy will be against humans no matter what.`;
 
                             if (!(checkGameLose())) {
-                                effectWin.play()  
+                                effectLose.play()  
                             }
             }
 }
@@ -354,7 +355,6 @@ const clearUsrSpam = function(){
                     cpuScore = 0;
                     usrScore = 0;
                     roundCount = 0;
-                    clearImg();
                     askPlayAgain();
 
                     return true;
@@ -367,7 +367,6 @@ const clearUsrSpam = function(){
                     usrScore = 0;
                     cpuScore = 0;
                     roundCount = 0;
-                    clearImg();
                     askPlayAgain();
 
                     return true;
@@ -459,10 +458,18 @@ btnRounds.addEventListener('click', playScreen) // roundscreen > playscreen
 
 // Atributtes
     
+    againNoBtn.classList.add('endBtn');
+    againYesBtn.classList.add('endBtn');
+
     againNoBtn.innerText = "No";
     againYesBtn.innerText = "Yes";
-    playAgainDiv.appendChild(againYesBtn);
-    playAgainDiv.appendChild(againNoBtn);
+    playAgainDiv.innerText = "Want to play again?";
+
+    playAgainBtnsDiv.appendChild(againYesBtn);
+    playAgainBtnsDiv.appendChild(againNoBtn);
+    
+    playAgainDiv.appendChild(playAgainBtnsDiv)
+    
 
 
     sameRounds.setAttribute('id','samerounds');
