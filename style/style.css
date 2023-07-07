@@ -56,9 +56,11 @@ body {
   align-items: center;
   width: 750px;
 }
-#gamediv #topdiv p {
+#gamediv #topdiv #p-span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 654px;
-  height: 93px;
   font-family: "Ysabeau Office ", "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 #gamediv #topdiv span, #gamediv #topdiv .config {

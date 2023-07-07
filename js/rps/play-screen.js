@@ -396,7 +396,7 @@ const playScreen = function(){
     cardsArr.forEach(card => card.addEventListener('animationend', cardIn));
     usrCards.setAttribute('id','usr-cards')
     botDiv.appendChild(usrCards);
-    setRounds(slider.value);
+    setRounds(sliderRounds.value);
     pTopDiv.innerText = "Choose wisely";
 
 }
@@ -429,7 +429,7 @@ btnScissors.addEventListener('click', async () => noSpamPlayRound(scissors));
 
 
 
-//#region ------------ music volume ----------------
+//#region ------------ music volume slider ----------------
 
 bgSlider.setAttribute('id','slider-bg');
 bgSlider.classList.add('config-slider');
@@ -503,10 +503,10 @@ infoBtn.addEventListener('click', (e) => divToggle(e));
 
 //#region --------- audio rounds effects ------------- TODO
 
-const effects = document.querySelectorAll('.short-audio');
-const effectWin = effects[5] // 0-lose 1-win 2 win? 6 big lose 5 tie
+const audioEffect = document.querySelectorAll('.short-audio');
+const audioEffectArr = Array.from(audioEffect);    // 0-lose 1-win 2 win? 6 big lose 5 tie
 
-btnScissors.addEventListener('click', ()=> effectWin.play())
+btnScissors.addEventListener('click', ()=> audioEffectArr[5].play())
 
 //#endregion
 
@@ -517,8 +517,7 @@ btnScissors.addEventListener('click', ()=> effectWin.play())
 
 const audioBg = document.querySelectorAll('.long-audio');
 const audioBgArr = Array.from(audioBg);
-const audioEffect = document.querySelectorAll('.short-audio');
-const audioEffectArr = Array.from(audioEffect);
+
 const audioBtn = document.querySelector('#audio-settings-btn');
 
 
@@ -592,7 +591,10 @@ audioBtn.addEventListener('click', (e)=> audioToggle(e));
 //#endregion
 
 
+// set initial volume 
 
+setBgVolume();
+setEffectVolume();
 
 //#region ----------- config div ------------
 

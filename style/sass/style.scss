@@ -58,9 +58,10 @@ body{
         #topdiv {
             @include flexCenter;
             width: 750px;
-            p {
+            #p-span {
+                @include flexCenter;
                 width: 654px;
-                height: 93px;
+                // height: 93px;
                 font-family: 'Ysabeau Office ', 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
             }
             span, .config {
