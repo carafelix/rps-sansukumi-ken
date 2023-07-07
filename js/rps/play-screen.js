@@ -420,11 +420,12 @@ function setDarkMode(){
 function toggleDarkMode(){
 
     if (    darkToggle.innerText === 'light_mode'    ) {
-
-        setLightMode()
+        
+        setDarkMode()
 
     } else  {
-        setDarkMode()
+        setLightMode()
+
     }
 }
 
