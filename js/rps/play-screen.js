@@ -548,10 +548,14 @@ function audioMute(){
 }
 
 function setBgVolume(){
+    if (audioBtn.dataset.clicked !== "true"){
     audioBgArr.forEach(audio => audio.volume = (bgSlider.value / 100)); 
+    }   
 }
 function setEffectVolume(){
-    audioEffectArr.forEach(audio => audio.volume = (effectSlider.value / 100)); 
+    if (audioBtn.dataset.clicked !== "true"){
+    audioEffectArr.forEach(audio => audio.volume = (effectSlider.value / 100));
+    } 
 }
 
 audioBtn.addEventListener('click', (e)=> audioToggle(e));
@@ -583,7 +587,14 @@ effectSlider.addEventListener('input', () => setEffectVolume());
 //#region ----------- config div ------------
 
 const githubLogo = document.createElement('img'); githubLogo.setAttribute('src', './assets/img/icon/github-mark.png')
-info.appendChild(githubLogo);
+const gitAnchor = document.createElement('a'); gitAnchor.setAttribute('href','https://github.com/carafelix/rps-sansukumi-ken')
+const wikiLogo = document.createElement('img'); wikiLogo.setAttribute('src', './assets/img/icon/wikidark.svg')
+const wikiAnchor = document.createElement('a'); wikiAnchor.setAttribute('href', 'https://en.wikipedia.org/wiki/Sansukumi-ken')
+
+wikiAnchor.appendChild(wikiLogo);;
+gitAnchor.appendChild(githubLogo);
+info.appendChild(gitAnchor);
+info.appendChild(wikiAnchor);
 
 
 darkToggleDiv.appendChild(darkToggleSpan);
