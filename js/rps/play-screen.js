@@ -41,6 +41,8 @@ const againYesBtn = document.createElement('button');
 const againNoBtn = document.createElement('button'); 
 const sameRounds = document.createElement('input'); 
 const sameRoundsLabel = document.createElement('label');
+const sameRoundsDiv = document.createElement('div');
+const playAgainDiv = document.createElement('div');
 
 //#endregion
 
@@ -438,7 +440,7 @@ btnPlay.addEventListener('click', roundScreen);  // homescreen > round screen
 
 
 const playScreen = function(){
-    
+
     botDiv.removeChild(sliderDiv);
     botDiv.removeChild(btnRounds);
     botDiv.appendChild(usrCards);
@@ -453,22 +455,37 @@ btnRounds.addEventListener('click', playScreen) // roundscreen > playscreen
 //#endregion
 
 
-//#region ---------- Back to Homescreen ------------
+//#region ---------- End Screen ------------
 
-againNoBtn.innerText = "No";
-againYesBtn.innerText = "Yes";
+// Atributtes
+    
+    againNoBtn.innerText = "No";
+    againYesBtn.innerText = "Yes";
+    playAgainDiv.appendChild(againYesBtn);
+    playAgainDiv.appendChild(againNoBtn);
 
-sameRounds.setAttribute('id','samerounds');
-sameRounds.setAttribute('type','checkbox'); 
-sameRounds.setAttribute('for','samerounds');
-sameRoundsLabel.innerText = "Same rounds?";
 
-againNoBtn.addEventListener('click', ()=>homescreen());
-againYesBtn.addEventListener('click', ()=>againYes())
+    sameRounds.setAttribute('id','samerounds');
+    sameRounds.setAttribute('type','checkbox');
+    sameRounds.setAttribute('value','same'); 
+
+    sameRoundsLabel.setAttribute('for','samerounds');
+    sameRoundsLabel.innerText = "Same rounds?";
+
+    
+    sameRoundsDiv.appendChild(sameRoundsLabel);
+    sameRoundsDiv.appendChild(sameRounds);
+
+
+    againNoBtn.addEventListener('click', ()=>homescreen());
+    againYesBtn.addEventListener('click', ()=>againYes())
 
 function askPlayAgain(){ 
+
     botDiv.removeChild(usrCards);
-    botDiv.appendChild();
+
+    botDiv.appendChild(playAgainDiv)
+    botDiv.appendChild(sameRoundsDiv);
 
 }
 

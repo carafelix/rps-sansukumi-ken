@@ -80,6 +80,7 @@ body{
             #scores {
                 position: relative;
                 top:150px;
+                color: $white;
             }
 
         }
@@ -132,6 +133,11 @@ body{
                     #slider-rounds {
                         width: 250px;
                     }
+                }
+
+                #samerounds {
+                    width: 20px;
+                    height: 20px;
                 }
                 
 

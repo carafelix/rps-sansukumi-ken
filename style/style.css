@@ -80,6 +80,7 @@ body {
 #gamediv #middlediv #scores {
   position: relative;
   top: 150px;
+  color: #fff8de;
 }
 #gamediv #botdiv {
   display: flex;
@@ -128,6 +129,10 @@ body {
 }
 #gamediv #slider-div #slider-rounds {
   width: 250px;
+}
+#gamediv #samerounds {
+  width: 20px;
+  height: 20px;
 }
 
 .hide {
