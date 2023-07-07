@@ -1,7 +1,7 @@
 // all this should be wrapp inside a function to pass to the main js
 // to-do // hesitation();
 
-// nodes 
+//#region ------------- Nodes ------------------ 
 
 const gamediv = document.querySelector('#gamediv');
 const topDiv = document.querySelector('#topdiv');
@@ -36,6 +36,8 @@ const effectSlider = document.createElement('input');
 const darkToggleDiv = document.createElement('div');
 const darkToggleSpan = document.createElement('span'); 
 const darkToggle = document.createElement('span'); darkToggle.classList.add('material-symbols-rounded');
+
+//#endregion
 
 
 
@@ -82,6 +84,9 @@ function cardIn(e){
 
 //#endregion
 
+
+
+
 //#region -------- monster show -------
 
 function usrImgSelect(usr, cpu){
@@ -117,6 +122,8 @@ function clearImg(){
 //#endregion
 
 
+
+
 //#region --------- slider attributes -----------
 
 sliderDiv.setAttribute('id', 'slider-div');
@@ -142,6 +149,8 @@ function sliderColorRandom(){
 //#endregion
 
 
+
+
 //#region --------- rps variables ----------
 
 // rps weapons
@@ -161,6 +170,9 @@ let cpuChoice;
 
 //#endregion
 
+
+
+
 //#region --------- get cpu choice from pseudo-random ------------
 
     const cpuChoiceArray = [rock, paper, scissors]
@@ -170,6 +182,8 @@ let cpuChoice;
     return array[randomIndex];
     } 
 //#endregion
+
+
 
 
 //#region --------- get cpu choice from randomg.org --------------
@@ -214,6 +228,9 @@ let cpuChoice;
 
 //#endregion
 
+
+
+
 //#region  --- setCpuChoice
 
 const setCpuChoice = function(){
@@ -230,6 +247,8 @@ const setCpuChoice = function(){
 
 
 //#endregion
+
+
 
 
 //#region --------- prevent spam function, nested playround--------               // setInterval could be used as event listener // noted. if I want to prevent something, better catch it on the if statement than in the 'else'
@@ -251,7 +270,6 @@ const clearUsrSpam = function(){
 }
 
 //#endregion
-
 
 
 
@@ -293,6 +311,9 @@ const clearUsrSpam = function(){
         
 //#endregion
 
+
+
+
 //#region --------- check if someone as lost ----------------------
 
         
@@ -323,6 +344,8 @@ const clearUsrSpam = function(){
 
 //#endregion
 
+
+
 //#region --------- set rounds function ----------
 
 function setRounds (rounds){
@@ -330,6 +353,9 @@ function setRounds (rounds){
     bestOfX = rounds;
 }
 //#endregion
+
+
+
 
 //#region  --------- Round Screen
 
@@ -352,6 +378,8 @@ const roundScreen = function(){
 btnPlay.addEventListener('click', roundScreen);  // homescreen > round screen   
 
 //#endregion
+
+
 
 
 //#region  --------- Play Screen -----------
@@ -377,6 +405,9 @@ btnRounds.addEventListener('click', playScreen) // roundscreen > playscreen
 
 //#endregion
 
+
+
+
 //#region ------------ rps buttons atributes ---------
 
 btnRock.setAttribute('id','rock');
@@ -396,55 +427,29 @@ btnScissors.addEventListener('click', async () => noSpamPlayRound(scissors));
 //#endregion
 
 
-//#region --------- audio rounds effects ------------- TODO
-
-const effects = document.querySelectorAll('.short-audio');
-const effectWin = effects[5] // 0-lose 1-win 2 win? 6 big lose 5 tie
-
-btnScissors.addEventListener('click', ()=> effectWin.play())
-
-//#endregion
-
-//#region  ----------- darkmode toggle ---------------
-
-function checkInitialLightMode(){
-    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        setDarkMode();
-    } else {
-        setLightMode();
-    }
-}
-
-function setLightMode(){
-    darkToggle.innerText = 'light_mode'
-}
-
-function setDarkMode(){
-    darkToggle.innerText = 'dark_mode'
-    
-    //aaaaaaaañadir clase dark a algunos webeos y tal y tal
-}
-
-function toggleDarkMode(){
-
-    if (    darkToggle.innerText === 'light_mode'    ) {
-
-        setDarkMode()
-
-    } else  {
-        setLightMode()
-
-    }
-}
-
-checkInitialLightMode();
-
-darkToggle.addEventListener('click', toggleDarkMode);
 
 
+//#region ------------ music volume ----------------
+
+bgSlider.setAttribute('id','slider-bg');
+bgSlider.classList.add('config-slider');
+bgSlider.setAttribute('type','range');
+bgSlider.setAttribute('value','15');
+bgSlider.setAttribute('min', '1');
+bgSlider.setAttribute('max','100');
+bgSlider.addEventListener('input', () =>  setBgVolume());
+
+effectSlider.setAttribute('id','slider-effects');
+effectSlider.classList.add('config-slider');
+effectSlider.setAttribute('type','range');
+effectSlider.setAttribute('value','15');
+effectSlider.setAttribute('min', '1');
+effectSlider.setAttribute('max','100');
+effectSlider.addEventListener('input', () => setEffectVolume());
 
 
 //#endregion
+
 
 
 
@@ -496,6 +501,18 @@ infoBtn.addEventListener('click', (e) => divToggle(e));
 
 
 
+//#region --------- audio rounds effects ------------- TODO
+
+const effects = document.querySelectorAll('.short-audio');
+const effectWin = effects[5] // 0-lose 1-win 2 win? 6 big lose 5 tie
+
+btnScissors.addEventListener('click', ()=> effectWin.play())
+
+//#endregion
+
+
+
+
 //#region  ------------ Background Music -----------
 
 const audioBg = document.querySelectorAll('.long-audio');
@@ -526,6 +543,8 @@ const bgMusicC = function(){ //chill random interval
 document.addEventListener('load', bgMusicC());
 
 //#endregion
+
+
 
 
 //#region --------- audio mute toggle -----------
@@ -572,26 +591,8 @@ audioBtn.addEventListener('click', (e)=> audioToggle(e));
 
 //#endregion
 
-//#region ------------ music volume ----------------
-
-bgSlider.setAttribute('id','slider-bg');
-bgSlider.classList.add('config-slider');
-bgSlider.setAttribute('type','range');
-bgSlider.setAttribute('value','15');
-bgSlider.setAttribute('min', '1');
-bgSlider.setAttribute('max','100');
-bgSlider.addEventListener('input', () =>  setBgVolume());
-
-effectSlider.setAttribute('id','slider-effects');
-effectSlider.classList.add('config-slider');
-effectSlider.setAttribute('type','range');
-effectSlider.setAttribute('value','15');
-effectSlider.setAttribute('min', '1');
-effectSlider.setAttribute('max','100');
-effectSlider.addEventListener('input', () => setEffectVolume());
 
 
-//#endregion
 
 //#region ----------- config div ------------
 
@@ -623,6 +624,50 @@ effectSliderDiv.appendChild(effectSlider);
 settings.appendChild(bgsliderDiv);
 settings.appendChild(effectSliderDiv);
 
+
+
+
+
+//#endregion
+
+
+
+
+//#region  ----------- darkmode toggle ---------------
+
+function checkInitialLightMode(){
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        setDarkMode();
+    } else {
+        setLightMode();
+    }
+}
+
+function setLightMode(){
+    darkToggle.innerText = 'light_mode'
+}
+
+function setDarkMode(){
+    darkToggle.innerText = 'dark_mode'
+    
+    //aaaaaaaañadir clase dark a algunos webeos y tal y tal
+}
+
+function toggleDarkMode(){
+
+    if (    darkToggle.innerText === 'light_mode'    ) {
+
+        setDarkMode()
+
+    } else  {
+        setLightMode()
+
+    }
+}
+
+checkInitialLightMode();
+
+darkToggle.addEventListener('click', toggleDarkMode);
 
 
 
