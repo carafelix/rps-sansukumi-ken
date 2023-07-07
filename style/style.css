@@ -118,7 +118,7 @@ body {
   align-items: center;
   gap: 50px;
 }
-#gamediv #slider-div input {
+#gamediv #slider-div #slider-rounds {
   width: 250px;
 }
 
@@ -176,4 +176,8 @@ body {
 #info-btn {
   position: relative;
   left: 15px;
+}
+
+.config-slider {
+  width: 220px;
 }/*# sourceMappingURL=style.css.map */

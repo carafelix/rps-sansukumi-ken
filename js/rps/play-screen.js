@@ -1,10 +1,6 @@
 // all this should be wrapp inside a function to pass to the main js
 // to-do // hesitation();
 
-// variables
-
-let audioVolume = 0.1; //initial
-
 // nodes 
 
 const gamediv = document.querySelector('#gamediv');
@@ -31,8 +27,12 @@ const infoBtn = document.querySelector('#info-btn');
 
 const settings = document.createElement('div'); settings.setAttribute('id','settings');
 const info = document.createElement('div'); info.setAttribute('id','info');
-const bgSlider = document.createElement('input');
-const effectSlider = document.createElement('input');
+
+const bgsliderDiv = document.createElement('div'); 
+const bgSlider = document.createElement('input'); 
+const effectSliderDiv = document.createElement('div'); 
+const effectSlider = document.createElement('input'); 
+
 
 const darkToggle = document.createElement('span'); darkToggle.classList.add('material-symbols-rounded');
 
@@ -393,8 +393,6 @@ btnScissors.addEventListener('click', async () => noSpamPlayRound(scissors));
 const effects = document.querySelectorAll('.short-audio');
 const effectWin = effects[5] // 0-lose 1-win 2 win? 6 big lose 5 tie
 
-HTMLAudioElement.volume = 0.1;
-
 btnScissors.addEventListener('click', ()=> effectWin.play())
 
 //#endregion
@@ -490,7 +488,7 @@ infoBtn.addEventListener('click', (e) => divToggle(e));
 
 
 
-//#region  ------------ Music -----------
+//#region  ------------ Background Music -----------
 
 const audioBg = document.querySelectorAll('.long-audio');
 const audioBgArr = Array.from(audioBg);
@@ -511,7 +509,6 @@ function randomIndex(){
 const bgMusicC = function(){ //chill random interval
     setTimeout(() => {
         let rAudio = audioBgArr[randomIndex()];
-        rAudio.volume = audioVolume; 
         rAudio.play();
         setTimeout(bgMusicC(), randomTime()*randomTime())  // such a good thing to know!
     }, randomTime());
@@ -521,7 +518,7 @@ const bgMusicC = function(){ //chill random interval
 document.addEventListener('load', bgMusicC());
 
 
-//#region --------- audio toggle -----------
+//#region --------- audio mute toggle -----------
 
 function audioToggle(e) {
     if (!e.target.dataset.clicked){
@@ -534,8 +531,11 @@ function audioToggle(e) {
     } else {
 
         e.target.removeAttribute("data-clicked");
-        audioFull();
         audioBtn.innerText = 'volume_up' 
+
+        setEffectVolume();
+        setBgVolume();
+        
 
 
     }
@@ -543,11 +543,14 @@ function audioToggle(e) {
 
 function audioMute(){
     audioBgArr.forEach(audio => audio.volume = 0);
+    audioEffectArr.forEach(audio => audio.volume = 0);
 }
 
-function audioFull(){
-    audioBgArr.forEach(audio => audio.volume = audioVolume); // variable instead of = 0.1 PLEASE
-    
+function setBgVolume(){
+    audioBgArr.forEach(audio => audio.volume = (bgSlider.value / 100)); 
+}
+function setEffectVolume(){
+    audioEffectArr.forEach(audio => audio.volume = (effectSlider.value / 100)); 
 }
 
 audioBtn.addEventListener('click', (e)=> audioToggle(e));
@@ -555,7 +558,44 @@ audioBtn.addEventListener('click', (e)=> audioToggle(e));
 
 //#endregion
 
+//#region ------------ music volume ----------------
 
+bgSlider.setAttribute('id','slider-bg');
+bgSlider.classList.add('config-slider');
+bgSlider.setAttribute('type','range');
+bgSlider.setAttribute('value','20');
+bgSlider.setAttribute('min', '1');
+bgSlider.setAttribute('max','100');
+bgSlider.addEventListener('input', () =>  setBgVolume());
+
+effectSlider.setAttribute('id','slider-effects');
+effectSlider.classList.add('config-slider');
+effectSlider.setAttribute('type','range');
+effectSlider.setAttribute('value','20');
+effectSlider.setAttribute('min', '1');
+effectSlider.setAttribute('max','100');
+effectSlider.addEventListener('input', () => setEffectVolume());
+
+
+//#endregion
+
+//#region ----------- config div ------------
+
+
+bgsliderDiv.appendChild(bgSlider);
+
+
+effectSliderDiv.appendChild(effectSlider);
+
+
+settings.appendChild(bgsliderDiv);
+settings.appendChild(effectSliderDiv);
+
+
+
+
+
+//#endregion
 
 
 
