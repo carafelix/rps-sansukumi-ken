@@ -407,13 +407,15 @@ function setRounds (rounds){
 
 const roundScreen = function(){
 
+    if (botDiv.contains(btnPlay)){
+        botDiv.removeChild(btnPlay); 
+    }
 
-
-    botDiv.removeChild(btnPlay); 
     botDiv.appendChild(sliderDiv);
     botDiv.appendChild(btnRounds);
     
     pTopDiv.textContent = "Select the 'best of' how many rounds you want to play for";
+
 
 } 
 
@@ -440,8 +442,13 @@ btnPlay.addEventListener('click', roundScreen);  // homescreen > round screen
 
 const playScreen = function(){
 
-    botDiv.removeChild(sliderDiv);
-    botDiv.removeChild(btnRounds);
+    if (botDiv.contains(btnRounds)){
+
+        botDiv.removeChild(sliderDiv);
+        botDiv.removeChild(btnRounds);
+    }
+
+    
     botDiv.appendChild(usrCards);
     setRounds(sliderRounds.value);
     pTopDiv.innerText = "Choose wisely";
@@ -474,7 +481,6 @@ btnRounds.addEventListener('click', playScreen) // roundscreen > playscreen
 
     sameRounds.setAttribute('id','samerounds');
     sameRounds.setAttribute('type','checkbox');
-    sameRounds.setAttribute('value','same'); 
 
     sameRoundsLabel.setAttribute('for','samerounds');
     sameRoundsLabel.innerText = "Same rounds?";
@@ -484,8 +490,10 @@ btnRounds.addEventListener('click', playScreen) // roundscreen > playscreen
     sameRoundsDiv.appendChild(sameRounds);
 
 
-    againNoBtn.addEventListener('click', ()=>homescreen());
+    againNoBtn.addEventListener('click', ()=>homeScreen());
     againYesBtn.addEventListener('click', ()=>againYes())
+
+    //functions
 
 function askPlayAgain(){ 
 
@@ -496,16 +504,32 @@ function askPlayAgain(){
 
 }
 
-function homescreen(){
+function homeScreen(){
+
+        pMidDiv.innerText = '0 - 0';
+        removeEndChilds();
+        pTopDiv.innerText = 'Why would you not test your luck against the universe... Play again, coward!'
+        botDiv.appendChild(btnPlay);
 
 }
 
 function againYes(){
-    if (sameRounds.value == 'true'){
+    if (sameRounds.checked == true){
+        pMidDiv.innerText = '0 - 0';
+        removeEndChilds()
+        playScreen();
 
     } else {
-
+        pMidDiv.innerText = '0 - 0';
+        removeEndChilds()
+        roundScreen();
     }
+}
+
+function removeEndChilds(){
+
+        botDiv.removeChild(playAgainDiv);
+        botDiv.removeChild(sameRoundsDiv);
 }
 
 //#endregion
@@ -708,9 +732,9 @@ setEffectVolume();
 //#region ----------- config div ------------
 
 const githubLogo = document.createElement('img'); githubLogo.setAttribute('src', './assets/img/icon/github-mark.png')
-const gitAnchor = document.createElement('a'); gitAnchor.setAttribute('href','https://github.com/carafelix/rps-sansukumi-ken')
+const gitAnchor = document.createElement('a'); gitAnchor.setAttribute('href','https://github.com/carafelix/rps-sansukumi-ken'); gitAnchor.setAttribute('target', '_blank');
 const wikiLogo = document.createElement('img'); wikiLogo.setAttribute('src', './assets/img/icon/wikidark.svg')
-const wikiAnchor = document.createElement('a'); wikiAnchor.setAttribute('href', 'https://en.wikipedia.org/wiki/Sansukumi-ken')
+const wikiAnchor = document.createElement('a'); wikiAnchor.setAttribute('href', 'https://en.wikipedia.org/wiki/Sansukumi-ken'); wikiAnchor.setAttribute('target', '_blank');
 
 wikiAnchor.appendChild(wikiLogo);;
 gitAnchor.appendChild(githubLogo);
@@ -784,6 +808,3 @@ darkToggle.addEventListener('click', toggleDarkMode);
 
 
 //#endregion
-
-
-
