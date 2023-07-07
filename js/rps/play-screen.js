@@ -32,6 +32,8 @@ const infoBtn = document.querySelector('#info-btn');
 const settings = document.createElement('div'); settings.setAttribute('id','settings');
 const info = document.createElement('div'); info.setAttribute('id','info');
 
+const darkToggle = document.createElement('span'); darkToggle.classList.add('material-symbols-rounded');
+
 
 
 
@@ -395,8 +397,49 @@ btnScissors.addEventListener('click', ()=> effectWin.play())
 
 //#endregion
 
+//#region  ----------- config div & darkmode toggle ---------------
 
-//#region ------------ audio config toggle buttons -------- this should or could be refactor to use template literal 
+function checkInitialLightMode(){
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        setDarkMode();
+    } else {
+        setLightMode();
+    }
+}
+
+function setLightMode(){
+    darkToggle.innerText = 'light_mode'
+}
+
+function setDarkMode(){
+    darkToggle.innerText = 'dark_mode'
+    
+    //aaaaaaaañadir clase dark a algunos webeos y tal y tal
+}
+
+function toggleDarkMode(){
+
+    if (    darkToggle.innerText === 'light_mode'    ) {
+
+        setLightMode()
+
+    } else  {
+        setDarkMode()
+    }
+}
+
+checkInitialLightMode();
+
+darkToggle.addEventListener('click', toggleDarkMode);
+settings.appendChild(darkToggle);
+
+
+
+//#endregion
+
+
+
+//#region ------------ audio config toggle buttons --------
 
 function divToggle(e){
     if (!e.target.dataset.clicked){
@@ -505,6 +548,7 @@ audioBtn.addEventListener('click', (e)=> audioToggle(e));
 
 
 //#endregion
+
 
 
 
