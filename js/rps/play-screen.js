@@ -37,6 +37,11 @@ const darkToggleDiv = document.createElement('div');
 const darkToggleSpan = document.createElement('span'); 
 const darkToggle = document.createElement('span'); darkToggle.classList.add('material-symbols-rounded');
 
+const againYesBtn = document.createElement('button');
+const againNoBtn = document.createElement('button'); 
+const sameRounds = document.createElement('input'); 
+const sameRoundsLabel = document.createElement('label');
+
 //#endregion
 
 
@@ -302,7 +307,7 @@ const clearUsrSpam = function(){
                         ++roundCount
                         ++usrScore;
                         pMidDiv.textContent = `${usrScore} - ${cpuScore}`;
-                        pTopDiv.innerText = `Human Will can go against all odds!`;
+                        pTopDiv.innerText = `Human Will can move mountains!`;
 
                             if (!(checkGameLose())) {
                                 effectWin.play()  
@@ -348,17 +353,21 @@ const clearUsrSpam = function(){
                     usrScore = 0;
                     roundCount = 0;
                     clearImg();
+                    askPlayAgain();
+
                     return true;
 
                 } else if (((cpuScore - usrScore) >= 1) ) {
                     
                     effectBigLose.play();
 
-                    pTopDiv.innerText = `Chaos took over! Universe: ${cpuScore} Humanity: ${usrScore}.`;
+                    pTopDiv.innerText = `Chaos took over! Humanity is lost!`;
                     usrScore = 0;
                     cpuScore = 0;
                     roundCount = 0;
                     clearImg();
+                    askPlayAgain();
+
                     return true;
                 } else {
                     return false;
@@ -383,20 +392,26 @@ function setRounds (rounds){
 
 
 
-//#region  --------- Round Screen
+//#region  --------- Round Screen -------------
 
-const roundScreen = function(){
-    botDiv.removeChild(btnPlay); 
-    sliderDiv.appendChild(sliderRounds);
+    // atributtes
+
     sliderOutput.textContent = '5';
-    botDiv.appendChild(sliderDiv);
-    sliderDiv.appendChild(sliderOutput);
-    botDiv.appendChild(btnRounds);
     btnRounds.setAttribute('id', 'rounds');
     btnRounds.innerText = 'rounds';
-    sliderRounds.addEventListener('change', () => {
-    sliderOutput.style.color = sliderColorRandom();
-    });
+    sliderDiv.appendChild(sliderRounds);
+    sliderDiv.appendChild(sliderOutput);
+    sliderRounds.addEventListener('change', () => {sliderOutput.style.color = sliderColorRandom()});
+
+
+const roundScreen = function(){
+
+
+
+    botDiv.removeChild(btnPlay); 
+    botDiv.appendChild(sliderDiv);
+    botDiv.appendChild(btnRounds);
+    
     pTopDiv.textContent = "Select the 'best of' how many rounds you want to play for";
 
 } 
@@ -410,10 +425,8 @@ btnPlay.addEventListener('click', roundScreen);  // homescreen > round screen
 
 //#region  --------- Play Screen -----------
 
+    // atributtes
 
-const playScreen = function(){
-    botDiv.removeChild(sliderDiv);
-    botDiv.removeChild(btnRounds)
     usrCards.appendChild(btnRock);
     usrCards.appendChild(btnPaper);
     usrCards.appendChild(btnScissors);
@@ -421,16 +434,57 @@ const playScreen = function(){
     cardsArr.forEach(card => card.addEventListener('click', fadeCard));
     cardsArr.forEach(card => card.addEventListener('animationend', cardIn));
     usrCards.setAttribute('id','usr-cards')
+    
+
+
+const playScreen = function(){
+    
+    botDiv.removeChild(sliderDiv);
+    botDiv.removeChild(btnRounds);
     botDiv.appendChild(usrCards);
     setRounds(sliderRounds.value);
     pTopDiv.innerText = "Choose wisely";
 
-}
+    }
 
 btnRounds.addEventListener('click', playScreen) // roundscreen > playscreen
 
+
 //#endregion
 
+
+//#region ---------- Back to Homescreen ------------
+
+againNoBtn.innerText = "No";
+againYesBtn.innerText = "Yes";
+
+sameRounds.setAttribute('id','samerounds');
+sameRounds.setAttribute('type','checkbox'); 
+sameRounds.setAttribute('for','samerounds');
+sameRoundsLabel.innerText = "Same rounds?";
+
+againNoBtn.addEventListener('click', ()=>homescreen());
+againYesBtn.addEventListener('click', ()=>againYes())
+
+function askPlayAgain(){ 
+    botDiv.removeChild(usrCards);
+    botDiv.appendChild();
+
+}
+
+function homescreen(){
+
+}
+
+function againYes(){
+    if (sameRounds.value == 'true'){
+
+    } else {
+
+    }
+}
+
+//#endregion
 
 
 
