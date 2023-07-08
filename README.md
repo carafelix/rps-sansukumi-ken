@@ -21,7 +21,7 @@ so no cheating its allowed prior.
 
 - SPA design with no dead ends.
 
-- CPU choice is set from random.org API using ```fetch()```, so no backend is needed. Done asynchronously using ```.then``` and ```await```.
+- CPU choice is set from random.org API using ```fetch()```, so it's done front-end only. Done asynchronously using ```.then``` and ```await```.
 
 - Ability to select the number of rounds to be played.
 
