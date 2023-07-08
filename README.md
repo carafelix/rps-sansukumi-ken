@@ -17,11 +17,6 @@ so no cheating its allowed prior.
 - Since the machine selects its own weapon on random, there is no problem on letting it select after.
 - Draws should not count towards the scores but should be registered in the total rounds count.
 
-<div align="center">
-<img src="./assets/darklight.gif" width="750">
-</div>
-
-
 ## Implementations
 
 - SPA design with no dead ends.
@@ -42,6 +37,7 @@ so no cheating its allowed prior.
 
 - Misc: Round's selector slider outputs a random color on each value change event
 
+![](./assets/darklight.gif)
 
 
 ## Concept
