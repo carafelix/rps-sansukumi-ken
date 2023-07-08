@@ -2,7 +2,7 @@
 <div align="center"> 
 <h1>Sansukumi-Ken, the <em>original</em> rps</h1>
 <img src="./assets/game.gif" width="750">
-<p><em>Game demo</em></p>
+<p><em>Game demo on Dark Mode</em></p>
 </div>
 
 ## Introduction
