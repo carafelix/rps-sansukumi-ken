@@ -39,7 +39,7 @@ body {
   width: 800px;
   min-height: 800px;
   background: url(../../assets/img/humans/primates3.jpg) no-repeat right 30% top 40%/770px;
-  background-color: #fff8de;
+  background-color: #fffcf1;
   box-shadow: 2px 3px 15px hsla(0, 0%, 0%, 0.419);
   border-radius: 12px;
   border-radius: 5%;
@@ -74,13 +74,13 @@ body {
   align-items: center;
   flex: 1 0 0;
   font-size: 45px;
-  color: #fff8de;
+  color: #fffcf1;
   -webkit-text-stroke: 2px black;
 }
 #gamediv #middlediv #scores {
   position: relative;
   top: 150px;
-  color: #fff8de;
+  color: #fffcf1;
 }
 #gamediv #botdiv {
   display: flex;
@@ -188,7 +188,7 @@ body {
 #settings, #info {
   font-size: 20px;
   position: absolute;
-  background-color: #fff8de;
+  background-color: #fffcf1;
   box-shadow: 2px 3px 15px hsla(0, 0%, 0%, 0.419);
   border-radius: 12px;
 }
@@ -230,7 +230,7 @@ body {
 }
 
 p.dark, span.dark {
-  color: #fff8de;
+  color: #fffcf1;
 }
 
 body.dark {
@@ -242,7 +242,7 @@ body.dark {
   background-color: #1f1f1f;
 }
 #gamediv.dark #botdiv {
-  color: #fff8de;
+  color: #fffcf1;
 }
 #gamediv.dark #botdiv #rock.dark {
   background-image: url(../../assets/img/cards/slugtrans.png);
@@ -254,16 +254,16 @@ body.dark {
   background-image: url(../../assets/img/cards/snaketrans.png);
 }
 #gamediv.dark #botdiv output.dark {
-  -webkit-text-stroke: 1.5px #fff8de;
+  -webkit-text-stroke: 1.5px #fffcf1;
 }
 #gamediv.dark #botdiv label {
-  color: #fff8de;
+  color: #fffcf1;
 }
 
 #settings.dark, #info.dark {
   background-color: #1f1f1f;
-  color: #fff8de;
+  color: #fffcf1;
 }
 #settings.dark div > span, #info.dark div > span {
-  color: #fff8de;
+  color: #fffcf1;
 }/*# sourceMappingURL=style.css.map */
