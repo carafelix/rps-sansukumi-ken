@@ -1,30 +1,47 @@
 # Sansukumi-ken
 Simple rock paper scissors game
 
-## General Plan; goals, input, expected result, rules, ideas.
+## Introduction
 
-The objective of this proyect is to allow the user to play a simple
-Rock-Paper-Scissors game against the computer; first via text input-output form, and later with a GUI
+The first objective of this proyect is to allow the user to play a simple
+Rock-Paper-Scissors game against a truly random generated choice; first only via a text, and later with a GUI.
+This is possible thanks to [random.org](https://www.random.org/), who generate a random number output based on unpredictable micro atmosferic noise changes.
 
+## Constrictions
 Cpu choices must only be initialized after the user already selected a weapon of choice
-so no cheating its allowed prior. Since the machine selects its own weapon on random, there is no problem on letting it select after
+so no cheating its allowed prior. Since the machine selects its own weapon on random, there is no problem on letting it select after.
 Draws should not count towards the scores but should be registered in the total rounds count.
-Would do multiple iterations to get the flow of it
 
-## Ideas 
-- Make the user able to select if he wants to play a golden goal round, a best of 3 , a Fto5 or a Fto10.
-- Implement random.org API using fetch() on cpuChoice, so it is truly random.
-- Hestiation is defeat, maybe with a counter like when kids slap their fist into the other hand for count. setTimeout Function. 
-- Maybe implement a Voice-Recognition Library to allow the user to shout like a kid to the computer hahaha.
-- GUI visualitation of rounds/score record.
-- background music play order is randomly mixed, and delay between each is random, between a fixed parameter
-- promise base set cpu choice
-- rounds output number color random
+## Implementations
 
+- SPA design with no dead ends.
 
-## to-do
+- CPU choice is set from random.org API using ```fetch()```, so no backend is needed. Done asynchronously using ```.then``` and ```await```.
 
-- play music on round determination
+- Ability to select the number of rounds to be played.
+
+- Set color scheme dark/light based on user browser preference and toggable.
+
+- background music is mixed array with independent random intervals, with a fixed parameter limit, givin a unique user experience each time.
+
+- Round/Game adhoc sound effects depending if user win or lose.
+
+- Volume is mutable and adjustable independently.
+
+- GUI visualitation of the game, with animations to give 
+
+- Misc: Round's selector slider outputs a random color on each value change event
+
+# Ideas
+
+- add more information on the history of rps and add visual key to relate each one to correspondent 'slug' 'frog' 'snake'. etc
+
 - animation falling humans on humanity win
-- animation falling ??? on cpu wins
-- volumen 
+
+
+## Known Issues 
+
+- If the play again button 'yes' is click fast enough that the card animation is still not detected, it triggers the second part of the 'card going back animation'
+- Monsters silluettes could be improved
+- A little delay is needed between each round call for the random.org API to work
+
