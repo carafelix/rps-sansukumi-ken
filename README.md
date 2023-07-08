@@ -1,6 +1,6 @@
 
 <div align="center"> 
-<h1>Sansukumi-Ken, the original rps</h1>
+<h1>Sansukumi-Ken, the <em>original</em> rps</h1>
 <img src="./assets/darklight.gif" width="750">
 <p><em>Darkmode Toggle</em></p>
 </div>
