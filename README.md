@@ -38,7 +38,7 @@ so no cheating its allowed prior.
 - Misc: Round's selector slider outputs a random color on each value change event
 
 <div align="center">
-<img src="(./assets/darklight.gif)">
+<img src="./assets/darklight.gif)">
 <p><em>Dark Mode toggle demo</em></p>
 </div>
 
