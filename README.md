@@ -1,8 +1,8 @@
 
 <div align="center"> 
-<h1>Sansukumi-Ken</h1>
+<h1>Sansukumi-Ken, the original rps</h1>
 <img src="./assets/darklight.gif" width="750">
-<p><em>The original rps</em></p>
+<p><em>Darkmode Toggle</em></p>
 </div>
 
 ## Introduction
@@ -36,7 +36,11 @@ Draws should not count towards the scores but should be registered in the total 
 
 - Misc: Round's selector slider outputs a random color on each value change event
 
-# Ideas
+## Concepts
+
+![](./concept/diagram/rps.drawio.png)
+
+## Ideas
 
 - add more information on the history of rps and add visual key to relate each one to correspondent 'slug' 'frog' 'snake'. etc
 
