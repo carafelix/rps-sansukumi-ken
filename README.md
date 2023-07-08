@@ -33,7 +33,7 @@ so no cheating its allowed prior.
 
 - Volume is mutable and adjustable independently.
 
-- GUI visualitation of the game, with animations to give 
+- GUI visualitation of the game, with animations to give some delay for the API to work with
 
 - Misc: Round's selector slider outputs a random color on each value change event
 
