@@ -798,8 +798,8 @@ function setLightMode(){
     settings.classList.remove('dark');
     info.classList.remove('dark');
 
-    wikiLogo.setAttribute('src', './assets/img/icon/wikidark.svg')
-    githubLogo.setAttribute('src', './assets/img/icon/github-mark.png')
+    wikiLogo.setAttribute('src', '/rps-sansukumi-ken/assets/img/icon/wikidark.svg')
+    githubLogo.setAttribute('src', '/rps-sansukumi-ken/assets/img/icon/github-mark.png')
 
     //remove dark
 }
@@ -818,8 +818,8 @@ function setDarkMode(){
     settings.classList.add('dark');
     info.classList.add('dark');
 
-    wikiLogo.setAttribute('src', './assets/img/icon/wikilight.svg');
-    githubLogo.setAttribute('src', './assets/img/icon/github-mark-white.png')
+    wikiLogo.setAttribute('src', '/rps-sansukumi-ken/assets/img/icon/wikilight.svg');
+    githubLogo.setAttribute('src', '/rps-sansukumi-ken/assets/img/icon/github-mark-white.png')
 }
 
 function toggleDarkMode(){
