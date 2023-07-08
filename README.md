@@ -55,7 +55,7 @@ so no cheating its allowed prior.
 
 ## Known Issues 
 
-- If the play again button 'yes' is click fast enough that the card animation is still not detected, it triggers the second part of the 'card going back animation'
+- In the end-screen, if the play again button 'yes' is click fast enough that the card animation is still not ended && 'same rounds' is checked,  it triggers the second part of the 'card going back animation'
 - Monsters silluettes could be improved
 - A little delay is needed between each round call for the random.org API to work
 
