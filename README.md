@@ -2,7 +2,7 @@
 <div align="center"> 
 <h1>Sansukumi-Ken, the <em>original</em> rps</h1>
 <img src="./assets/game.gif" width="750">
-<p><em>Game demo on Dark Mode</em></p>
+<p><em>Game Demo on Dark Mode</em></p>
 </div>
 
 ## Introduction
@@ -37,8 +37,10 @@ so no cheating its allowed prior.
 
 - Misc: Round's selector slider outputs a random color on each value change event
 
+<div align="center">
 ![](./assets/darklight.gif)
-
+<p><em>Dark Mode toggle demo</em></p>
+</div>
 
 ## Concept
 
