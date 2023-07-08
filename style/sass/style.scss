@@ -249,6 +249,8 @@ body{
     
         #botdiv {
 
+            color: $white;
+
             #rock.dark {
                 background-image: url(../../assets/img/cards/sluginv.png);
             }
@@ -262,6 +264,9 @@ body{
             output.dark {
             -webkit-text-stroke: 1.5px $white;
             }
+            label{
+                color: $white;
+            }
         }
 
         
@@ -272,10 +277,6 @@ body{
 
             div > span {
                 color: $white;
-            }
-
-            a > img {
-                
             }
     }
 

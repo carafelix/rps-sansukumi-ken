@@ -241,6 +241,9 @@ body.dark {
   background: url(../../assets/img/humans/primates3-inv.jpg) no-repeat right 30% top 40%/770px;
   background-color: #1f1f1f;
 }
+#gamediv.dark #botdiv {
+  color: #fff8de;
+}
 #gamediv.dark #botdiv #rock.dark {
   background-image: url(../../assets/img/cards/sluginv.png);
 }
@@ -252,6 +255,9 @@ body.dark {
 }
 #gamediv.dark #botdiv output.dark {
   -webkit-text-stroke: 1.5px #fff8de;
+}
+#gamediv.dark #botdiv label {
+  color: #fff8de;
 }
 
 #settings.dark, #info.dark {
