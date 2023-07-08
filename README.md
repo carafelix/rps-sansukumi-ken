@@ -12,9 +12,10 @@ Rock-Paper-Scissors game against a truly random generated choice; first only via
 This is possible thanks to [random.org](https://www.random.org/), who generate a random number output based on unpredictable micro atmosferic noise changes.
 
 ## Constrictions
-Cpu choices must only be initialized after the user already selected a weapon of choice
-so no cheating its allowed prior. Since the machine selects its own weapon on random, there is no problem on letting it select after.
-Draws should not count towards the scores but should be registered in the total rounds count.
+- Cpu choices must only be initialized after the user already selected a weapon of choice
+so no cheating its allowed prior. 
+- Since the machine selects its own weapon on random, there is no problem on letting it select after.
+- Draws should not count towards the scores but should be registered in the total rounds count.
 
 ## Implementations
 
