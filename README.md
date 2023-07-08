@@ -37,7 +37,7 @@ so no cheating its allowed prior.
 
 - Misc: Round's selector slider outputs a random color on each value change event
 
-## Concepts
+## Concept
 
 ![](./concept/diagram/rps.drawio.png)
 
