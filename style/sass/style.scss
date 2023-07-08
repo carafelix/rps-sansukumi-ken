@@ -285,6 +285,22 @@ body{
             }
     }
 
+    #error {
+        @include flexCenter;
+        font-size: 40px;
+        padding: 100px;
+        background-color: $dark;
+        color: $white;
+        opacity: 96.5%;
+        border-radius: 150px;
+        box-shadow: 2px 3px 15px hsla(0, 0%, 0%, 0.419);
+    }
+
+    body.dark #error {
+        color: $dark;
+        background-color: $white;
+
+    }
 
     
 

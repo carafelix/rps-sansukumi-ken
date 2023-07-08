@@ -1,5 +1,4 @@
-// all this should be wrapp inside a function to pass to the main js
-// to-do // hesitation();
+// note for myself: Is not a good practice defining a function with the variable embeeded in the function, its better to pass parameters and the call the functions with the variable as an argument!
 
 //#region ------------- Nodes ------------------ 
 
@@ -50,6 +49,9 @@ const pAll = document.querySelectorAll('p');
 const spanAll = document.querySelectorAll('span')
 const gameDiv = document.querySelector('#gamediv');
 const divAll = document.querySelectorAll('div');
+
+const mobileError = document.createElement('div'); mobileError.setAttribute('id','error');
+mobileError.innerText = "Mobile devices not supported";
 
 //#endregion
 
@@ -777,7 +779,7 @@ settings.appendChild(effectSliderDiv);
 //#region  ----------- darkmode toggle ---------------
 
 function checkInitialLightMode(){
-    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
         setDarkMode();
     } else {
         setLightMode();
@@ -838,6 +840,30 @@ checkInitialLightMode();
 
 darkToggle.addEventListener('click', toggleDarkMode);
 
+
+//#endregion
+
+//#region ---------- check mobile ------------
+
+function removeAllChildNodes(parent) {
+    while (parent.firstChild) {
+        parent.removeChild(parent.firstChild);
+    }
+}
+
+function showError(){
+    body.appendChild(mobileError)
+}
+
+function ifMobile(){
+
+    if (window.matchMedia('(max-width: 1365px)').matches){
+        removeAllChildNodes(body);
+        showError();
+    }
+}
+
+ifMobile();
 
 
 

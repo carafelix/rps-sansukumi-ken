@@ -270,4 +270,22 @@ body.dark {
 }
 #settings.dark div > span, #info.dark div > span {
   color: #fffcf1;
+}
+
+#error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 40px;
+  padding: 100px;
+  background-color: #1f1f1f;
+  color: #fffcf1;
+  opacity: 96.5%;
+  border-radius: 150px;
+  box-shadow: 2px 3px 15px hsla(0, 0%, 0%, 0.419);
+}
+
+body.dark #error {
+  color: #1f1f1f;
+  background-color: #fffcf1;
 }/*# sourceMappingURL=style.css.map */

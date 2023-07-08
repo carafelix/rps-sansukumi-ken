@@ -35,6 +35,10 @@ so no cheating its allowed prior.
 
 - Original GUI with animations to give some delay for the API to work with
 
+- JS file load has a module to prevent any use of the game functions directly from the console
+
+- If Client is mobile or small screen, show not supported msg. 
+
 - Misc: Round's selector slider outputs a random color on each value change event
 
 <div align="center">
