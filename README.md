@@ -9,7 +9,7 @@
 
 The first objective of this proyect is to allow the user to play a simple
 Rock-Paper-Scissors game against a truly random generated choice; first only via a text, and later with a GUI.
-This is possible thanks to [random.org](https://www.random.org/), who generate a random number output based on unpredictable micro atmosferic noise changes. Keep in mind that is not supported for mobile and never was a qestion to make it responsive or not. That was not an objective of this proyect. 
+This is possible thanks to [random.org](https://www.random.org/), who generate a random number output based on unpredictable micro atmosferic noise changes.  
 
 ## Constrictions
 - Cpu choices must only be initialized after the user already selected a weapon of choice
@@ -52,6 +52,10 @@ so no cheating its allowed prior.
 
 - animation falling humans on humanity win
 
+## Disclaimers
+
+- Keep in mind that it doesn't support mobile, and never was a question for make it responsive or not. That was not an objective of this proyect.
+- Most material used is from old Woodblock Prints, mostly from: Utagawa Kuniyoshi & an unkown artist from the Edo period.
 
 ## Known Issues 
 
