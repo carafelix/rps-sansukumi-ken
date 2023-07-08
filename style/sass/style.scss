@@ -234,26 +234,25 @@ body{
 
   
 
-//   @media (prefers-color-scheme: dark) {
 
-//     p, span {
-//         color: $white;  
-//     }
+    p.dark, span.dark {
+        color: $white;  
+    }
 
-//     body {
-//         background: url("../../assets/img/background/backgroundtwo-42-inv.png") 252.5vh repeat; 
-//     }
+    body.dark {
+        background: url("../../assets/img/background/backgroundtwo-42-inv.png") 252.5vh repeat; 
+    }
 
-//     #gamediv {
-//     background: url(../../assets/img/humans/primates3-inv.jpg) no-repeat right 30% top 40%/770px;
-//     background-color: $dark;
-//         #botdiv output {
-//             -webkit-text-stroke: 1.5spx $white;
-//         }
+    #gamediv.dark {
+    background: url(../../assets/img/humans/primates3-inv.jpg) no-repeat right 30% top 40%/770px;
+    background-color: $dark;
+        #botdiv output.dark {
+            -webkit-text-stroke: 1.5px $white;
+        }
         
-//     }
-//     #audio-control, #info {
-//         background-color: $dark;
-//     }
+    }
+    #audio-control.dark , #info.dark {
+        background-color: $dark;
+    }
 
-//   }
+  

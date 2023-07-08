@@ -45,6 +45,12 @@ const sameRoundsDiv = document.createElement('div'); sameRoundsDiv.classList.add
 const playAgainDiv = document.createElement('div'); playAgainDiv.classList.add('endDiv');
 const playAgainBtnsDiv = document.createElement('div');
 
+const body = document.querySelector('body');
+const pAll = document.querySelectorAll('p');
+const spanAll = document.querySelectorAll('span')
+const gameDiv = document.querySelector('#gamediv');
+const divAll = document.querySelectorAll('div');
+
 //#endregion
 
 
@@ -581,7 +587,7 @@ effectSlider.addEventListener('input', () => setEffectVolume());
 
 
 
-//#region ------------ audio config toggle buttons --------
+//#region ------------ div toggle buttons --------
 
 function divToggle(e){
     if (!e.target.dataset.clicked){
@@ -629,7 +635,7 @@ infoBtn.addEventListener('click', (e) => divToggle(e));
 
 
 
-//#region --------- audio rounds effects ------------- TODO
+//#region --------- audio rounds effects -------------
 
 const audioEffect = document.querySelectorAll('.short-audio');
 const audioEffectArr = Array.from(audioEffect);    // 0-lose 1-win 2 win? 6 big lose 5 tie
@@ -736,7 +742,7 @@ const gitAnchor = document.createElement('a'); gitAnchor.setAttribute('href','ht
 const wikiLogo = document.createElement('img'); wikiLogo.setAttribute('src', './assets/img/icon/wikidark.svg')
 const wikiAnchor = document.createElement('a'); wikiAnchor.setAttribute('href', 'https://en.wikipedia.org/wiki/Sansukumi-ken'); wikiAnchor.setAttribute('target', '_blank');
 
-wikiAnchor.appendChild(wikiLogo);;
+wikiAnchor.appendChild(wikiLogo);
 gitAnchor.appendChild(githubLogo);
 info.appendChild(gitAnchor);
 info.appendChild(wikiAnchor);
@@ -779,12 +785,21 @@ function checkInitialLightMode(){
 }
 
 function setLightMode(){
-    darkToggle.innerText = 'light_mode'
+
+    darkToggle.innerText = 'light_mode';
+
+    //remove dark
 }
 
 function setDarkMode(){
-    darkToggle.innerText = 'dark_mode'
-    
+    darkToggle.innerText = 'dark_mode';
+    body.classList.add('dark');
+    gamediv.classList.add('dark');
+    pAll.forEach((p) => p.classList.add('dark'));
+    spanAll.forEach((span) => span.classList.add('dark'));
+    divAll.forEach((div) => div.classList.add('dark'));
+    sliderOutput.classList.add('dark');
+    usrCards.forEach(card => card.classList.add('dark'));
     //aaaaaaaañadir clase dark a algunos webeos y tal y tal
 }
 

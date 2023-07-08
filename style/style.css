@@ -227,4 +227,24 @@ body {
 
 .config-slider {
   width: 220px;
+}
+
+p.dark, span.dark {
+  color: #fff8de;
+}
+
+body.dark {
+  background: url("../../assets/img/background/backgroundtwo-42-inv.png") 252.5vh repeat;
+}
+
+#gamediv.dark {
+  background: url(../../assets/img/humans/primates3-inv.jpg) no-repeat right 30% top 40%/770px;
+  background-color: #1f1f1f;
+}
+#gamediv.dark #botdiv output.dark {
+  -webkit-text-stroke: 1.5px #fff8de;
+}
+
+#audio-control.dark, #info.dark {
+  background-color: #1f1f1f;
 }/*# sourceMappingURL=style.css.map */
