@@ -1,5 +1,9 @@
-# Sansukumi-ken
-Simple rock paper scissors game
+
+<div align="center"> 
+<h1>Sansukumi-Ken</h1>
+<img src="./assets/darklight.gif" width="750">
+<p><em>The original rps</em></p>
+</div>
 
 ## Introduction
 
