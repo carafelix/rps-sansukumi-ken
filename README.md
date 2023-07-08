@@ -9,7 +9,7 @@
 
 The first objective of this proyect is to allow the user to play a simple
 Rock-Paper-Scissors game against a truly random generated choice; first only via a text, and later with a GUI.
-This is possible thanks to [random.org](https://www.random.org/), who generate a random number output based on unpredictable micro atmosferic noise changes.
+This is possible thanks to [random.org](https://www.random.org/), who generate a random number output based on unpredictable micro atmosferic noise changes. Keep in mind that is not supported for mobile and never was a qestion to make it responsive or not. That was not an objective of this proyect. 
 
 ## Constrictions
 - Cpu choices must only be initialized after the user already selected a weapon of choice
@@ -58,4 +58,4 @@ so no cheating its allowed prior.
 - In the end-screen, if the play again button 'yes' is click fast enough that the card animation is still not ended && 'same rounds' is checked,  it triggers the second part of the 'card going back animation'
 - Monsters silluettes could be improved
 - A little delay is needed between each round call for the random.org API to work
-
+- Doesn't work at all on mobile, not something that is planned to get support.
