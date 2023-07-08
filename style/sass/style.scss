@@ -1,0 +1,290 @@
+@import './mixinVar';
+
+// general stuff
+
+* {
+    box-sizing: border-box;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 1.15em;
+}
+
+p {
+    line-break: loose;
+    white-space: normal;
+}
+
+p, span, label {
+    color: $dark;
+    user-select: none;
+}
+
+span {
+    width: 24px;
+}
+
+body{
+    @include flexCenter();
+    min-height: 100vh;
+    margin: 0;
+    background: url("../../assets/img/background/backgroundtwo-42.png") 252.5vh repeat; 
+    overflow:hidden;
+}
+
+// animations
+
+.animate__animated.animate__backInUp {
+    --animate-duration: 1.8s;
+  }
+
+//
+
+#gamediv {
+    @include flexCenter();
+    width: 800px;
+    min-height: 800px;
+    background: url(../../assets/img/humans/primates3.jpg) no-repeat right 30% top 40%/770px;
+    background-color: $white;
+    @include borderShadow;
+    border-radius: 5%;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+        
+        > * {
+            margin: 15px;
+        }
+
+        
+        #topdiv {
+            @include flexCenter;
+            width: 750px;
+            height: 93px;
+            #p-span {
+                @include flexCenter;
+                width: 654px;
+                font-family: 'Ysabeau Office ', 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            }
+            span, .config {
+                margin: 4px;
+                align-self: flex-start;
+              }
+        }
+
+        #middlediv {
+            @include flexCenter;
+            flex: 1 0 0;
+            font-size: 45px;
+            color: $white ;
+            -webkit-text-stroke: 2px black;
+
+            #scores {
+                position: relative;
+                top:150px;
+                color: $white;
+            }
+
+        }
+
+        #botdiv {
+            @include flexCenter;
+            gap: 2em;
+            height: 210px;
+                .cards {
+                    margin:15px;
+                    background-size: 200px;
+                    background-position: center 230px;
+                    width: 150px;
+                    height: 180px;
+                    border-radius: 5px;
+                    transition: all 0.5s;
+                }
+                #rock {
+                    background-image: url(../../assets/img/cards/slug.png);
+                }
+                #paper{
+                    background-image: url(../../assets/img/cards/frog.png);
+                }
+                #scissors {
+                    background-image: url(../../assets/img/cards/snake.png);
+
+                }
+                #play, #slider-div, #rounds {
+                    margin-bottom: 30px;
+                }
+
+                #play, #rounds{
+                    padding: 8px;
+                }
+                                
+                .hoverable:hover{
+                    scale: 1.2;
+                }
+                output {
+                    font-size: 50px;
+                    -webkit-text-stroke: 1.5px black;
+                }
+
+                }
+
+                #slider-div {
+                    @include flexCenter;
+                    align-items: center;
+                    gap: 50px;
+                    #slider-rounds {
+                        width: 250px;
+                    }
+                }
+                
+                .endBtn{
+                    margin: 10px;
+                }
+
+                #samerounds {
+                    width: 30px;
+                    height: 30px;
+                }
+                
+                .endDiv {
+                    @include flexCenter;
+                    margin-top: 40px;
+                    align-self:flex-start;
+                    flex-direction: column;
+                    font-size: 1.115em;
+                        button {
+                            font-size: 30px;
+                        }
+                        label {
+                    font-size: 1.115em;
+                        }
+                }
+
+    }
+
+.hide {
+    opacity: 0;
+}
+
+.show {
+  opacity: 1;
+}
+
+#leftdiv, #rightdiv {
+    @include flexCenter;
+    position: relative;
+    height: 800px;
+    width: 475px;
+}
+#leftdiv {
+    margin-right: 20px;
+}
+
+#rightdiv {
+    margin-left: 20px;
+}
+
+.stickers{
+    position: absolute;
+    height: 475px;
+    width: 475px;
+    transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+#settings, #info {
+    font-size: 20px;
+    position: absolute;
+    background-color: $white;
+    @include borderShadow
+  }
+
+#settings {
+    top: -7.5%;
+    left: 0%;
+    flex: 1 0 0;
+    width: 300px;   
+    flex-direction: column;
+        div {
+           margin: 20px 30px;
+           .material-symbols-rounded {
+            margin: 20px;
+           }
+        }
+
+  }
+
+#info {
+    top: 0%;
+    right: 0%;
+    padding: 10px;
+    @include flexCenter;
+        img {
+            width: 45px;
+            margin: 5px;
+        }
+  }
+
+  #info-btn {
+    position: relative;
+    left:15px;
+  }
+
+
+  .config-slider {
+    width: 220px;
+  }
+
+  
+
+
+    p.dark, span.dark {
+        color: $white;  
+    }
+
+    body.dark {
+        background: url("../../assets/img/background/backgroundtwo-42-inv.png") 252.5vh repeat; 
+    }
+
+    #gamediv.dark {
+    background: url(../../assets/img/humans/primates3-inv.jpg) no-repeat right 30% top 40%/770px;
+    background-color: $dark;
+    
+        #botdiv {
+
+            color: $white;
+
+            #rock.dark {
+                // background-image: url(../../assets/img/cards/sluginv.png);
+                background-image: url(../../assets/img/cards/slugtrans.png);
+            }
+            #paper.dark {
+                background-image: url(../../assets/img/cards/frogtrans.png);
+            }
+            #scissors.dark {
+                background-image: url(../../assets/img/cards/snaketrans.png);
+    
+            }
+            output.dark {
+            -webkit-text-stroke: 1.5px $white;
+            }
+            label{
+                color: $white;
+            }
+        }
+
+        
+    }
+    #settings.dark , #info.dark {
+        background-color: $dark;
+        color: $white;
+
+            div > span {
+                color: $white;
+            }
+    }
+
+
+    
+
+    
+    
+
+  

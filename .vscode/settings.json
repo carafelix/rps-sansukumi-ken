@@ -1,3 +1,20 @@
 {
-    "liveServer.settings.port": 5501
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/Thumbs.db": true,
+        "style/style.css.map": true,
+        "style/style.css": true,
+        "assets": true,
+        ".vscode": true
+    },
+    "hide-files.files": [
+        "style/style.css.map",
+        "style/style.css",
+        "assets",
+        ".vscode"
+    ]
 }
