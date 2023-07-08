@@ -246,13 +246,43 @@ body{
     #gamediv.dark {
     background: url(../../assets/img/humans/primates3-inv.jpg) no-repeat right 30% top 40%/770px;
     background-color: $dark;
-        #botdiv output.dark {
+    
+        #botdiv {
+
+            #rock.dark {
+                background-image: url(../../assets/img/cards/sluginv.png);
+            }
+            #paper.dark {
+                background-image: url(../../assets/img/cards/froginv.png);
+            }
+            #scissors.dark {
+                background-image: url(../../assets/img/cards/snakeinv.png);
+    
+            }
+            output.dark {
             -webkit-text-stroke: 1.5px $white;
+            }
         }
+
         
     }
-    #audio-control.dark , #info.dark {
+    #settings.dark , #info.dark {
         background-color: $dark;
+        color: $white;
+
+            div > span {
+                color: $white;
+            }
+
+            a > img {
+                
+            }
     }
+
+
+    
+
+    
+    
 
   

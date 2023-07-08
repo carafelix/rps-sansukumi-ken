@@ -737,9 +737,9 @@ setEffectVolume();
 
 //#region ----------- config div ------------
 
-const githubLogo = document.createElement('img'); githubLogo.setAttribute('src', './assets/img/icon/github-mark.png')
+const githubLogo = document.createElement('img');
 const gitAnchor = document.createElement('a'); gitAnchor.setAttribute('href','https://github.com/carafelix/rps-sansukumi-ken'); gitAnchor.setAttribute('target', '_blank');
-const wikiLogo = document.createElement('img'); wikiLogo.setAttribute('src', './assets/img/icon/wikidark.svg')
+const wikiLogo = document.createElement('img'); 
 const wikiAnchor = document.createElement('a'); wikiAnchor.setAttribute('href', 'https://en.wikipedia.org/wiki/Sansukumi-ken'); wikiAnchor.setAttribute('target', '_blank');
 
 wikiAnchor.appendChild(wikiLogo);
@@ -788,18 +788,39 @@ function setLightMode(){
 
     darkToggle.innerText = 'light_mode';
 
+    body.classList.remove('dark');
+    gamediv.classList.remove('dark');
+    pAll.forEach((p) => p.classList.remove('dark'));
+    spanAll.forEach((span) => span.classList.remove('dark'));
+    divAll.forEach((div) => div.classList.remove('dark'));
+    sliderOutput.classList.remove('dark');
+    cardsArr.forEach(card => card.classList.remove('dark'));
+    settings.classList.remove('dark');
+    info.classList.remove('dark');
+
+    wikiLogo.setAttribute('src', './assets/img/icon/wikidark.svg')
+    githubLogo.setAttribute('src', './assets/img/icon/github-mark.png')
+
     //remove dark
 }
 
 function setDarkMode(){
+
     darkToggle.innerText = 'dark_mode';
+
     body.classList.add('dark');
     gamediv.classList.add('dark');
     pAll.forEach((p) => p.classList.add('dark'));
     spanAll.forEach((span) => span.classList.add('dark'));
     divAll.forEach((div) => div.classList.add('dark'));
     sliderOutput.classList.add('dark');
-    usrCards.forEach(card => card.classList.add('dark'));
+    cardsArr.forEach(card => card.classList.add('dark'));
+    settings.classList.add('dark');
+    info.classList.add('dark');
+
+    wikiLogo.setAttribute('src', './assets/img/icon/wikilight.svg');
+    githubLogo.setAttribute('src', './assets/img/icon/github-mark-white.png')
+
     //aaaaaaaañadir clase dark a algunos webeos y tal y tal
 }
 
