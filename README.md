@@ -17,7 +17,9 @@ so no cheating its allowed prior.
 - Since the machine selects its own weapon on random, there is no problem on letting it select after.
 - Draws should not count towards the scores but should be registered in the total rounds count.
 
-![](./assets/darklight.gif)
+<div align="center">
+<img src="./assets/game.gif" width="750">
+</div>
 
 
 ## Implementations
