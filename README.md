@@ -18,7 +18,7 @@ so no cheating its allowed prior.
 - Draws should not count towards the scores but should be registered in the total rounds count.
 
 <div align="center">
-<img src="./assets/game.gif" width="750">
+<img src="./assets/darklight.gif" width="750">
 </div>
 
 
