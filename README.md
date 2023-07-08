@@ -1,8 +1,8 @@
 
 <div align="center"> 
 <h1>Sansukumi-Ken, the <em>original</em> rps</h1>
-<img src="./assets/darklight.gif" width="750">
-<p><em>Darkmode Toggle</em></p>
+<img src="./assets/game.gif" width="750">
+<p><em>Game demo</em></p>
 </div>
 
 ## Introduction
@@ -16,6 +16,9 @@ This is possible thanks to [random.org](https://www.random.org/), who generate a
 so no cheating its allowed prior. 
 - Since the machine selects its own weapon on random, there is no problem on letting it select after.
 - Draws should not count towards the scores but should be registered in the total rounds count.
+
+![](./assets/darklight.gif)
+
 
 ## Implementations
 
@@ -36,6 +39,8 @@ so no cheating its allowed prior.
 - GUI visualitation of the game, with animations to give 
 
 - Misc: Round's selector slider outputs a random color on each value change event
+
+
 
 ## Concept
 
