@@ -245,13 +245,13 @@ body.dark {
   color: #fff8de;
 }
 #gamediv.dark #botdiv #rock.dark {
-  background-image: url(../../assets/img/cards/sluginv.png);
+  background-image: url(../../assets/img/cards/slugtrans.png);
 }
 #gamediv.dark #botdiv #paper.dark {
-  background-image: url(../../assets/img/cards/froginv.png);
+  background-image: url(../../assets/img/cards/frogtrans.png);
 }
 #gamediv.dark #botdiv #scissors.dark {
-  background-image: url(../../assets/img/cards/snakeinv.png);
+  background-image: url(../../assets/img/cards/snaketrans.png);
 }
 #gamediv.dark #botdiv output.dark {
   -webkit-text-stroke: 1.5px #fff8de;

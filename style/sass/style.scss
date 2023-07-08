@@ -252,13 +252,14 @@ body{
             color: $white;
 
             #rock.dark {
-                background-image: url(../../assets/img/cards/sluginv.png);
+                // background-image: url(../../assets/img/cards/sluginv.png);
+                background-image: url(../../assets/img/cards/slugtrans.png);
             }
             #paper.dark {
-                background-image: url(../../assets/img/cards/froginv.png);
+                background-image: url(../../assets/img/cards/frogtrans.png);
             }
             #scissors.dark {
-                background-image: url(../../assets/img/cards/snakeinv.png);
+                background-image: url(../../assets/img/cards/snaketrans.png);
     
             }
             output.dark {
