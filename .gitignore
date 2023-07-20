@@ -1,1 +1,4 @@
-style/style.css.map
+*.css
+.vscode
+*.map
+settings.json
