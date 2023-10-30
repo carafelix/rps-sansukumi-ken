@@ -1,0 +1,293 @@
+* {
+  box-sizing: border-box;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+  font-size: 1.15em;
+}
+
+p {
+  line-break: loose;
+  white-space: normal;
+}
+
+p, span, label {
+  color: #1f1f1f;
+  user-select: none;
+}
+
+div {
+  user-select: none;
+}
+
+span {
+  width: 24px;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  background: url("../assets/img/background/backgroundtwo-42.png") 252.5vh repeat;
+  overflow: hidden;
+}
+
+.animate__animated.animate__backInUp {
+  --animate-duration: 1.8s;
+}
+
+#gamediv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 800px;
+  min-height: 800px;
+  background: url("../assets/img/humans/primates3.jpg") no-repeat right 30% top 40%/770px;
+  background-color: #fffcf1;
+  box-shadow: 2px 3px 15px hsla(0, 0%, 0%, 0.419);
+  border-radius: 12px;
+  border-radius: 5%;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+#gamediv > * {
+  margin: 15px;
+}
+#gamediv #topdiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 750px;
+  height: 93px;
+}
+#gamediv #topdiv #p-span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 654px;
+  font-family: "Ysabeau Office ", "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+#gamediv #topdiv span, #gamediv #topdiv .config {
+  margin: 4px;
+  align-self: flex-start;
+}
+#gamediv #middlediv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1 0 0;
+  font-size: 45px;
+  color: #fffcf1;
+  -webkit-text-stroke: 2px black;
+}
+#gamediv #middlediv #scores {
+  position: relative;
+  top: 150px;
+  color: #fffcf1;
+}
+#gamediv #botdiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2em;
+  height: 210px;
+}
+#gamediv #botdiv .cards {
+  margin: 15px;
+  background-size: 200px;
+  background-position: center 230px;
+  width: 150px;
+  height: 180px;
+  border-radius: 5px;
+  transition: all 0.5s;
+}
+#gamediv #botdiv #rock {
+  background-image: url("../assets/img/cards/slug.png");
+}
+#gamediv #botdiv #paper {
+  background-image: url("../assets/img/cards/frog.png");
+}
+#gamediv #botdiv #scissors {
+  background-image: url("../assets/img/cards/snake.png");
+}
+#gamediv #botdiv #play, #gamediv #botdiv #slider-div, #gamediv #botdiv #rounds {
+  margin-bottom: 30px;
+}
+#gamediv #botdiv #play, #gamediv #botdiv #rounds {
+  padding: 8px;
+}
+#gamediv #botdiv .hoverable:hover {
+  scale: 1.2;
+}
+#gamediv #botdiv output {
+  font-size: 50px;
+  -webkit-text-stroke: 1.5px black;
+}
+#gamediv #slider-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-items: center;
+  gap: 50px;
+}
+#gamediv #slider-div #slider-rounds {
+  width: 250px;
+}
+#gamediv .endBtn {
+  margin: 10px;
+}
+#gamediv #samerounds {
+  width: 30px;
+  height: 30px;
+}
+#gamediv .endDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
+  align-self: flex-start;
+  flex-direction: column;
+  font-size: 1.115em;
+}
+#gamediv .endDiv button {
+  font-size: 30px;
+}
+#gamediv .endDiv label {
+  font-size: 1.115em;
+}
+
+.hide {
+  opacity: 0;
+}
+
+.show {
+  opacity: 1;
+}
+
+#leftdiv, #rightdiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  height: 800px;
+  width: 475px;
+}
+
+#leftdiv {
+  margin-right: 20px;
+}
+
+#rightdiv {
+  margin-left: 20px;
+}
+
+.stickers {
+  position: absolute;
+  height: 475px;
+  width: 475px;
+  transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+#settings, #info {
+  font-size: 20px;
+  position: absolute;
+  background-color: #fffcf1;
+  box-shadow: 2px 3px 15px hsla(0, 0%, 0%, 0.419);
+  border-radius: 12px;
+}
+
+#settings {
+  top: -7.5%;
+  left: 0%;
+  flex: 1 0 0;
+  width: 300px;
+  flex-direction: column;
+}
+#settings div {
+  margin: 20px 30px;
+}
+#settings div .material-symbols-rounded {
+  margin: 20px;
+}
+
+#info {
+  top: 0%;
+  right: 0%;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#info img {
+  width: 45px;
+  margin: 5px;
+}
+
+#info-btn {
+  position: relative;
+  left: 15px;
+}
+
+.config-slider {
+  width: 220px;
+}
+
+p.dark, span.dark {
+  color: #fffcf1;
+}
+
+body.dark {
+  background: url("../assets/img/background/backgroundtwo-42-inv.png") 252.5vh repeat;
+}
+
+#gamediv.dark {
+  background: url("../assets/img/humans/primates3-inv.jpg") no-repeat right 30% top 40%/770px;
+  background-color: #1f1f1f;
+}
+#gamediv.dark #botdiv {
+  color: #fffcf1;
+}
+#gamediv.dark #botdiv #rock.dark {
+  background-image: url("../assets/img/cards/slugtrans.png");
+}
+#gamediv.dark #botdiv #paper.dark {
+  background-image: url("../assets/img/cards/frogtrans.png");
+}
+#gamediv.dark #botdiv #scissors.dark {
+  background-image: url("../assets/img/cards/snaketrans.png");
+}
+#gamediv.dark #botdiv output.dark {
+  -webkit-text-stroke: 1.5px #fffcf1;
+}
+#gamediv.dark #botdiv label {
+  color: #fffcf1;
+}
+
+#settings.dark, #info.dark {
+  background-color: #1f1f1f;
+  color: #fffcf1;
+}
+#settings.dark div > span, #info.dark div > span {
+  color: #fffcf1;
+}
+
+#error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.5em;
+  padding: 100px;
+  background-color: #1f1f1f;
+  color: #fffcf1;
+  opacity: 96.5%;
+  border-radius: 150px;
+  box-shadow: 2px 3px 15px hsla(0, 0%, 0%, 0.419);
+}
+
+body.dark #error {
+  color: #1f1f1f;
+  background-color: #fffcf1;
+}
+
+/*# sourceMappingURL=style.css.map */
